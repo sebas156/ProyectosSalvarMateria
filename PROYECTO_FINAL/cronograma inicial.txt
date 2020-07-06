@@ -1,0 +1,40 @@
+cronograma:
+
+lunes 6 de julio
+	*Bonilla: avanzar en el motor de movimiento de los enemigos
+	*Giraldo: terminar modelamiento de personaje y minimapa
+martes 7 de julio:
+	*bonilla: avanzar en el motor de movimiento de los enemigos
+	*Giraldo: Busqueda de recursos para ambos desarrolladores
+miercoles 8 de julio:
+	*bonilla: Implementar enemigos al motor de movimiento / investigación: colisiones bala - enemigo
+	*Giraldo: Implementar enemigos al motor de movimiento /
+Jueves 9 de Julio:
+	*Bonilla: Implementar obstaculos al motor de movimiento / investigación: colisiones escenario / fricción
+	*Giraldo: Implementación de proyectiles y diseño de niveles / boceto de items
+viernes 10 de julio:
+	*Bonilla: Investigación e implementación de generación de enemigos / 
+	*Giraldo: Investigación e implementación de generación de enemigos /
+sabado 11 de julio:
+	*Bonilla: Sistema de ingreso al sistema
+	*Giraldo: Sitema de guardado
+domingo 12 de julio:
+	*Reunión de avances, planeación fase 2d, redistribución de tareas, consideración de excepciones
+Lunes 13 de julio:
+	*desarrollo conjunto de la fase 2d
+	*Giraldo: Investigación sobre menus e interfaz
+martes 14 de julio:
+	*obtención de un producto minimamente jugable
+	*Bonilla: Investigación multijugador (johnatan)
+	*Giraldo: Implementación de multijugador local
+Miercoles 15 de julio:
+	*Bonilla: Investigación multijugador (johnatan)
+	*Giraldo: Implementación de multijugador
+jueves 16 de julio: 
+	*Terminación del juego (pendiente a evaluaciones)  (beta)
+Viernes 17 de julio:
+	*Trabajo conjunto en el multijugador
+Sabado 18 de julio:
+	*Trabajo conjunto en el multijugador
+Domingo 19 de julio:
+	*correcciones generales
