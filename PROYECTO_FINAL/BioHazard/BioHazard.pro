@@ -25,14 +25,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        inicarsesion2.cpp \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+        principal.cpp \
+        registro.cpp
 
 HEADERS += \
-        mainwindow.h
+        inicarsesion2.h \
+        mainwindow.h \
+        principal.h \
+        registro.h
 
 FORMS += \
-        mainwindow.ui
+        inicarsesion2.ui \
+        principal.ui \
+        registro.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

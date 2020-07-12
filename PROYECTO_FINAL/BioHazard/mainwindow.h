@@ -1,11 +1,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#include <QMessageBox>
 #include <QMainWindow>
-
-namespace Ui {
-class MainWindow;
-}
+#include <map>
+#include <vector>
+#include <fstream>
+#include <string>
+#include "principal.h"
 
 class MainWindow : public QMainWindow
 {
@@ -16,7 +17,8 @@ public:
     ~MainWindow();
 
 private:
-    Ui::MainWindow *ui;
+    vector<map<string,map<string,int>>> UsuariosRegistrados;
+    principal *InterfazInicial;
 };
 
 #endif // MAINWINDOW_H
