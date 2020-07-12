@@ -35,8 +35,8 @@ private slots:
 
 private:
     Ui::principal *ui;
-    vector<map<string,map<string,int>>> UsuariosRegistrados;
-    Registro * InterfazRegistrar;
+    vector<map<string,map<string,int>>> UsuariosRegistrados; // Este es el vector en el que se va a guardar
+    Registro * InterfazRegistrar;              // todos los usuarios, contraseñas y equivalencia.
     InicarSesion2 *InterfazIniciarSesion;
     string AuxUsuario, AuxPaswoord1;
 };

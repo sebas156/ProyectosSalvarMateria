@@ -1,5 +1,6 @@
 #include "principal.h"
 #include "ui_principal.h"
+#include <math.h>
 
 principal::principal(QWidget *parent) :
     QWidget(parent),
@@ -15,6 +16,7 @@ principal::principal(QWidget *parent) :
 
 void principal::LeerRegistroDeUsuarios()
 {
+    // Lee del archivo UsuariosRegistrados los usuarios.
     ifstream archivoUsuarios("UsuariosRegistrados.txt");
 
     if(archivoUsuarios.fail())
@@ -33,6 +35,8 @@ void principal::LeerRegistroDeUsuarios()
 
 void principal::LlenarConUsuariosRegistrados(string UsuarioContrasena)
 {
+    // Lo que hace esta funcion es tomar el Usuario y Contrasena del archivo y lo añade al vector usuarios registrados.
+
     map<string,map<string,int>> Temporal;
     map<string,int> auxMayor;
     int aux;
@@ -49,6 +53,11 @@ void principal::LlenarConUsuariosRegistrados(string UsuarioContrasena)
 
 int principal::StringNumeroCodigo(string Usuario)
 {
+    /* Esta funcion coge el nombre de usuario y bajo ciertas reglas le asigna una equvalencia en un numero entero.
+     * Metodo de equivalencia: Se toma cada letra del nombre de usuario, se extrae su valor ascii, a dicho valor se le resta el subindice mas 1 y se lo suma
+     * a una variable acumulador.
+     * Esto se hace con el fin de hacer eficiente el proceso de busqueda.
+     */
     int acum=0;
      for(int i=0;i<Usuario.size();i++){
          acum+= Usuario[i] - (i+1);
@@ -59,6 +68,7 @@ int principal::StringNumeroCodigo(string Usuario)
 
 int principal::BusquedaBinaria(string Usuario, int EquivalenteUsuario, int maximo)
 {
+    // Metodo clasico de busqueda binario sobre el vector de usuarios registrados.
     int minimo=0,resultado;
     while(minimo<=maximo){
         resultado=(minimo+maximo)/2;
@@ -79,6 +89,8 @@ int principal::BusquedaBinaria(string Usuario, int EquivalenteUsuario, int maxim
 
 void principal::Ordenamiento_por_Insercion(int tamanio)
 {
+    // Metodo clasico de ordenamiento por insercion sobre el vector de usuarios registrados. Tomando como referencia
+    // la equivalencia del nombre de usuario. Explicado anteriormente.
     int pos;
     map<string,map<string,int>> aux;
     for (int i = 0;i<tamanio;i++) {
@@ -94,6 +106,8 @@ void principal::Ordenamiento_por_Insercion(int tamanio)
 
 void principal::Registrar()
 {
+    // Escribe los nombres de ususarios y contraseñas en el archivo UsuariosRegistrados, bajo cierta configuracion.
+    // NombreDeUsuarios,Contraseña
     ofstream ArchivoUsuarios("UsuariosRegistrados.txt");
     for (int i=0;i<UsuariosRegistrados.size();i++) {
         ArchivoUsuarios<<UsuariosRegistrados[i].begin()->first<<","<<UsuariosRegistrados[i].begin()->second.begin()->first<<endl;
@@ -119,6 +133,8 @@ void principal::on_pushButton_2_clicked()
 
 void principal::VerificarNoEstaRegistar()
 {
+    // Esta funcion lo que hace es verificar que el nombre de usuario ingresado no se encuentre en uso.
+    // Si es así, se registrará, de lo contrario invalidara el registro.
     int indicador;
     AuxUsuario=InterfazRegistrar->GetNombreUsuario();
     AuxPaswoord1=InterfazRegistrar->GetPaswoord();
@@ -150,6 +166,7 @@ void principal::VerificarNoEstaRegistar()
 
 void principal::VerificarSiEstaInicioSesion()
 {
+    //Esta funcion lo que hace es verificar, a la hora de iniciar sesion, si el nombre de usuario y contraseña son correctos.
     int encontrar;
     AuxUsuario=InterfazIniciarSesion->GetUserName();
     AuxPaswoord1=InterfazIniciarSesion->GerPaswoord();

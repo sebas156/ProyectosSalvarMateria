@@ -37,10 +37,11 @@ Registro::~Registro()
 
 void Registro::on_registro_clicked()
 {
+    // Una vez se de clic en el boton registrar, se guardará los valores que tengan los QLineText
     Username = ui->UserName->text().toStdString();
     Paswoord1= ui->passwoord->text().toStdString();
     Paswoord2=ui->passwoord_2->text().toStdString();
-
+    // Si las dos contraseñas no coinciden no avanzará. De lo contrario emitirá la señal buttonPressed().
     if(Paswoord1==Paswoord2)
         emit buttonPressed();
     else {

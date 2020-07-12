@@ -35,6 +35,8 @@ InicarSesion2::~InicarSesion2()
 
 void InicarSesion2::on_login_clicked()
 {
+    // Una vez se de clic en el boton iniciar sesion se guardará los valores que tengan los QLineText
+    // Y se emitirá la señal buttonPressed()
    UserName=ui->UserName->text().toStdString();
    Paswoord=ui->passwoord->text().toStdString();
    emit buttonPressed();
