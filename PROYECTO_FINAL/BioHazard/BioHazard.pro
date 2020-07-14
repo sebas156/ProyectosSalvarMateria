@@ -25,15 +25,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        bullet.cpp \
+        enemy.cpp \
+        game.cpp \
         inicarsesion2.cpp \
         main.cpp \
         mainwindow.cpp \
+        player1.cpp \
         principal.cpp \
         registro.cpp
 
 HEADERS += \
+        bullet.h \
+        enemy.h \
+        game.h \
         inicarsesion2.h \
         mainwindow.h \
+        player1.h \
         principal.h \
         registro.h
 
@@ -46,3 +54,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resources.qrc

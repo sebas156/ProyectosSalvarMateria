@@ -1,6 +1,9 @@
 #include "principal.h"
 #include "ui_principal.h"
 #include <math.h>
+#include "game.h"
+
+game extern *Game;
 
 principal::principal(QWidget *parent) :
     QWidget(parent),
@@ -180,6 +183,7 @@ void principal::VerificarSiEstaInicioSesion()
         InterfazIniciarSesion->~InicarSesion2();
         QMessageBox::information(this,"Sesion iniciada","Bienvenido usuario.");
         this->close();
+        Game = new game;
     }else {
         QMessageBox::warning(this,"ERROR","El usuario o contrasena es incorrecto. ");
         InterfazIniciarSesion->SetUserNameReiniciar("");

@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>BGI/bg1.png</file>
+        <file>MOV/D.png</file>
+        <file>MOV/DL.png</file>
+        <file>MOV/DR.png</file>
+        <file>MOV/L.png</file>
+        <file>MOV/R.png</file>
+        <file>MOV/U.png</file>
+        <file>MOV/UL.png</file>
+        <file>MOV/UR.png</file>
+    </qresource>
+</RCC>
