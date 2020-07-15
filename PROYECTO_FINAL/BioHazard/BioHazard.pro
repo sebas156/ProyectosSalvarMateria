@@ -31,9 +31,11 @@ SOURCES += \
         inicarsesion2.cpp \
         main.cpp \
         mainwindow.cpp \
+        nodo.cpp \
         player1.cpp \
         principal.cpp \
-        registro.cpp
+        registro.cpp \
+        vec3.cpp
 
 HEADERS += \
         bullet.h \
@@ -41,9 +43,11 @@ HEADERS += \
         game.h \
         inicarsesion2.h \
         mainwindow.h \
+        nodo.h \
         player1.h \
         principal.h \
-        registro.h
+        registro.h \
+        vec3.h
 
 FORMS += \
         inicarsesion2.ui \

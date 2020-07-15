@@ -22,6 +22,8 @@ public slots:
     void change_speed();
     void animate();
     void anim_counter();
+signals:
+    void buttonPressed();
 private:
     int L=0;
     int R=0;

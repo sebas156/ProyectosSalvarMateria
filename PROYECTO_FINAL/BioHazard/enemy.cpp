@@ -8,27 +8,13 @@
 
 enemy::enemy()
 {
+    QPen BlackPen(Qt::black);
+    QBrush RedBrush(Qt::yellow);
     //set random position
     int random_number = rand()% 700;
-    setPos(random_number,0);
-
+    posx=random_number;
+    posy=0;
     //draw the enemy
-    setRect(0,0,100,100);
+    setRect(0,0,50,50);
 
-    //connect
-    QTimer *timer = new QTimer();
-    connect(timer,SIGNAL(timeout()),this,SLOT(move()));
-
-    timer->start(50);
-}
-
-void enemy::move()
-{
-    //move enemy (up)
-    setPos(x(),y()+5);
-    if(pos().y()<0-rect().height())
-    {
-        scene()->removeItem(this);
-        delete this;
-    }
 }

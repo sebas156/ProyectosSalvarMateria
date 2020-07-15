@@ -108,6 +108,7 @@ void player1::keyReleaseEvent(QKeyEvent *event)
         if(!event->isAutoRepeat())
             D=0;
     }
+    emit buttonPressed();
 }
 
 void player1::spawn()
