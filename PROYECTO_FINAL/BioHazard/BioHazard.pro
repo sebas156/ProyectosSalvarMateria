@@ -32,6 +32,7 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
         nodo.cpp \
+        obstaculo.cpp \
         player1.cpp \
         principal.cpp \
         registro.cpp \
@@ -44,6 +45,7 @@ HEADERS += \
         inicarsesion2.h \
         mainwindow.h \
         nodo.h \
+        obstaculo.h \
         player1.h \
         principal.h \
         registro.h \

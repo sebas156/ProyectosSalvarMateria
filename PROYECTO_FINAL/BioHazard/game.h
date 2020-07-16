@@ -1,5 +1,6 @@
 #ifndef GAME_H
 #define GAME_H
+#include "obstaculo.h"
 #include <QPen>
 #include <QBrush>
 #include <QGraphicsScene>
@@ -29,16 +30,19 @@ public:
     void EstablecerVecinos();
     void ConstruccionCampoVectorial();
     void CalcularAceleracionZombie();
-    void EstablecerZombies();
+    void EstablecerZombies(float, float);
     void SetNumeroZombies(int);
     void NodosIniciales();
     void EstablecerTodosLosNodosComoNoVisitados();
+    bool HayAlgunVecinoIntrasitable(list<nodo*>);
+    bool CorresPondeAlgunVecinoEsquinero(int,int,int,int);
 public slots:
     void ActualizarCamporVectorial();
     void ActualizarZombies();
     void follow_char();
 
 private:
+    QList <obstaculo *> Paredes;
     QList<enemy *> Zombies;
     nodo ArregloMatrizAbstracta[24][40];
     int NumeroZombies;
