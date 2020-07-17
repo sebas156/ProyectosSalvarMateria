@@ -183,6 +183,9 @@ void game::LiberarOrdasZombies()
 
 bool game::CrearObstaculosMapa(int fila, int columna)
 {
+    // Esta funcion es para crear de una manera rapida todos los obstaculos que hayan en el mapa
+    // De acuerdo a una determinadas condiciones.
+    // Falta terminar. En espera del mapa.
     if(fila==3 and (3<=columna and columna<=8))
         return true;
     else if(fila==3 and (31<=columna and columna <=36))
