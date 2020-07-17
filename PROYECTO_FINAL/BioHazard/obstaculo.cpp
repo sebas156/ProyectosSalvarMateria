@@ -2,5 +2,5 @@
 
 obstaculo::obstaculo(int X, int Y)
 {
-    setRect(X-23,Y-23,46,46);
+    setRect(X-12.5,Y-12.5,25,25);
 }

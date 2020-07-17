@@ -36,6 +36,8 @@ public:
     void EstablecerTodosLosNodosComoNoVisitados();
     bool HayAlgunVecinoIntrasitable(list<nodo*>);
     bool CorresPondeAlgunVecinoEsquinero(int,int,int,int);
+    void LiberarOrdasZombies();
+    bool CrearObstaculosMapa(int, int);
 public slots:
     void ActualizarCamporVectorial();
     void ActualizarZombies();

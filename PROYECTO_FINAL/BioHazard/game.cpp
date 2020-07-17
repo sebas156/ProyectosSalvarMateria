@@ -37,7 +37,7 @@ game::game(QWidget *parent)
     player->setPos(0,0);
 
     view->show();
-    SetNumeroZombies(10);
+    SetNumeroZombies(30);
     InicializarCuadros();
     EstablecerVecinos();
     NodosIniciales();
@@ -45,6 +45,7 @@ game::game(QWidget *parent)
     ConstruccionCampoVectorial();
     ArregloMatrizAbstracta[NIX][NIY].Direccion.x=0;
     ArregloMatrizAbstracta[NIX][NIY].Direccion.y=0;
+    LiberarOrdasZombies();
     connect(player,&player1::buttonPressed,this,&game::ActualizarCamporVectorial);
     QTimer * timer = new QTimer;
     connect(timer, &QTimer::timeout,this,&game::ActualizarZombies);
@@ -68,7 +69,6 @@ void game::follow_char()
 void game::InicializarCuadros()
 {
     // Si se cambia de mapa tener cuidado si se cambia la cantidad de cuadros que hay.
-    int contadorNumeroZombies=0;
     QPen BlackPen(Qt::black);
     QBrush BlackBrush(Qt::black);
 
@@ -80,11 +80,7 @@ void game::InicializarCuadros()
             ArregloMatrizAbstracta[fila][columna].PosRX=posx;
             ArregloMatrizAbstracta[fila][columna].PosRY=posy;
             ArregloMatrizAbstracta[fila][columna].distancia=99999999;
-            if((fila==0 or columna==0) and (contadorNumeroZombies<NumeroZombies)){
-                contadorNumeroZombies++;
-                EstablecerZombies(posx-20,posy-20);
-            }
-            if((fila==10 and (columna==19 or columna == 20 or columna == 21)) or (columna==20 and (fila==11 or fila == 12 or fila == 13))){
+            if(CrearObstaculosMapa(fila,columna)==true){
                 obstaculo * pruebaInicial= new obstaculo(posx,posy);
                 pruebaInicial->setPen(BlackPen);
                 pruebaInicial->setBrush(BlackBrush);
@@ -95,7 +91,6 @@ void game::InicializarCuadros()
             else {
                 ArregloMatrizAbstracta[fila][columna].transitable=true;
             }
-            //qDebug()<<fila<<" "<<columna<<" "<<ArregloMatrizAbstracta[fila][columna].PosRX<<" "<<ArregloMatrizAbstracta[fila][columna].PosRY;
             posx+=50;
         }
         posy+=50;
@@ -147,7 +142,7 @@ void game::EstablecerTodosLosNodosComoNoVisitados()
 
 bool game::HayAlgunVecinoIntrasitable(list<nodo *> Vecinitos)
 {
-    // Cada nodo tiene la informacion de sus vecinos (Las ocho direcciones), si uno de estos vecinos es intransitable
+    // Cada nodo tiene la informacion de sus vecinos (Las ocho direcciones - N ,S ,E ,O, NO, NE, SO, SE ), si uno de estos vecinos es intransitable
     // La funcion devuelve verdadero.
     for(auto i:Vecinitos){
         if(i->transitable==false)
@@ -158,6 +153,8 @@ bool game::HayAlgunVecinoIntrasitable(list<nodo *> Vecinitos)
 
 bool game::CorresPondeAlgunVecinoEsquinero(int VecinoX, int VecinoY, int OriginalX, int OriginalY)
 {
+    // Esta funcion verifica se las posisicones ingresadas del vecino corresponden a la de un vecino esquinero...
+    // Es decir, un vecino que esté al NO, NE, SO, SE del nodo actual (Original).
     if(VecinoX==OriginalX+50 and VecinoY==OriginalY+50)
         return true;
     else if(VecinoX==OriginalX-50 and VecinoY==OriginalY-50)
@@ -165,6 +162,33 @@ bool game::CorresPondeAlgunVecinoEsquinero(int VecinoX, int VecinoY, int Origina
     else if (VecinoX==OriginalX+50 and VecinoY==OriginalY-50)
         return true;
     else if(VecinoX==OriginalX-50 and VecinoY==OriginalY+50)
+        return true;
+    else
+        return false;
+}
+
+void game::LiberarOrdasZombies()
+{
+    int contadorNumeroZombies=0;
+    for(int fila =0;fila <24;fila++){
+        for(int columna=0;columna<40;columna++){
+            if((((fila==10 or fila==11 or fila == 12) and columna==0) or (((fila==10 or fila==11 or fila == 12) and columna==40)) or (((columna==0 or columna==1 or columna == 2 or columna==3 or columna==4) and fila==0)) or (((columna==36 or columna==37 or columna == 38 or columna==39 or columna==4) and fila==0))) and (contadorNumeroZombies<NumeroZombies)){
+                contadorNumeroZombies++;
+                EstablecerZombies(ArregloMatrizAbstracta[fila][columna].PosRX-23,ArregloMatrizAbstracta[fila][columna].PosRY-23);
+            }
+        }
+    }
+}
+
+bool game::CrearObstaculosMapa(int fila, int columna)
+{
+    if(fila==3 and (3<=columna and columna<=8))
+        return true;
+    else if(fila==3 and (31<=columna and columna <=36))
+        return true;
+    else if(fila==8 and (4<=columna and columna<=9))
+        return true;
+    else if(fila==8 and (30<=columna and columna<=35))
         return true;
     else
         return false;
@@ -179,9 +203,20 @@ void game::ActualizarCamporVectorial()
     EstablecerTodosLosNodosComoNoVisitados();
     NodosIniciales();
     CrearMapaDeCalor(&ArregloMatrizAbstracta[NIX][NIY],frontera);
+    //EstablecerDistanciasIntransitable();
     ConstruccionCampoVectorial();
     ArregloMatrizAbstracta[NIX][NIY].Direccion.x=0;
     ArregloMatrizAbstracta[NIX][NIY].Direccion.y=0;
+//        qDebug()<<"XXXXXXXXXXXXXXXXXXXXXX";
+//        for(int fila =0; fila<24;fila++){
+//            for(int columna=0;columna<40;columna++){
+//                qDebug()<<"-------------";
+//                //qDebug()<<ArregloMatrizAbstracta[fila][columna].distancia;
+//                qDebug()<<ArregloMatrizAbstracta[fila][columna].Direccion.x<<" "<<ArregloMatrizAbstracta[fila][columna].Direccion.y;
+//                qDebug()<<"-------------";
+//            }
+//            qDebug()<<"\n";
+//        }
 }
 
 void game::EstablecerVecinos()
@@ -219,20 +254,20 @@ void game::CrearMapaDeCalor(nodo * Inicial, queue <nodo *> frontera)
     // Esta funcion crea el mapa de calor.
     //Mapa de calor: Es el mapa que se genera al establecerle a cada nodo su distancia de él al nodo inicial (Nodo en el que se encuentra el personaje.)
     // Funcion recursiva.
-    if(Inicial->transitable==true){
+    if(Inicial->transitable==true){ // Se verifica si el nodo inicial es transitable. Si no lo es, se debe ignorar.
         list <nodo *> VecinosActuales= Inicial->vecinos;
-        for(auto i: VecinosActuales){
-            if(i->visitado==false and i->transitable==true){
-                i->distancia=Inicial->distancia+1;
-                i->visitado=true;
-                frontera.push(i);
+        for(auto i: VecinosActuales){ // Se itera sobre los vecinos que tenga el nodo inical.
+            if(i->visitado==false ){ // El nodo vecino i no debe estar visitadao por el algoritmo y debe ser transitable para ser agregado a la frontera.
+                i->distancia=Inicial->distancia+1; // La distancia es la distancia que tendrá el nodo vecino i va a ser la distancia de el nodo anterior (original) mas 1.
+                i->visitado=true; // El nodo vecino i se marca como visitado.
+                frontera.push(i); // Se agrega a la cola.
             }
         }
     }
     if(frontera.empty())
         return;
-    nodo * Nodo = frontera.front();
-    frontera.pop();
+    nodo * Nodo = frontera.front(); // Se extrae el nodo que esté en la primera posicion de la cola.
+    frontera.pop();   // Luego se elimina de la cola.
     CrearMapaDeCalor(Nodo,frontera);
 
 }
@@ -246,48 +281,50 @@ void game::CalcularAceleracionZombie()
     for (int iterador=0;iterador<Zombies.size();iterador++) {
         for (int fila =0 ;fila<24;fila++) {
             for (int columna =0;columna<40;columna++) {
-                if(ArregloMatrizAbstracta[fila][columna].PuntoEstaAqui(Zombies.at(iterador)->posx+20,Zombies.at(iterador)->posy+20)==true and ArregloMatrizAbstracta[fila][columna].PuntoEstaAqui(Zombies.at(iterador)->posx,Zombies.at(iterador)->posy)==true and ArregloMatrizAbstracta[fila][columna].PuntoEstaAqui(Zombies.at(iterador)->posx+40,Zombies.at(iterador)->posy+40)==true)
+                if(ArregloMatrizAbstracta[fila][columna].PuntoEstaAqui(Zombies.at(iterador)->posx+23,Zombies.at(iterador)->posy+23)==true and ArregloMatrizAbstracta[fila][columna].PuntoEstaAqui(Zombies.at(iterador)->posx+15,Zombies.at(iterador)->posy+15)==true and ArregloMatrizAbstracta[fila][columna].PuntoEstaAqui(Zombies.at(iterador)->posx+31,Zombies.at(iterador)->posy+31)==true)
                 {
                        Zombies.at(iterador)->velocidad.x=ArregloMatrizAbstracta[fila][columna].Direccion.x;
                        Zombies.at(iterador)->velocidad.y=ArregloMatrizAbstracta[fila][columna].Direccion.y;
-                       Zombies.at(iterador)->velocidad.MultiplicarEscalar(30);
+                       Zombies.at(iterador)->velocidad.MultiplicarEscalar(50);
                 }
-            }
         }
     }
+  }
 }
 
 void game::ConstruccionCampoVectorial()
 {
+    // Esta funcion verifica los vecinos de cada nodo y determina cuales de esos vecinos tiene una menor distacio al nodo inicial.
+    // Posterior a esto, se crea el vector apuntando hacia ese nodo que tiene una menor distancia al nodo inicial.
     // Si se cambia de mapa tener cuidado si se cambia la cantidad de cuadros que hay.
-    int contador;
     for(int fila =0;fila<24;fila++){
         for(int columna =0; columna <40;columna++){
             int MinDistancia=99999999;
             nodo * Auxiliar;
-            contador=0;
-            if(HayAlgunVecinoIntrasitable(ArregloMatrizAbstracta[fila][columna].vecinos)==true){
-                for(auto menor: ArregloMatrizAbstracta[fila][columna].vecinos){
+            if(HayAlgunVecinoIntrasitable(ArregloMatrizAbstracta[fila][columna].vecinos)==true){ // Se verifica si el nodo actual ArregloMatrizAbstracta[fila][columna] tiene algun vecino intransitable.
+                for(auto menor: ArregloMatrizAbstracta[fila][columna].vecinos){  // Se itera sobre los vecinos del nodo actual.
                     if(CorresPondeAlgunVecinoEsquinero(menor->PosRX,menor->PosRY,ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY)==false){
-                        if(menor->transitable==false)
+                        if(menor->transitable==false)     // Se verifica si el vecino actual es esquinero. Si no lo es, entra y se verifica su distancia respecto al nodo actual.
                             continue;
-                        if(menor->distancia<MinDistancia){
+                        if(menor->distancia<MinDistancia){ // Si la distancia es menor que MinDistancia Auxiliar toma el valor de ese vecino y MinDistancia toma el valor de la distancia de ese nodo.
                             MinDistancia=menor->distancia;
                             Auxiliar=menor;
-                            contador++;
-                        }
+                        }                                  // De este modo garantizamos que la comparacion solo se haga entre los nodos no esquineros.
                     }
                 }
             }
-            else {
+            else {  // Si no hay ningun nodo intransitable. No tiene sentido preguntar si un vecino es intransitable.
+                // Se itera sobre todos los 8 vecinos. Para verificar cual es el de menor distancia.
+                // Ese vecino de menor distancia va a ser igualado a auxliar.
                 for(auto menor: ArregloMatrizAbstracta[fila][columna].vecinos){
                     if(menor->distancia<MinDistancia){
                         MinDistancia=menor->distancia;
                         Auxiliar=menor;
-                        contador++;
                     }
             }
         }
+            // Una vez se encuentre el nodo de menor distancia se va a igualar a auxiliar y posteriormente se calcula el vector que tendrá el nodo ArregloMatrizAbstracta[fila][columna].
+            // Luego ese nodo ser normaliza.
             ArregloMatrizAbstracta[fila][columna].Direccion.x=Auxiliar->PosRX-ArregloMatrizAbstracta[fila][columna].PosRX;
             ArregloMatrizAbstracta[fila][columna].Direccion.y=Auxiliar->PosRY-ArregloMatrizAbstracta[fila][columna].PosRY;
             ArregloMatrizAbstracta[fila][columna].Direccion.Normalizar();
@@ -305,14 +342,14 @@ void game::ActualizarPosicionZombies()
         Zombies.at(i)->posx=Zombies.at(i)->posx + Zombies.at(i)->velocidad.x*t;
         Zombies.at(i)->posy=Zombies.at(i)->posy + Zombies.at(i)->velocidad.y*t;
         Zombies.at(i)->setPos(Zombies.at(i)->posx,Zombies.at(i)->posy);
-//        if(i==0)
-//            qDebug()<<Zombies.at(i)->posx<<" "<<Zombies.at(i)->posy;
+        qDebug()<<Zombies.at(i)->velocidad.x<<" "<<Zombies.at(i)->velocidad.y;
     }
 }
 
 
 void game::ActualizarZombies()
 {
+    // Esta funcion primero actualiza la velocidad del zombie y después modifica ala posición del zombie de acuerdo a esta velocidad.
     CalcularAceleracionZombie();
     ActualizarPosicionZombies();
 }

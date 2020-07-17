@@ -13,6 +13,6 @@ enemy::enemy()
 //    posx=random_number;
 //    posy=0;
     //draw the enemy
-    setRect(0,0,40,40);
+    setRect(0,0,46,46);
 
 }
