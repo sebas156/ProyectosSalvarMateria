@@ -118,7 +118,6 @@ void game::NodosIniciales()
     for(int fila =0;fila <24;fila++){
         for(int columna=0;columna<40;columna++){
             if(ArregloMatrizAbstracta[fila][columna].PuntoEstaAqui(player->x()+player->pixmap().width()/2,player->y()+player->pixmap().height()/4)){
-                //qDebug()<<rect->x()<<" "<<rect->y();
                 ArregloMatrizAbstracta[fila][columna].distancia=0;
                 ArregloMatrizAbstracta[fila][columna].visitado=true;
                 NIX=fila;
@@ -169,6 +168,8 @@ bool game::CorresPondeAlgunVecinoEsquinero(int VecinoX, int VecinoY, int Origina
 
 void game::LiberarOrdasZombies()
 {
+    // Esta funcion Despliega los zombies dada la posicion de un determinado nodo.
+    // Esta funcion en realidad va a ser un slot. Cada determinado segundo va a liberar una nueva orda de zombies.
     int contadorNumeroZombies=0;
     for(int fila =0;fila <24;fila++){
         for(int columna=0;columna<40;columna++){
@@ -203,20 +204,9 @@ void game::ActualizarCamporVectorial()
     EstablecerTodosLosNodosComoNoVisitados();
     NodosIniciales();
     CrearMapaDeCalor(&ArregloMatrizAbstracta[NIX][NIY],frontera);
-    //EstablecerDistanciasIntransitable();
     ConstruccionCampoVectorial();
     ArregloMatrizAbstracta[NIX][NIY].Direccion.x=0;
     ArregloMatrizAbstracta[NIX][NIY].Direccion.y=0;
-//        qDebug()<<"XXXXXXXXXXXXXXXXXXXXXX";
-//        for(int fila =0; fila<24;fila++){
-//            for(int columna=0;columna<40;columna++){
-//                qDebug()<<"-------------";
-//                //qDebug()<<ArregloMatrizAbstracta[fila][columna].distancia;
-//                qDebug()<<ArregloMatrizAbstracta[fila][columna].Direccion.x<<" "<<ArregloMatrizAbstracta[fila][columna].Direccion.y;
-//                qDebug()<<"-------------";
-//            }
-//            qDebug()<<"\n";
-//        }
 }
 
 void game::EstablecerVecinos()
@@ -281,7 +271,7 @@ void game::CalcularAceleracionZombie()
     for (int iterador=0;iterador<Zombies.size();iterador++) {
         for (int fila =0 ;fila<24;fila++) {
             for (int columna =0;columna<40;columna++) {
-                if(ArregloMatrizAbstracta[fila][columna].PuntoEstaAqui(Zombies.at(iterador)->posx+23,Zombies.at(iterador)->posy+23)==true and ArregloMatrizAbstracta[fila][columna].PuntoEstaAqui(Zombies.at(iterador)->posx+15,Zombies.at(iterador)->posy+15)==true and ArregloMatrizAbstracta[fila][columna].PuntoEstaAqui(Zombies.at(iterador)->posx+31,Zombies.at(iterador)->posy+31)==true)
+                if(ArregloMatrizAbstracta[fila][columna].PuntoEstaAqui(Zombies.at(iterador)->posx+23,Zombies.at(iterador)->posy+23)==true)
                 {
                        Zombies.at(iterador)->velocidad.x=ArregloMatrizAbstracta[fila][columna].Direccion.x;
                        Zombies.at(iterador)->velocidad.y=ArregloMatrizAbstracta[fila][columna].Direccion.y;
@@ -342,7 +332,6 @@ void game::ActualizarPosicionZombies()
         Zombies.at(i)->posx=Zombies.at(i)->posx + Zombies.at(i)->velocidad.x*t;
         Zombies.at(i)->posy=Zombies.at(i)->posy + Zombies.at(i)->velocidad.y*t;
         Zombies.at(i)->setPos(Zombies.at(i)->posx,Zombies.at(i)->posy);
-        qDebug()<<Zombies.at(i)->velocidad.x<<" "<<Zombies.at(i)->velocidad.y;
     }
 }
 
