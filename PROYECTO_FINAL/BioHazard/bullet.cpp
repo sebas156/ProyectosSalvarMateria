@@ -6,6 +6,7 @@
 #include <QGraphicsItem>
 #include <QGraphicsEllipseItem>
 #include <QPainter>
+#include <QDebug>
 
 extern game *Game;
 
@@ -38,21 +39,31 @@ void bullet::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
 
 void bullet::move()
 {
+    int C=0,I;
     QList<QGraphicsItem *> colliding_items = collidingItems();
     for(int i=0, n = colliding_items.size(); i<n ; i++)
     {
         if(typeid (*(colliding_items[i])) == typeid(enemy))
         {
-            //set score
-
-            //remove both
+            //qDebug("colision");
+            C=1;
+            I=i;
             scene()->removeItem(colliding_items[i]);
-            scene()->removeItem(this);
-            //delete both
-            delete colliding_items[i];
-            delete this;
+            break;
         }
     }
+
+// ******************************   E R R O R    A Q U I   **********************************//
+//   Propuesta de solución: Recorrer toda la lista de Zombies y verificar, cada uno, si está o no en la escena.
+//   Eso puede implicar verificar si el objeto es visible, o si pertenece a los items() de la escena. En caso de que
+//   el objeto no sea visible o no esté en la escena, eliminarlo de la Qlist Zombies por su índice y a través de los
+//   métodos que ofrece este contenedor para borrar elementos.
+
+//    El código, hasta el momento, elimina las balas y remueve los enemigos de la escena de la forma correcta, y cuando
+//    hay enemigos superpuestos (es decir, uno encima de otro), no se eliminan todos los enemigos superpuesto de un solo disparo,
+//    sino que toda disparar tantas balas como enemigos haya (que es lo ideal). EL ÚNICO PROBLEMA ES ELIMINARLOS DE LA MEMORIA.
+//    ES DECIR, LA ELIMINACIÓN DE LOS ENEMIGOS ES LA ESPERADA, PERO SIGUEN OCUPANDO MEMORIA.
+
 
     if(L==1)
         setPos(x()-10,y());
@@ -63,9 +74,10 @@ void bullet::move()
     if(D==1)
         setPos(x(),y()+10);
 
-    if(pos().y()<0-rect().height() || pos().y()>1200 || pos().x()<0 || pos().x()>2000)
+    if(pos().y()<0-rect().height() || pos().y()>1200 || pos().x()<0 || pos().x()>2000 || C==1)
     {
         scene()->removeItem(this);
         delete this;
+        //qDebug("removido");
     }
 }

@@ -8,6 +8,7 @@
 #include "game.h"
 #include <QGraphicsEllipseItem>
 #include <QDebug>
+#include "bullet.h"
 
 game::game(QWidget *parent)
 {
@@ -37,7 +38,7 @@ game::game(QWidget *parent)
     player->setPos(0,0);
 
     view->show();
-    SetNumeroZombies(30);
+    SetNumeroZombies(5);
     InicializarCuadros();
     EstablecerVecinos();
     NodosIniciales();
@@ -196,6 +197,11 @@ bool game::CrearObstaculosMapa(int fila, int columna)
         return true;
     else
         return false;
+}
+
+void game::BorrarZombie()
+{
+
 }
 
 

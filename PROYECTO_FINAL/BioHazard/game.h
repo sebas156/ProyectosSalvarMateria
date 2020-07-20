@@ -38,6 +38,8 @@ public:
     bool CorresPondeAlgunVecinoEsquinero(int,int,int,int);
     void LiberarOrdasZombies();
     bool CrearObstaculosMapa(int, int);
+    QList<enemy *> Zombies;
+    void BorrarZombie();
 public slots:
     void ActualizarCamporVectorial();
     void ActualizarZombies();
@@ -45,7 +47,7 @@ public slots:
 
 private:
     QList <obstaculo *> Paredes;
-    QList<enemy *> Zombies;
+    //QList<enemy *> Zombies;
     nodo ArregloMatrizAbstracta[24][40];
     int NumeroZombies;
     queue <nodo *> frontera;
