@@ -16,3 +16,10 @@ enemy::enemy()
     setRect(0,0,46,46);
 
 }
+
+void enemy::reducir_salud()
+{
+    salud-=reduccion;
+//    if(salud<=0)
+//        estado=0;
+}

@@ -45,10 +45,12 @@ void bullet::move()
     {
         if(typeid (*(colliding_items[i])) == typeid(enemy))
         {
-            //qDebug("colision");
+            //qDebug()<<colliding_items.size();
             C=1;
             I=i;
-            scene()->removeItem(colliding_items[i]);
+            //scene()->removeItem(colliding_items[i]);
+            //colliding_items[i]->setPos(7000,7000);
+            colliding_items[i]->setScale(0.95);
             break;
         }
     }
@@ -79,5 +81,24 @@ void bullet::move()
         scene()->removeItem(this);
         delete this;
         //qDebug("removido");
+        QList<enemy*>::iterator it=Game->Zombies.begin();
+        for(int x=0; x<Game->Zombies.size();x++)
+        {
+            if(Game->Zombies[x]->scale()<1)
+            {
+                it+=x;
+                Game->Zombies[x]->setScale(1);
+                Game->Zombies[x]->reducir_salud();
+                //qDebug()<<Game->Zombies[x]->salud;
+                if(Game->Zombies[x]->salud<=0)
+                {
+                    delete Game->Zombies[x];
+                    qDebug()<<Game->Zombies.size();
+                    Game->Zombies.erase(it);
+                    qDebug()<<Game->Zombies.size();
+                    break;
+                }
+            }
+        }
     }
 }

@@ -14,6 +14,13 @@ public:
     float posx;
     float posy;
     vec3 velocidad;
+    void reducir_salud();
+    int reduccion=30;
+    //int estado=1;   // 1 = is alive ;  0 = is dead;
+    int salud=100;
+private:
+
+
 };
 
 #endif // ENEMY_H

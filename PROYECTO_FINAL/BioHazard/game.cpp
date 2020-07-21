@@ -29,7 +29,7 @@ game::game(QWidget *parent)
 
     //add view
     view = new QGraphicsView(scene);
-    view->setBackgroundBrush(QBrush(QImage(":/BGI/bg1.png")));
+    view->setBackgroundBrush(QBrush(QImage(":/BGI/escenario.png")));
     //view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     //view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
@@ -38,7 +38,7 @@ game::game(QWidget *parent)
     player->setPos(0,0);
 
     view->show();
-    SetNumeroZombies(5);
+    SetNumeroZombies(30);
     InicializarCuadros();
     EstablecerVecinos();
     NodosIniciales();
