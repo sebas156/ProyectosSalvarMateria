@@ -16,9 +16,8 @@ public:
     vec3 velocidad;
     void reducir_salud();
     int reduccion=30;
-    //int estado=1;   // 1 = is alive ;  0 = is dead;
     int salud=100;
-private:
+    int Masa=70;
 
 
 };

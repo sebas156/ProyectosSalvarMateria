@@ -16,6 +16,7 @@ public:
     QTimer *movtimer;
     QTimer *acelerate;
     QTimer *timer_anim;
+    int Vida=100;
 public slots:
     void spawn();
     void move();

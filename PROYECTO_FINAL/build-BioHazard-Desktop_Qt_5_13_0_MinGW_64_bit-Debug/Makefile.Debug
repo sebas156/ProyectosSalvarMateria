@@ -263,6 +263,7 @@ debug/moc_bullet.cpp: ../BioHazard/bullet.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtGui/qpixelformat.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtransform.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtCore/QObject \
+		../BioHazard/vec3.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.13.0/mingw73_64/bin/moc.exe
 	C:\Qt\5.13.0\mingw73_64\bin\moc.exe $(DEFINES) --include "C:/Users/SEBASTIAN BONILLA/Desktop/informartica/Informatica 2.0/Proyecto Final/ProyectosSalvarMateria/PROYECTO_FINAL/build-BioHazard-Desktop_Qt_5_13_0_MinGW_64_bit-Debug/debug/moc_predefs.h" -IC:/Qt/5.13.0/mingw73_64/mkspecs/win32-g++ -I"C:/Users/SEBASTIAN BONILLA/Desktop/informartica/Informatica 2.0/Proyecto Final/ProyectosSalvarMateria/PROYECTO_FINAL/BioHazard" -IC:/Qt/5.13.0/mingw73_64/include -IC:/Qt/5.13.0/mingw73_64/include/QtWidgets -IC:/Qt/5.13.0/mingw73_64/include/QtGui -IC:/Qt/5.13.0/mingw73_64/include/QtANGLE -IC:/Qt/5.13.0/mingw73_64/include/QtCore -I. -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_64/x86_64-w64-mingw32/include ..\BioHazard\bullet.h -o debug\moc_bullet.cpp
@@ -1040,6 +1041,7 @@ debug/bullet.o: ../BioHazard/bullet.cpp ../BioHazard/bullet.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtGui/qpixelformat.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtransform.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtCore/QObject \
+		../BioHazard/vec3.h \
 		../BioHazard/game.h \
 		../BioHazard/obstaculo.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtGui/QPen \
@@ -1080,7 +1082,6 @@ debug/bullet.o: ../BioHazard/bullet.cpp ../BioHazard/bullet.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QWidget \
 		C:/Qt/5.13.0/mingw73_64/include/QtGui/QList \
 		../BioHazard/nodo.h \
-		../BioHazard/vec3.h \
 		../BioHazard/enemy.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QGraphicsEllipseItem \
 		C:/Qt/5.13.0/mingw73_64/include/QtCore/QDebug
