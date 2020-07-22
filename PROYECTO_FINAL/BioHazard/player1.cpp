@@ -119,7 +119,7 @@ void player1::spawn()
 }
 
 void player1::move()
-{   if(x()+Vx>0 && x()+Vx<1900 && y()+Vy>0 && y()+Vy<1100)
+{   if(x()+Vx>0 && x()+Vx<1900 && y()+Vy>100 && y()+Vy<1100)
     setPos(x()+Vx,y()+Vy);
     //qDebug()<<"origen real: "<<x()<<", "<<y();
     //qDebug()<<"origen escalado"<<x()+pixmap().width()/2<<", "<<y()+pixmap().height()/4;

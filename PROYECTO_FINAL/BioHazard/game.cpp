@@ -35,10 +35,10 @@ game::game(QWidget *parent)
 
     view->setFixedSize(800,600);
 
-    player->setPos(0,0);
+    player->setPos(100,100);
 
     view->show();
-    SetNumeroZombies(30);
+    SetNumeroZombies(5);
     InicializarCuadros();
     EstablecerVecinos();
     NodosIniciales();
@@ -186,14 +186,39 @@ bool game::CrearObstaculosMapa(int fila, int columna)
 {
     // Esta funcion es para crear de una manera rapida todos los obstaculos que hayan en el mapa
     // De acuerdo a una determinadas condiciones.
-    // Falta terminar. En espera del mapa.
-    if(fila==3 and (3<=columna and columna<=8))
+    if((fila>=3 and fila <= 5) and (columna ==0 or columna == 1))
         return true;
-    else if(fila==3 and (31<=columna and columna <=36))
+    else if( fila == 5 and (columna==2 or columna==3))
         return true;
-    else if(fila==8 and (4<=columna and columna<=9))
+    else if(fila == 6 and ((columna>=15 and columna <= 17) or (columna>=28 and columna<=30) or (columna>=35 and columna<=37)))
         return true;
-    else if(fila==8 and (30<=columna and columna<=35))
+    else if(fila == 7 and ((columna>=15 and columna <= 17) or (columna>=22 and columna<=23) or (columna>=32 and columna<=33)))
+        return true;
+    else if(fila == 8 and ((columna>=25 and columna <= 26) or (columna>=32 and columna<=33)))
+        return true;
+    else if(fila == 9 and (columna>=31 and columna<=34))
+        return true;
+    else if(fila == 10  and ((columna>=5 and columna<=7) or (columna>=31 and columna<=34)))
+        return true;
+    else if(fila == 11  and ((columna>=5 and columna<=7) or (columna>=15 and columna<=16) or (columna>=31 and columna<=34)))
+        return true;
+    else if(fila == 12  and ((columna>=11 and columna<=12) or (columna>=15 and columna<=16)))
+        return true;
+    else if(fila == 13  and ((columna>=11 and columna<=12) or (columna>=22 and columna<=23) or (columna>=30 and columna<=31)))
+        return true;
+    else if(fila == 14  and ((columna>=11 and columna<=12) or (columna>=17 and columna<=18) or (columna>=22 and columna<=23)))
+        return true;
+    else if(fila == 15  and ( columna==38 or columna == 39))
+        return true;
+    else if(fila == 16  and ((columna>=32 and columna<=33) or (columna>=37 and columna<=38)))
+        return true;
+    else if(fila == 17  and (columna == 2 or columna==3 or columna == 32 or columna == 33))
+        return true;
+    else if(fila == 18  and (columna == 26 or columna==27))
+        return true;
+    else if(fila == 19  and (columna == 10 or columna==11 or columna == 20 or columna==19 or columna== 18 or columna==26 or columna == 27))
+        return true;
+    else if(fila == 20  and ( columna == 20 or columna==19 or columna== 18))
         return true;
     else
         return false;

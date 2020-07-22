@@ -15,7 +15,6 @@ debug/moc_bullet.o
 debug/moc_enemy.o
 debug/moc_inicarsesion2.o
 debug/moc_mainwindow.o
-debug/moc_obstaculo.o
 debug/moc_player1.o
 debug/moc_principal.o
 debug/moc_registro.o
