@@ -17,7 +17,7 @@ public:
     vec3 Direccion;   // Contiene un vecto que indica la direccion en la que se debe ir para llegar de la manera
                       // mas eficiente posible al personaje.
     bool PuntoEstaAqui(float,float); // Verifica si para un punto dado se encuentra dentro de de un determinado cuadro.
-    bool PisoHaceDano=false;
+    bool PisoHaceDano=false;        // Esta bandera es para identificar si en el nodo existe una trampa, lava, puas, etc.
 };
 
 #endif // NODO_H

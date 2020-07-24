@@ -38,7 +38,7 @@ game::game(QWidget *parent)
     player->setPos(100,100);
 
     view->show();
-    SetNumeroZombies(5);
+    SetNumeroZombies(10);
     InicializarCuadros();
     EstablecerVecinos();
     NodosIniciales();
@@ -47,6 +47,7 @@ game::game(QWidget *parent)
     ArregloMatrizAbstracta[NIX][NIY].Direccion.x=0;
     ArregloMatrizAbstracta[NIX][NIY].Direccion.y=0;
     LiberarOrdasZombies();
+    connect(player,&player1::buttonClicked,this,&game::PerdisteElJuego);
     connect(player,&player1::buttonPressed,this,&game::ActualizarCamporVectorial);
     QTimer * timer = new QTimer;
     connect(timer, &QTimer::timeout,this,&game::ActualizarZombies);
@@ -65,6 +66,12 @@ void game::SetNumeroZombies(int Dificultad)
 void game::follow_char()
 {
     //view->centerOn(QPoint(player->x(),player->y()));
+}
+
+void game::PerdisteElJuego()
+{
+    QMessageBox::information(this,"DERROTA","PERDISTE. ERAS LA ULTIMA ESPERANZA DE LA HUMANIDAD Y FALLASTE. ");
+    this->close();
 }
 
 void game::InicializarCuadros()
@@ -307,8 +314,17 @@ void game::CalcularAceleracionZombie()
             for (int columna =0;columna<40;columna++) {
                 if(ArregloMatrizAbstracta[fila][columna].PuntoEstaAqui(Zombies.at(iterador)->posx+23,Zombies.at(iterador)->posy+23)==true)
                 {
+                    float Distancia=pow(pow(Zombies.at(iterador)->posx-player->x(),2)+pow(Zombies.at(iterador)->posy-player->y(),2),0.5);
                        Zombies.at(iterador)->velocidad.x=ArregloMatrizAbstracta[fila][columna].Direccion.x;
                        Zombies.at(iterador)->velocidad.y=ArregloMatrizAbstracta[fila][columna].Direccion.y;
+                       qDebug()<<"--------";
+                       if(Zombies.at(iterador)->velocidad.x==0 and Zombies.at(iterador)->velocidad.y==0 and Distancia<100 and Zombies.at(iterador)->SePuedeAtacar==true)
+                       {
+                           player->RestarVida(Zombies.at(iterador)->Dano);
+                           qDebug()<<iterador<<" Hizo dano";
+                            Zombies.at(iterador)->SePuedeAtacar=false;
+                       }
+
                        Zombies.at(iterador)->velocidad.MultiplicarEscalar(50);
                 }
         }

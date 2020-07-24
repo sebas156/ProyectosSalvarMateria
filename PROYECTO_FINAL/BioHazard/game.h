@@ -6,7 +6,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsRectItem>
 #include <QGraphicsView>
-#include <QGraphicsItem>
+#include <QMessageBox>
 #include <QObject>
 #include "player1.h"
 #include <QTimer>
@@ -44,10 +44,10 @@ public slots:
     void ActualizarCamporVectorial();
     void ActualizarZombies();
     void follow_char();
+    void PerdisteElJuego();
 
 private:
     QList <obstaculo *> Paredes;
-    //QList<enemy *> Zombies;
     nodo ArregloMatrizAbstracta[24][40];
     int NumeroZombies;
     queue <nodo *> frontera;

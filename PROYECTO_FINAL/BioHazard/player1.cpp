@@ -111,6 +111,14 @@ void player1::keyReleaseEvent(QKeyEvent *event)
     emit buttonPressed();
 }
 
+void player1::RestarVida(int recibido)
+{
+
+    Vida-=recibido;
+    if(Vida<=0)
+        emit buttonClicked();
+}
+
 void player1::spawn()
 {
     //create enemies
@@ -121,34 +129,32 @@ void player1::spawn()
 void player1::move()
 {   if(x()+Vx>0 && x()+Vx<1900 && y()+Vy>100 && y()+Vy<1100)
     setPos(x()+Vx,y()+Vy);
-    //qDebug()<<"origen real: "<<x()<<", "<<y();
-    //qDebug()<<"origen escalado"<<x()+pixmap().width()/2<<", "<<y()+pixmap().height()/4;
     Game->view->centerOn(x(),y());
 }
 
 void player1::change_speed()
 {
     if(L==1 && Vx >= -Vf)
-        Vx-=0.1;
+        Vx-=a;
     if(R==1 && Vx <= Vf)
-        Vx+=0.1;
+        Vx+=a;
     if(U==1 && Vy >= -Vf)
-        Vy-=0.1;
+        Vy-=a;
     if(D==1 && Vy <= Vf)
-        Vy+=0.1;
+        Vy+=a;
 
     if(L==0 && Vx < 0)
-        Vx+=0.1;
+        Vx+=a;
     if(R==0 && Vx > 0)
-        Vx-=0.1;
+        Vx-=a;
     if(U==0 && Vy < 0)
-        Vy+=0.1;
+        Vy+=a;
     if(D==0 && Vy > 0)
-        Vy-=0.1;
+        Vy-=a;
 
-    if(Vx<0.1 && Vx >-0.1)
+    if(Vx<a && Vx >-a)
         Vx=0;
-    if(Vy<0.1 && Vy >-0.1)
+    if(Vy<a && Vy >-a)
         Vy=0;
 
 }

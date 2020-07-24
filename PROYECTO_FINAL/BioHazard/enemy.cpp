@@ -14,6 +14,8 @@ enemy::enemy()
 //    posy=0;
     //draw the enemy
     setRect(0,0,46,46);
+    connect(Atacar, &QTimer::timeout,this,&enemy::HabilitarAtaque);
+    Atacar->start(3000);
 
 }
 
@@ -21,5 +23,21 @@ void enemy::reducir_salud()
 {
     salud-=reduccion;
 //    if(salud<=0)
-//        estado=0;
+    //        estado=0;
+}
+
+void enemy::ColisionRetroceder(float AX, float AY)
+{
+    while (velocidad.Magnitud()>2) {
+        velocidad.x = velocidad.x + AX*dt;
+        velocidad.y = velocidad.y + AY*dt;
+        posx = posx + velocidad.x*dt + (AX*dt*dt)/2;
+        posy = posy + velocidad.y*dt + (AY*dt*dt)/2;
+        this->setPos(posx,posy);
+    }
+}
+
+void enemy::HabilitarAtaque()
+{
+    SePuedeAtacar=true;
 }

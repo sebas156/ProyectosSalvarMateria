@@ -12,14 +12,27 @@ extern game *Game;
 
 bullet::bullet(char dir)
 {
-    if(dir=='l')
+    if(dir=='l'){
         L=1;
-    if(dir=='r')
+        this->velocidad.x=-1000;
+        this->velocidad.y=0;
+    }
+    if(dir=='r'){
+        this->velocidad.x=1000;
+        this->velocidad.y=0;
         R=1;
-    if(dir=='u')
-        U=1;
-    if(dir=='d')
+    }
+    if(dir=='u'){
+       U=1;
+       this->velocidad.x=0;
+       this->velocidad.y=-1000;
+
+    }
+    if(dir=='d'){
         D=1;
+        this->velocidad.x=0;
+        this->velocidad.y=1000;
+    }
 
     //draw the bullet
     setRect(0,0,5,5);
@@ -79,26 +92,34 @@ void bullet::move()
     if(pos().y()<0-rect().height() || pos().y()>1200 || pos().x()<0 || pos().x()>2000 || C==1)
     {
         scene()->removeItem(this);
-        delete this;
-        //qDebug("removido");
         QList<enemy*>::iterator it=Game->Zombies.begin();
         for(int x=0; x<Game->Zombies.size();x++)
         {
             if(Game->Zombies[x]->scale()<1)
             {
+                float vf;
+                if(this->velocidad.x==0){
+                    vf=(velocidad.y*this->Masa + Game->Zombies[x]->Masa*Game->Zombies[x]->velocidad.y)/(this->Masa + Game->Zombies[x]->Masa);
+                    Game->Zombies[x]->velocidad.y=vf;
+                    Game->Zombies[x]->velocidad.x=0;
+                }
+                else {
+                    vf=(velocidad.x*this->Masa + Game->Zombies[x]->Masa*Game->Zombies[x]->velocidad.x)/(this->Masa + Game->Zombies[x]->Masa);
+                    Game->Zombies[x]->velocidad.x=vf;
+                    Game->Zombies[x]->velocidad.y=0;
+                }
                 it+=x;
                 Game->Zombies[x]->setScale(1);
                 Game->Zombies[x]->reducir_salud();
-                //qDebug()<<Game->Zombies[x]->salud;
+                Game->Zombies[x]->ColisionRetroceder(Game->Zombies[x]->velocidad.x*(-1.5),Game->Zombies[x]->velocidad.y*(-1.5));
                 if(Game->Zombies[x]->salud<=0)
                 {
                     delete Game->Zombies[x];
-                    qDebug()<<Game->Zombies.size();
                     Game->Zombies.erase(it);
-                    qDebug()<<Game->Zombies.size();
                     break;
                 }
             }
         }
+        delete this;
     }
 }

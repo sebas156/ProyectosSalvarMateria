@@ -16,7 +16,7 @@ public:
     QTimer *movtimer;
     QTimer *acelerate;
     QTimer *timer_anim;
-    int Vida=100;
+    void RestarVida(int);
 public slots:
     void spawn();
     void move();
@@ -25,7 +25,9 @@ public slots:
     void anim_counter();
 signals:
     void buttonPressed();
+    void buttonClicked();
 private:
+    int Vida=200;
     int L=0;
     int R=0;
     int U=0;
@@ -33,11 +35,11 @@ private:
     int i=0;    //animation index
     char aim;
 
-    float V = 0;
+    //float V = 0;
     float Vx = 0;
     float Vy = 0;
     float Vf = 1.4;
-    float a = 1;
+    float a = 0.1;
 
 };
 

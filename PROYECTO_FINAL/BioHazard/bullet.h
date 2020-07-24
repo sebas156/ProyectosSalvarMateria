@@ -9,7 +9,7 @@ class bullet: public QObject, public QGraphicsRectItem
     Q_OBJECT
 public:
     bullet(char dir);
-    int Masa=20;
+    int Masa=30;
     vec3 velocidad;
 public slots:
     void move();
