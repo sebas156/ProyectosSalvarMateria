@@ -16,6 +16,10 @@ public:
     QTimer *movtimer;
     QTimer *acelerate;
     QTimer *timer_anim;
+    float Vx = 0;
+    float Vy = 0;
+    float Vf = 1.4;
+    float a = 0.1;
     void RestarVida(int);
 public slots:
     void spawn();
@@ -36,10 +40,6 @@ private:
     char aim;
 
     //float V = 0;
-    float Vx = 0;
-    float Vy = 0;
-    float Vf = 1.4;
-    float a = 0.1;
 
 };
 

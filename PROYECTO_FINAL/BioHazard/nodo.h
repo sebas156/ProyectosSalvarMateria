@@ -18,6 +18,7 @@ public:
                       // mas eficiente posible al personaje.
     bool PuntoEstaAqui(float,float); // Verifica si para un punto dado se encuentra dentro de de un determinado cuadro.
     bool PisoHaceDano=false;        // Esta bandera es para identificar si en el nodo existe una trampa, lava, puas, etc.
+    bool PisoConFriccion=false;
 };
 
 #endif // NODO_H

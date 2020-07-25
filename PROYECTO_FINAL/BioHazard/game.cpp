@@ -38,9 +38,11 @@ game::game(QWidget *parent)
     player->setPos(100,100);
 
     view->show();
-    SetNumeroZombies(10);
+    SetNumeroZombies(1);
     InicializarCuadros();
     EstablecerVecinos();
+    EstablecerPisoQuitaVida();
+    PisoConFriccion();
     NodosIniciales();
     CrearMapaDeCalor(&ArregloMatrizAbstracta[NIX][NIY],frontera);
     ConstruccionCampoVectorial();
@@ -55,7 +57,80 @@ game::game(QWidget *parent)
     //spawn enemies
 //    srand(time(NULL));
 //    QObject::connect(timer,SIGNAL(timeout()),player,SLOT(spawn()));
-//    timer->start(2000);
+    //    timer->start(2000);
+}
+
+bool game::PisoConFriccion()
+{
+    for(int fila=0;fila<24;fila++){
+        for(int columna =0; columna<40; columna++){
+            if(fila==4 and ((columna>=7 and columna<=11) or (columna>=15 and columna<=19) or (columna>=34 and columna <=39)))
+                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+            else if (fila==5 and ((columna>=8 and columna<=10) or (columna>=15 and columna<=17) or (columna>=36 and columna<=39)))
+                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+            else if(fila==6 and ((columna>=27 and columna<=31) or (columna>=35 and columna<=39)))
+                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+            else if(fila==7 and ((columna>=27 and columna<=31) or (columna>=33 and columna<=39)))
+                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+            else if(fila==8 and ((columna>=27 and columna<=31) or (columna>=33 and columna<=39)))
+                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+            else if(fila==9 and ((columna>=5 and columna<=7) or (columna==35)))
+                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+            else if(fila==10 and ((columna>=8 and columna<=9) or (columna==35)))
+                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+            else if(fila==11 and ((columna>=8 and columna<=9) or (columna==14) or (columna>=29 and columna<=30)))
+                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+            else if(fila==12 and ((columna>=3 and columna<=10) or (columna==14) or (columna==17) or (columna==18) or (columna>=28 and columna<=35) or (columna==39)))
+                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+            else if(fila==13 and ((columna>=6 and columna<=8) or (columna==13) or (columna==14) or (columna==17) or (columna==18) or (columna>=28 and columna<=35) or (columna==39)))
+                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+            else if(fila==14 and ((columna>=1 and columna<=2) or (columna==10) or (columna>=13 and columna==16) or (columna>=28 and columna <=39)))
+                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+            else if(fila==15 and ((columna>=1 and columna<=2) or (columna>=10 and columna==13) or (columna>=16 and columna <=19) or (columna>=36 and columna <=37)))
+                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+            else if(fila==16 and ((columna>=1 and columna<=3)))
+                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+            else if(fila==17 and ((columna>=37 and columna<=38)))
+                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+            else if(fila==18 and ((columna>=2 and columna<=6) or (columna>=14 and columna==15) or (columna==38)))
+                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+            else if(fila==19 and ((columna>=2 and columna<=5) or (columna>=13 and columna==15) or (columna==38)))
+                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+            else if(fila==20 and ((columna>=3 and columna<=5) or (columna>=11 and columna==16)))
+                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+            else if(fila==21 and ((columna>=12 and columna==16)))
+                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+            else if(fila==22 and ((columna>=13 and columna==17)))
+                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+            else if(fila==22 and ((columna>=14 and columna==19)))
+                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+
+        }
+    }
+}
+
+bool game::EstablecerPisoQuitaVida()
+{
+    for(int fila=0;fila<24;fila++){
+        for(int columna =0; columna<40; columna++){
+            if(fila==23 and ((columna>=0 and columna<=13) or (columna>=24 and columna<=39)))
+                ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+            else if (fila==22 and ((columna>=0 and columna<=12) or (columna>=24 and columna<=29) or (columna>=37 and columna<=39)))
+                ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+            else if(fila==21 and ((columna>=0 and columna<=11) or (columna>=24 and columna<=27) or columna==38))
+                ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+            else if(fila==20 and ((columna>=0 and columna<=2) or (columna>=6 and columna<=10) or (columna>=26 and columna<=27)))
+                ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+            else if(fila==19 and ((columna>=0 and columna<=1) or (columna>=6 and columna<=9)))
+                ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+            else if(fila==18 and ((columna>=0 and columna<=1) or (columna>=7 and columna<=9)))
+                ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+            else if(fila==17 and ((columna>=0 and columna<=1) or (columna>=7 and columna<=8)))
+                ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+            else if((fila==15 and columna== 25) or (fila==16 and columna==26))
+                ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+        }
+    }
 }
 
 void game::SetNumeroZombies(int Dificultad)
@@ -130,6 +205,16 @@ void game::NodosIniciales()
                 ArregloMatrizAbstracta[fila][columna].visitado=true;
                 NIX=fila;
                 NIY=columna;
+                if(ArregloMatrizAbstracta[fila][columna].PisoHaceDano==true)
+                {
+                    player->RestarVida(3);
+                }
+                if(ArregloMatrizAbstracta[fila][columna].PisoConFriccion==true)
+                {
+                    qDebug()<<fila<<" "<<columna<<" FRICCION ";
+                    player->Vx=player->Vx/1.3;
+                    player->Vy=player->Vy/1.3;
+                }
                 return;
             }
         }
@@ -317,11 +402,9 @@ void game::CalcularAceleracionZombie()
                     float Distancia=pow(pow(Zombies.at(iterador)->posx-player->x(),2)+pow(Zombies.at(iterador)->posy-player->y(),2),0.5);
                        Zombies.at(iterador)->velocidad.x=ArregloMatrizAbstracta[fila][columna].Direccion.x;
                        Zombies.at(iterador)->velocidad.y=ArregloMatrizAbstracta[fila][columna].Direccion.y;
-                       qDebug()<<"--------";
                        if(Zombies.at(iterador)->velocidad.x==0 and Zombies.at(iterador)->velocidad.y==0 and Distancia<100 and Zombies.at(iterador)->SePuedeAtacar==true)
                        {
                            player->RestarVida(Zombies.at(iterador)->Dano);
-                           qDebug()<<iterador<<" Hizo dano";
                             Zombies.at(iterador)->SePuedeAtacar=false;
                        }
 

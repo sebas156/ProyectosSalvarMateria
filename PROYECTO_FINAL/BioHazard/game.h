@@ -24,6 +24,8 @@ public:
     QGraphicsScene * scene;
     player1 * player;
     QGraphicsView * view;
+    bool PisoConFriccion();
+    bool EstablecerPisoQuitaVida();
     void ActualizarPosicionZombies();
     void InicializarCuadros();
     void CrearMapaDeCalor(nodo *, queue < nodo *>);
