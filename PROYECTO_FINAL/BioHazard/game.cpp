@@ -9,6 +9,8 @@
 #include <QGraphicsEllipseItem>
 #include <QDebug>
 #include "bullet.h"
+#include <stdlib.h>
+#include <time.h>
 
 game::game(QWidget *parent)
 {
@@ -35,10 +37,10 @@ game::game(QWidget *parent)
 
     view->setFixedSize(800,600);
 
-    player->setPos(100,100);
+    player->setPos(500,500);
 
     view->show();
-    SetNumeroZombies(1);
+    SetNumeroZombies(5);
     InicializarCuadros();
     EstablecerVecinos();
     EstablecerPisoQuitaVida();
@@ -48,13 +50,15 @@ game::game(QWidget *parent)
     ConstruccionCampoVectorial();
     ArregloMatrizAbstracta[NIX][NIY].Direccion.x=0;
     ArregloMatrizAbstracta[NIX][NIY].Direccion.y=0;
-    LiberarOrdasZombies();
+    QTimer * OrdasZombies = new QTimer;
+    connect(OrdasZombies, &QTimer::timeout,this,&game::LiberarOrdasZombies);
+    OrdasZombies->start(5000);
     connect(player,&player1::buttonClicked,this,&game::PerdisteElJuego);
     connect(player,&player1::buttonPressed,this,&game::ActualizarCamporVectorial);
     QTimer * timer = new QTimer;
     connect(timer, &QTimer::timeout,this,&game::ActualizarZombies);
     timer->start(20);
-    //spawn enemies
+ //spawn enemies
 //    srand(time(NULL));
 //    QObject::connect(timer,SIGNAL(timeout()),player,SLOT(spawn()));
     //    timer->start(2000);
@@ -102,7 +106,7 @@ bool game::PisoConFriccion()
                 ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
             else if(fila==22 and ((columna>=13 and columna==17)))
                 ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
-            else if(fila==22 and ((columna>=14 and columna==19)))
+            else if(fila==23 and ((columna>=14 and columna==19)))
                 ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
 
         }
@@ -263,15 +267,23 @@ void game::LiberarOrdasZombies()
 {
     // Esta funcion Despliega los zombies dada la posicion de un determinado nodo.
     // Esta funcion en realidad va a ser un slot. Cada determinado segundo va a liberar una nueva orda de zombies.
-    int contadorNumeroZombies=0;
-    for(int fila =0;fila <24;fila++){
-        for(int columna=0;columna<40;columna++){
-            if((((fila==10 or fila==11 or fila == 12) and columna==0) or (((fila==10 or fila==11 or fila == 12) and columna==40)) or (((columna==0 or columna==1 or columna == 2 or columna==3 or columna==4) and fila==0)) or (((columna==36 or columna==37 or columna == 38 or columna==39 or columna==4) and fila==0))) and (contadorNumeroZombies<NumeroZombies)){
-                contadorNumeroZombies++;
-                EstablecerZombies(ArregloMatrizAbstracta[fila][columna].PosRX-23,ArregloMatrizAbstracta[fila][columna].PosRY-23);
-            }
-        }
+    srand(time(NULL));
+    vector <int> ColumnasDespliegue1={5,12,13,14,20,19,18,24,25,26,33};
+    vector <int> FilasDespliegue1={15,14,13,12};
+    vector <int> FilasDespliegue2={14,13,12,11,10,9,8};
+    for(int contadorZombies=0;contadorZombies<(NumeroZombies*2)/3;contadorZombies++){
+        int ColumnaAleatoria= rand()% 9 ;
+        EstablecerZombies(ArregloMatrizAbstracta[3][ColumnasDespliegue1[ColumnaAleatoria]].PosRX-23,ArregloMatrizAbstracta[3][ColumnasDespliegue1[ColumnaAleatoria]].PosRY-23);
     }
+    for(int contadorZombies=0; contadorZombies<(NumeroZombies)/6;contadorZombies++){
+        int FilaAleatoria = rand()% 3;
+        EstablecerZombies(ArregloMatrizAbstracta[FilasDespliegue1[FilaAleatoria]][0].PosRX-23,ArregloMatrizAbstracta[FilasDespliegue1[FilaAleatoria]][0].PosRY-23);
+    }
+    for(int contadorZombies=0; contadorZombies<(NumeroZombies)/6;contadorZombies++){
+        int FilaAleatoria=rand()% 7;
+        EstablecerZombies(ArregloMatrizAbstracta[FilasDespliegue2[FilaAleatoria]][39].PosRX-23,ArregloMatrizAbstracta[FilasDespliegue2[FilaAleatoria]][39].PosRY-23);
+    }
+
 }
 
 bool game::CrearObstaculosMapa(int fila, int columna)
