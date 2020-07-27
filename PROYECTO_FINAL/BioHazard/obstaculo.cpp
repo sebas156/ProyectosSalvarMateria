@@ -1,6 +1,6 @@
 #include "obstaculo.h"
 
-obstaculo::obstaculo(int X, int Y)
+obstaculo::obstaculo(int X, int Y, int Ancho, int Largo)
 {
-    setRect(X-12.5,Y-12.5,25,25);
+    setRect(X-25,Y-25,Largo,Ancho);
 }

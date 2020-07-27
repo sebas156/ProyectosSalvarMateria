@@ -5,7 +5,7 @@
 class obstaculo : public QGraphicsRectItem
 {
 public:
-    obstaculo(int, int);
+    obstaculo(int, int,int,int);
 };
 
 #endif // OBSTACULO_H

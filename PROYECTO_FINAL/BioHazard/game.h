@@ -24,6 +24,7 @@ public:
     QGraphicsScene * scene;
     player1 * player;
     QGraphicsView * view;
+    void EstablecerMuros();
     bool PisoConFriccion();
     bool EstablecerPisoQuitaVida();
     void ActualizarPosicionZombies();
