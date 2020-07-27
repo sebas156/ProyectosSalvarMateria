@@ -9,5 +9,6 @@
         <file>MOV/UL.png</file>
         <file>MOV/UR.png</file>
         <file>BGI/escenario.png</file>
+        <file>BGI/escenario2.png</file>
     </qresource>
 </RCC>
