@@ -36,6 +36,7 @@ player1::player1():QGraphicsPixmapItem()
 
 void player1::keyPressEvent(QKeyEvent *event)
 {
+
     if(event->key() == Qt::Key_A)
     {
         if(!event->isAutoRepeat())
@@ -84,6 +85,7 @@ void player1::keyPressEvent(QKeyEvent *event)
         Bullet->setPos(x()+15,y()+75);
         scene()->addItem(Bullet);
     }
+
 }
 
 void player1::keyReleaseEvent(QKeyEvent *event)
@@ -127,9 +129,24 @@ void player1::spawn()
 }
 
 void player1::move()
-{   if(x()+Vx>0 && x()+Vx<1900 && y()+Vy>100 && y()+Vy<1100)
+{
+    float tempx=x();
+    float tempy=y();
+    if(x()+Vx>0 && x()+Vx<1900 && y()+Vy>100 && y()+Vy<1100)
     setPos(x()+Vx,y()+Vy);
     Game->view->centerOn(x(),y());
+    QList<QGraphicsItem *> colliding_items = collidingItems();
+    for(int i=0, n = colliding_items.size(); i<n ; i++)
+    {
+        if(typeid (*(colliding_items[i])) == typeid(obstaculo))
+        {
+            Vx=0;
+            Vy=0;
+            setPos(tempx,tempy);
+            setPos(x(),y());
+            break;
+        }
+    }
 }
 
 void player1::change_speed()

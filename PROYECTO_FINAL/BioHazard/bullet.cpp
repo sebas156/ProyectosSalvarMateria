@@ -66,6 +66,11 @@ void bullet::move()
             colliding_items[i]->setScale(0.95);
             break;
         }
+        else if(typeid (*(colliding_items[i])) == typeid(obstaculo))
+        {
+            delete this;
+            break;
+        }
     }
 
 // ******************************   E R R O R    A Q U I   **********************************//

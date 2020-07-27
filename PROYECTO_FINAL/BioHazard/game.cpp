@@ -68,7 +68,6 @@ game::game(QWidget *parent)
 void game::EstablecerMuros()
 {
     QPen blackPen(Qt::black);
-    QBrush BlackBrush(Qt::black);
     for(int fila=0;fila<24;fila++){
         for(int columna =0; columna<40; columna++){
             if(fila==6 and columna==15 ){
