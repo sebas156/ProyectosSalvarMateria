@@ -73,7 +73,7 @@ int principal::BusquedaBinaria(string Usuario, int EquivalenteUsuario, int maxim
 {
     // Metodo clasico de busqueda binario sobre el vector de usuarios registrados.
     int minimo=0,resultado;
-    while(minimo<=maximo){
+    while(minimo<maximo){
         resultado=(minimo+maximo)/2;
         if(EquivalenteUsuario > UsuariosRegistrados[resultado].begin()->second.begin()->second)
             minimo=resultado+1;

@@ -90,11 +90,6 @@ void game::EstablecerMuros()
                 scene->addItem(Auxiliar);
                 Paredes.push_back(Auxiliar);
             }
-            else if(fila==6 and columna==35 ){
-                obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,50,200);
-                scene->addItem(Auxiliar);
-                Paredes.push_back(Auxiliar);
-            }
             else if(fila==4 and columna==0){
                 obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,100,100);
                 scene->addItem(Auxiliar);
