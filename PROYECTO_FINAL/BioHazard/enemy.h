@@ -6,6 +6,7 @@
 #include <QPen>
 #include <QTimer>
 #include "vec3.h"
+#include "obstaculo.h"
 
 class enemy: public QObject, public QGraphicsRectItem
 {
