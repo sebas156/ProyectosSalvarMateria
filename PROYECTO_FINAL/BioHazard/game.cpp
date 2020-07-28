@@ -14,6 +14,7 @@
 
 game::game(QWidget *parent)
 {
+    SetNivelOrda(1,1);
     //create a scene
     scene = new QGraphicsScene();
     scene->setSceneRect(0,0,2000,1200);
@@ -31,11 +32,13 @@ game::game(QWidget *parent)
 
     //add view
     view = new QGraphicsView(scene);
-    view->setBackgroundBrush(QBrush(QImage(":/BGI/escenario.png")));
+    if(nivel==1)
+        view->setBackgroundBrush(QBrush(QImage(":/BGI/escenario.png")));
+    else
+        view->setBackgroundBrush(QBrush(QImage(":/BGI/escenario2.png")));
     //view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     //view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    SetNivelOrda(1,1);
     view->setFixedSize(800,600);
 
     player->setPos(700,700);
@@ -71,7 +74,7 @@ game::game(QWidget *parent)
 
 game::~game()
 {
-    delete this;
+    //delete this;
 }
 
 void game::SetNivelOrda(int NivelAux, int OrdaAux)
@@ -87,11 +90,11 @@ void game::SetZombiesPorOrda()
         SetNumeroZombies(6);
     }
     else if(Orda==2){
-        TiempoEntreOrdas=10000;
+        TiempoEntreOrdas=15000;
         SetNumeroZombies(9);
     }
     else if(Orda==3){
-        TiempoEntreOrdas=13000;
+        TiempoEntreOrdas=18000;
         SetNumeroZombies(12);
     }
 }

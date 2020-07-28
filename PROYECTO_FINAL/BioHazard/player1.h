@@ -31,7 +31,7 @@ signals:
     void buttonPressed();
     void buttonClicked();
 private:
-    int Vida=200;
+    int Vida=5000;
     int L=0;
     int R=0;
     int U=0;
