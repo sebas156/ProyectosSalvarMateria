@@ -17,7 +17,7 @@ game2 extern *Game2;
 
 game::game(QWidget *parent)
 {
-    SetNivelOrda(1,1);
+    SetNivelOrda(2,1);
     //create a scene
     scene = new QGraphicsScene();
     scene->setSceneRect(0,0,2000,1200);
@@ -111,122 +111,250 @@ void game::EstablecerMuros()
     QPen blackPen(Qt::black);
     for(int fila=0;fila<24;fila++){
         for(int columna =0; columna<40; columna++){
-            if(fila==6 and columna==15 ){
-                obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,100,150);
-                scene->addItem(Auxiliar);
-                Paredes.push_back(Auxiliar);
+            if(nivel==1){
+                if(fila==6 and columna==15 ){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,145);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==7 and columna==22 ){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,95);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==5 and columna==2 ){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,95);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==6 and columna==28 ){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,145);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==4 and columna==0){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==7 and columna==32){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==8 and columna==25){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,95);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==10 and columna==5){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,145);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==8 and columna==0){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,195,245);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==13 and columna==11){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==11 and columna==15){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==14 and columna==17){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,95);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==13 and columna==22){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==13 and columna==30){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,95);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==9 and columna==31){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,145,195);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==15 and columna==38){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,95);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==16 and columna==37){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,95);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==17 and columna==1){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,145);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==19 and columna==9){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,145);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==19 and columna==18){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,145);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==23 and columna==22){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,145);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==18 and columna==26){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==16 and columna==32){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
             }
-            else if(fila==7 and columna==22 ){
-                obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,50,100);
-                scene->addItem(Auxiliar);
-                Paredes.push_back(Auxiliar);
+            else {
+                if(fila==1 and columna==0 ){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==5 and columna==2 ){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,95);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==4 and columna==24 ){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==6 and columna==13 ){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==6 and columna==17){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,145);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==4 and columna==24){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==6 and columna==24){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,95);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==9 and columna==17){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,45);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==9 and columna==21){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,245);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==9 and columna==26){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==10 and columna==9){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,45);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==8 and columna==33){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,195);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==8 and columna==38){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==12 and columna==17){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,195);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==12 and columna==25){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,45);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==14 and columna==1){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,45);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==14 and columna==7){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,45);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==13 and columna==17){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,45);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==14 and columna==31){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,45);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==16 and columna==23){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,45);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==20 and columna==2){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,145);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==20 and columna==17){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,45);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==21 and columna==25){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,45);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==21 and columna==37){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,145,145);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
+                else if(fila==18 and columna==29){
+                    obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    scene->addItem(Auxiliar);
+                    Paredes.push_back(Auxiliar);
+                }
             }
-            else if(fila==5 and columna==2 ){
-                obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,50,100);
-                scene->addItem(Auxiliar);
-                Paredes.push_back(Auxiliar);
-            }
-            else if(fila==6 and columna==28 ){
-                obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,50,150);
-                scene->addItem(Auxiliar);
-                Paredes.push_back(Auxiliar);
-            }
-            else if(fila==4 and columna==0){
-                obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,100,100);
-                scene->addItem(Auxiliar);
-                Paredes.push_back(Auxiliar);
-            }
-            else if(fila==7 and columna==32){
-                obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,100,100);
-                scene->addItem(Auxiliar);
-                Paredes.push_back(Auxiliar);
-            }
-            else if(fila==8 and columna==25){
-                obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,50,100);
-                scene->addItem(Auxiliar);
-                Paredes.push_back(Auxiliar);
-            }
-            else if(fila==10 and columna==5){
-                obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,100,150);
-                scene->addItem(Auxiliar);
-                Paredes.push_back(Auxiliar);
-            }
-            else if(fila==8 and columna==0){
-                obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,200,250);
-                scene->addItem(Auxiliar);
-                Paredes.push_back(Auxiliar);
-            }
-            else if(fila==13 and columna==11){
-                obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,100,100);
-                scene->addItem(Auxiliar);
-                Paredes.push_back(Auxiliar);
-            }
-            else if(fila==11 and columna==15){
-                obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,100,100);
-                scene->addItem(Auxiliar);
-                Paredes.push_back(Auxiliar);
-            }
-            else if(fila==14 and columna==17){
-                obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,50,100);
-                scene->addItem(Auxiliar);
-                Paredes.push_back(Auxiliar);
-            }
-            else if(fila==13 and columna==22){
-                obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,100,100);
-                scene->addItem(Auxiliar);
-                Paredes.push_back(Auxiliar);
-            }
-            else if(fila==13 and columna==30){
-                obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,50,100);
-                scene->addItem(Auxiliar);
-                Paredes.push_back(Auxiliar);
-            }
-            else if(fila==9 and columna==31){
-                obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,150,200);
-                scene->addItem(Auxiliar);
-                Paredes.push_back(Auxiliar);
-            }
-            else if(fila==15 and columna==38){
-                obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,50,100);
-                scene->addItem(Auxiliar);
-                Paredes.push_back(Auxiliar);
-            }
-            else if(fila==16 and columna==37){
-                obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,50,100);
-                scene->addItem(Auxiliar);
-                Paredes.push_back(Auxiliar);
-            }
-            else if(fila==17 and columna==1){
-                obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,50,150);
-                scene->addItem(Auxiliar);
-                Paredes.push_back(Auxiliar);
-            }
-            else if(fila==19 and columna==9){
-                obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,50,150);
-                scene->addItem(Auxiliar);
-                Paredes.push_back(Auxiliar);
-            }
-            else if(fila==19 and columna==18){
-                obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,100,150);
-                scene->addItem(Auxiliar);
-                Paredes.push_back(Auxiliar);
-            }
-            else if(fila==23 and columna==22){
-                obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,50,150);
-                scene->addItem(Auxiliar);
-                Paredes.push_back(Auxiliar);
-            }
-            else if(fila==18 and columna==26){
-                obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,100,100);
-                scene->addItem(Auxiliar);
-                Paredes.push_back(Auxiliar);
-            }
-            else if(fila==16 and columna==32){
-                obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,100,100);
-                scene->addItem(Auxiliar);
-                Paredes.push_back(Auxiliar);
-            }
-
         }
     }
 }
@@ -235,46 +363,81 @@ bool game::PisoConFriccion()
 {
     for(int fila=0;fila<24;fila++){
         for(int columna =0; columna<40; columna++){
-            if(fila==4 and ((columna>=7 and columna<=11) or (columna>=15 and columna<=19) or (columna>=34 and columna <=39)))
-                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
-            else if (fila==5 and ((columna>=8 and columna<=10) or (columna>=15 and columna<=17) or (columna>=36 and columna<=39)))
-                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
-            else if(fila==6 and ((columna>=27 and columna<=31) or (columna>=35 and columna<=39)))
-                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
-            else if(fila==7 and ((columna>=27 and columna<=31) or (columna>=33 and columna<=39)))
-                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
-            else if(fila==8 and ((columna>=27 and columna<=31) or (columna>=33 and columna<=39)))
-                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
-            else if(fila==9 and ((columna>=5 and columna<=7) or (columna==35)))
-                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
-            else if(fila==10 and ((columna>=8 and columna<=9) or (columna==35)))
-                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
-            else if(fila==11 and ((columna>=8 and columna<=9) or (columna==14) or (columna>=29 and columna<=30)))
-                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
-            else if(fila==12 and ((columna>=3 and columna<=10) or (columna==14) or (columna==17) or (columna==18) or (columna>=28 and columna<=35) or (columna==39)))
-                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
-            else if(fila==13 and ((columna>=6 and columna<=8) or (columna==13) or (columna==14) or (columna==17) or (columna==18) or (columna>=28 and columna<=35) or (columna==39)))
-                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
-            else if(fila==14 and ((columna>=1 and columna<=2) or (columna==10) or (columna>=13 and columna==16) or (columna>=28 and columna <=39)))
-                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
-            else if(fila==15 and ((columna>=1 and columna<=2) or (columna>=10 and columna==13) or (columna>=16 and columna <=19) or (columna>=36 and columna <=37)))
-                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
-            else if(fila==16 and ((columna>=1 and columna<=3)))
-                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
-            else if(fila==17 and ((columna>=37 and columna<=38)))
-                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
-            else if(fila==18 and ((columna>=2 and columna<=6) or (columna>=14 and columna==15) or (columna==38)))
-                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
-            else if(fila==19 and ((columna>=2 and columna<=5) or (columna>=13 and columna==15) or (columna==38)))
-                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
-            else if(fila==20 and ((columna>=3 and columna<=5) or (columna>=11 and columna==16)))
-                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
-            else if(fila==21 and ((columna>=12 and columna==16)))
-                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
-            else if(fila==22 and ((columna>=13 and columna==17)))
-                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
-            else if(fila==23 and ((columna>=14 and columna==19)))
-                ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+            if(nivel==1){
+                if(fila==4 and ((columna>=7 and columna<=11) or (columna>=15 and columna<=19) or (columna>=34 and columna <=39)))
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if (fila==5 and ((columna>=8 and columna<=10) or (columna>=15 and columna<=17) or (columna>=36 and columna<=39)))
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==6 and ((columna>=27 and columna<=31) or (columna>=35 and columna<=39)))
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==7 and ((columna>=27 and columna<=31) or (columna>=33 and columna<=39)))
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==8 and ((columna>=27 and columna<=31) or (columna>=33 and columna<=39)))
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==9 and ((columna>=5 and columna<=7) or (columna==35)))
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==10 and ((columna>=8 and columna<=9) or (columna==35)))
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==11 and ((columna>=8 and columna<=9) or (columna==14) or (columna>=29 and columna<=30)))
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==12 and ((columna>=3 and columna<=10) or (columna==14) or (columna==17) or (columna==18) or (columna>=28 and columna<=35) or (columna==39)))
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==13 and ((columna>=6 and columna<=8) or (columna==13) or (columna==14) or (columna==17) or (columna==18) or (columna>=28 and columna<=35) or (columna==39)))
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==14 and ((columna>=1 and columna<=2) or (columna==10) or (columna>=13 and columna==16) or (columna>=28 and columna <=39)))
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==15 and ((columna>=1 and columna<=2) or (columna>=10 and columna==13) or (columna>=16 and columna <=19) or (columna>=36 and columna <=37)))
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==16 and ((columna>=1 and columna<=3)))
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==17 and ((columna>=37 and columna<=38)))
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==18 and ((columna>=2 and columna<=6) or (columna>=14 and columna==15) or (columna==38)))
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==19 and ((columna>=2 and columna<=5) or (columna>=13 and columna==15) or (columna==38)))
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==20 and ((columna>=3 and columna<=5) or (columna>=11 and columna==16)))
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==21 and ((columna>=12 and columna==16)))
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==22 and ((columna>=13 and columna==17)))
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==23 and ((columna>=14 and columna==19)))
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+            }
+            else {
+                if(fila==5 and columna==26)
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if((fila>=7 and fila<=8) and columna==17)
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==7 and columna == 24)
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==10 and columna == 21)
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==11 and columna == 27)
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==13 and columna == 19)
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==15 and ((columna>=4 and columna<=5) or columna==34))
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==16 and columna == 11)
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==16 and columna == 33)
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==16 and columna == 35)
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==18 and (columna>=24 and columna<=25))
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==21 and (columna>=19 and columna<=20))
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==22 and columna==6)
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==22 and (columna>=23 and columna<=24))
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+                else if(fila==22 and columna==35)
+                    ArregloMatrizAbstracta[fila][columna].PisoConFriccion=true;
+
+            }
 
         }
     }
@@ -284,22 +447,56 @@ bool game::EstablecerPisoQuitaVida()
 {
     for(int fila=0;fila<24;fila++){
         for(int columna =0; columna<40; columna++){
-            if(fila==23 and ((columna>=0 and columna<=13) or (columna>=24 and columna<=39)))
-                ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
-            else if (fila==22 and ((columna>=0 and columna<=12) or (columna>=24 and columna<=29) or (columna>=37 and columna<=39)))
-                ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
-            else if(fila==21 and ((columna>=0 and columna<=11) or (columna>=24 and columna<=27) or columna==38))
-                ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
-            else if(fila==20 and ((columna>=0 and columna<=2) or (columna>=6 and columna<=10) or (columna>=26 and columna<=27)))
-                ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
-            else if(fila==19 and ((columna>=0 and columna<=1) or (columna>=6 and columna<=9)))
-                ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
-            else if(fila==18 and ((columna>=0 and columna<=1) or (columna>=7 and columna<=9)))
-                ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
-            else if(fila==17 and ((columna>=0 and columna<=1) or (columna>=7 and columna<=8)))
-                ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
-            else if((fila==15 and columna== 25) or (fila==16 and columna==26))
-                ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+            if(nivel==1){
+                if(fila==23 and ((columna>=0 and columna<=13) or (columna>=24 and columna<=39)))
+                    ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+                else if (fila==22 and ((columna>=0 and columna<=12) or (columna>=24 and columna<=29) or (columna>=37 and columna<=39)))
+                    ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+                else if(fila==21 and ((columna>=0 and columna<=11) or (columna>=24 and columna<=27) or columna==38))
+                    ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+                else if(fila==20 and ((columna>=0 and columna<=2) or (columna>=6 and columna<=10) or (columna>=26 and columna<=27)))
+                    ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+                else if(fila==19 and ((columna>=0 and columna<=1) or (columna>=6 and columna<=9)))
+                    ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+                else if(fila==18 and ((columna>=0 and columna<=1) or (columna>=7 and columna<=9)))
+                    ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+                else if(fila==17 and ((columna>=0 and columna<=1) or (columna>=7 and columna<=8)))
+                    ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+                else if((fila==15 and columna== 25) or (fila==16 and columna==26))
+                    ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+            }
+            else {
+                if(fila==5 and ((columna>=0 and columna<=1) or (columna>=35 and columna<=37)))
+                    ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+                else if (fila==6 and ((columna>=0 and columna<=6) or (columna>=32 and columna<=39)))
+                    ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+                else if(fila==7 and ((columna>=0 and columna<=7) or (columna>=33 and columna<=39)))
+                    ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+                else if(fila==10 and (columna==0 or columna==39))
+                    ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+                else if(fila==11 and ((columna>=0 and columna<=2) or (columna>=37 and columna<=39)))
+                    ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+                else if(fila==12 and ((columna>=0 and columna<=5) or (columna>=32 and columna<=39)))
+                    ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+                else if(fila==13 and ((columna>=0 and columna<=7) or (columna>=32 and columna<=39)))
+                    ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+                else if(fila==14 and ((columna>=38 and columna<=39)))
+                    ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+                else if(fila==15 and columna==39)
+                    ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+                else if(fila==16 and columna==39)
+                    ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+                else if(fila==17 and (columna==0 or columna==1 or (columna>=5 and columna<=9) or (columna>=37 and columna<=39) ))
+                    ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+                else if(fila==18 and ( (columna>=0 and columna<=7) or (columna>=32 and columna<=39) ))
+                    ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+                else if(fila==19 and ( (columna>=0 and columna<=6) or (columna>=32 and columna<=39) ))
+                    ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+                else if(fila==20 and ( (columna>=0 and columna<=3) or (columna>=37 and columna<=39) ))
+                    ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+                else if(fila==21 and ( (columna>=0 and columna<=1)))
+                    ArregloMatrizAbstracta[fila][columna].PisoHaceDano=true;
+            }
         }
     }
 }
