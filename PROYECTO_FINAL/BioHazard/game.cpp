@@ -35,12 +35,13 @@ game::game(QWidget *parent)
     //view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     //view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
+    SetNivelOrda(1,1);
     view->setFixedSize(800,600);
 
     player->setPos(700,700);
 
     view->show();
-    SetNumeroZombies(5);
+    SetZombiesPorOrda();
     InicializarCuadros();
     EstablecerVecinos();
     EstablecerPisoQuitaVida();
@@ -53,16 +54,46 @@ game::game(QWidget *parent)
     ArregloMatrizAbstracta[NIX][NIY].Direccion.y=0;
     QTimer * OrdasZombies = new QTimer;
     connect(OrdasZombies, &QTimer::timeout,this,&game::LiberarOrdasZombies);
-    OrdasZombies->start(5000);
+    OrdasZombies->start(TiempoEntreOrdas);
     connect(player,&player1::buttonClicked,this,&game::PerdisteElJuego);
     connect(player,&player1::buttonPressed,this,&game::ActualizarCamporVectorial);
     QTimer * timer = new QTimer;
     connect(timer, &QTimer::timeout,this,&game::ActualizarZombies);
     timer->start(20);
+    QTimer * VerificarSiPasaNivel = new QTimer;
+    connect(VerificarSiPasaNivel, &QTimer::timeout,this,&game::VerificarSiYaPasadeNivel);
+    VerificarSiPasaNivel->start(20);
  //spawn enemies
 //    srand(time(NULL));
 //    QObject::connect(timer,SIGNAL(timeout()),player,SLOT(spawn()));
     //    timer->start(2000);
+}
+
+game::~game()
+{
+    delete this;
+}
+
+void game::SetNivelOrda(int NivelAux, int OrdaAux)
+{
+    nivel=NivelAux;
+    Orda=OrdaAux;
+}
+
+void game::SetZombiesPorOrda()
+{
+    if(Orda==1){
+        TiempoEntreOrdas=6000;
+        SetNumeroZombies(6);
+    }
+    else if(Orda==2){
+        TiempoEntreOrdas=10000;
+        SetNumeroZombies(9);
+    }
+    else if(Orda==3){
+        TiempoEntreOrdas=13000;
+        SetNumeroZombies(12);
+    }
 }
 
 void game::EstablecerMuros()
@@ -276,7 +307,15 @@ void game::follow_char()
 void game::PerdisteElJuego()
 {
     QMessageBox::information(this,"DERROTA","PERDISTE. ERAS LA ULTIMA ESPERANZA DE LA HUMANIDAD Y FALLASTE. ");
-    this->close();
+    this->~game();
+}
+
+void game::VerificarSiYaPasadeNivel()
+{
+    if(Zombies.size()==0 and Orda==3){
+         QMessageBox::information(this,"VICTORIA","EXCELENTE. VIAJA A LA SIGUIENTE CIUDAD. ");
+         this->~game();
+    }
 }
 
 void game::InicializarCuadros()
@@ -315,6 +354,7 @@ void game::EstablecerZombies(float PosicionInicialX, float PosicionInicialY)
     aux->setPen(BlackPen);
     aux->posx=PosicionInicialX;
     aux->posy=PosicionInicialY;
+    CaracteristicasZombiesPorNivelYOrda(aux);
     scene->addItem(aux);
     Zombies.push_back(aux);
 }
@@ -336,7 +376,6 @@ void game::NodosIniciales()
                 }
                 if(ArregloMatrizAbstracta[fila][columna].PisoConFriccion==true)
                 {
-                    qDebug()<<fila<<" "<<columna<<" FRICCION ";
                     player->Vx=player->Vx/1.3;
                     player->Vy=player->Vy/1.3;
                 }
@@ -388,6 +427,34 @@ void game::LiberarOrdasZombies()
 {
     // Esta funcion Despliega los zombies dada la posicion de un determinado nodo.
     // Esta funcion en realidad va a ser un slot. Cada determinado segundo va a liberar una nueva orda de zombies.
+    int static ContadorNumeroMaximoZombies=0;
+    ContadorNumeroMaximoZombies+=NumeroZombies;
+    if(Orda==1){
+        if(ContadorNumeroMaximoZombies>=60){
+            if(Zombies.size()==0){
+                Orda++;
+                SetZombiesPorOrda();
+                ContadorNumeroMaximoZombies=0;
+            }
+            return;
+        }
+    }
+    else if(Orda==2){
+        if(ContadorNumeroMaximoZombies>=90){
+            if(Zombies.size()==0){
+                Orda++;
+                SetZombiesPorOrda();
+                ContadorNumeroMaximoZombies=0;
+            }
+            return;
+        }
+    }
+    else if(Orda==3){
+        if(ContadorNumeroMaximoZombies>=120){
+            return;
+        }
+    }
+
     srand(time(NULL));
     vector <int> ColumnasDespliegue1={5,12,13,14,20,19,18,24,25,26,33};
     vector <int> FilasDespliegue1={15,14,13,12};
@@ -452,6 +519,50 @@ bool game::CrearObstaculosMapa(int fila, int columna)
 void game::BorrarZombie()
 {
 
+}
+
+void game::CaracteristicasZombiesPorNivelYOrda(enemy * actual)
+{
+    if(nivel==1){
+        if(Orda==1){
+            actual->Dano=1;
+            actual->Masa=80;
+            actual->VelocidadMaxima=30;
+            actual->reduccion=30;
+        }
+        else if (Orda==2) {
+            actual->Dano=2;
+            actual->Masa=70;
+            actual->VelocidadMaxima=40;
+            actual->reduccion=25;
+        }
+        else if (Orda==3) {
+            actual->Dano=3;
+            actual->Masa=60;
+            actual->VelocidadMaxima=50;
+            actual->reduccion=20;
+        }
+    }
+    else {
+        if(Orda==1){
+            actual->Dano=3;
+            actual->Masa=100;
+            actual->VelocidadMaxima=50;
+            actual->reduccion=25;
+        }
+        else if (Orda==2) {
+            actual->Dano=4;
+            actual->Masa=90;
+            actual->VelocidadMaxima=55;
+            actual->reduccion=20;
+        }
+        else if (Orda==3) {
+            actual->Dano=5;
+            actual->Masa=80;
+            actual->VelocidadMaxima=60;
+            actual->reduccion=15;
+        }
+    }
 }
 
 
@@ -541,7 +652,7 @@ void game::CalcularAceleracionZombie()
                             Zombies.at(iterador)->SePuedeAtacar=false;
                        }
 
-                       Zombies.at(iterador)->velocidad.MultiplicarEscalar(50);
+                       Zombies.at(iterador)->velocidad.MultiplicarEscalar(Zombies.at(iterador)->VelocidadMaxima);
                 }
         }
     }

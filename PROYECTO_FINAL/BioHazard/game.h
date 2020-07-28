@@ -21,9 +21,12 @@ class game: public QGraphicsView
 {
 public:
     game(QWidget *parent = 0);
+    ~game();
+    void SetNivelOrda(int,int);
     QGraphicsScene * scene;
     player1 * player;
     QGraphicsView * view;
+    void SetZombiesPorOrda();
     void EstablecerMuros();
     bool PisoConFriccion();
     bool EstablecerPisoQuitaVida();
@@ -42,14 +45,19 @@ public:
     bool CrearObstaculosMapa(int, int);
     QList<enemy *> Zombies;
     void BorrarZombie();
+    void CaracteristicasZombiesPorNivelYOrda(enemy *);
 public slots:
     void LiberarOrdasZombies();
     void ActualizarCamporVectorial();
     void ActualizarZombies();
     void follow_char();
     void PerdisteElJuego();
+    void VerificarSiYaPasadeNivel();
 
 private:
+    int nivel;
+    int Orda;
+    int TiempoEntreOrdas;
     QList <obstaculo *> Paredes;
     nodo ArregloMatrizAbstracta[24][40];
     int NumeroZombies;
