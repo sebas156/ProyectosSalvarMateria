@@ -69,10 +69,14 @@ game::game(QWidget *parent)
     QTimer * VerificarSiPasaNivel = new QTimer;
     connect(VerificarSiPasaNivel, &QTimer::timeout,this,&game::VerificarSiYaPasadeNivel);
     VerificarSiPasaNivel->start(20);
- //spawn enemies
-//    srand(time(NULL));
-//    QObject::connect(timer,SIGNAL(timeout()),player,SLOT(spawn()));
-    //    timer->start(2000);
+    view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    //play background music
+    music = new QMediaPlayer;
+    music->setMedia(QUrl("qrc:/AUD/00.mp3"));
+    music->setVolume(25);
+    music->play();
 }
 
 game::~game()
@@ -318,10 +322,11 @@ void game::PerdisteElJuego()
 
 void game::VerificarSiYaPasadeNivel()
 {
-    if(Zombies.size()==0 and Orda==3){
+    if((Zombies.size()==0 and Orda==2)){
          QMessageBox::information(this,"VICTORIA","EXCELENTE. VIAJA A LA SIGUIENTE CIUDAD. ");
          this->~game();
-         this->view->close();
+         view->close();
+         music->stop();
          Game2 = new game2;
     }
 }
@@ -355,11 +360,11 @@ void game::InicializarCuadros()
 void game::EstablecerZombies(float PosicionInicialX, float PosicionInicialY)
 {
     // Esta funcion crea un zombie, lo pone en la posicion (PosicionInicialX, PosicionInicialY) y lo agrega a la lista de enemigos.
-    QPen BlackPen(Qt::black);
-    QBrush RedBrush(Qt::yellow);
+//    QPen BlackPen(Qt::black);
+//    QBrush RedBrush(Qt::yellow);
     enemy * aux = new enemy ();
-    aux->setBrush(RedBrush);
-    aux->setPen(BlackPen);
+//    aux->setBrush(RedBrush);
+//    aux->setPen(BlackPen);
     aux->posx=PosicionInicialX;
     aux->posy=PosicionInicialY;
     CaracteristicasZombiesPorNivelYOrda(aux);

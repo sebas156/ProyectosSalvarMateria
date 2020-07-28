@@ -8,7 +8,6 @@
         <file>MOV/U.png</file>
         <file>MOV/UL.png</file>
         <file>MOV/UR.png</file>
-        <file>BGI/escenario.png</file>
         <file>BGI/escenario2.png</file>
         <file>2D/city.gif</file>
         <file>2D/laser.mp3</file>
@@ -18,5 +17,8 @@
         <file>2D/Ship.png</file>
         <file>2D/Ship2.png</file>
         <file>2D/track1.mp3</file>
+        <file>MOV/mutant.png</file>
+        <file>AUD/00.mp3</file>
+        <file>BGI/escenario.png</file>
     </qresource>
 </RCC>

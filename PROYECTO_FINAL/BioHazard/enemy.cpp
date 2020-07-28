@@ -13,7 +13,16 @@ enemy::enemy()
 //    posx=random_number;
 //    posy=0;
     //draw the enemy
-    setRect(0,0,46,46);
+//    setRect(0,0,46,46);
+
+    setPixmap(QPixmap(":/MOV/mutant.png").copy(0,0,46,46));
+    setShapeMode(BoundingRectShape);
+    timer_anim = new QTimer();
+    this->setScale(0.9);
+
+    connect(timer_anim,&QTimer::timeout,this,&enemy::animate);
+    timer_anim->start(60);
+
     connect(Atacar, &QTimer::timeout,this,&enemy::HabilitarAtaque);
     Atacar->start(3000);
 
@@ -48,6 +57,21 @@ void enemy::ColisionRetroceder(float AX, float AY)
             }
         }
     }
+}
+
+void enemy::animate()
+{
+    QPixmap image(":/MOV/mutant.png");
+    anim_counter();
+    QPixmap cropped = image.copy(46*(i-1),0,46,46);
+    setPixmap(QPixmap(cropped));
+}
+
+void enemy::anim_counter()
+{
+    if(i>2)
+        i=0;
+    i++;
 }
 
 void enemy::HabilitarAtaque()

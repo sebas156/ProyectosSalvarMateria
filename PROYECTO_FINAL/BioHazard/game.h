@@ -27,6 +27,7 @@ public:
     QGraphicsScene * scene;
     player1 * player;
     QGraphicsView * view;
+    QMediaPlayer * music;
     void SetZombiesPorOrda();
     void EstablecerMuros();
     bool PisoConFriccion();

@@ -8,7 +8,7 @@
 #include "vec3.h"
 #include "obstaculo.h"
 
-class enemy: public QObject, public QGraphicsRectItem
+class enemy: public QObject/*, public QGraphicsRectItem*/, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
@@ -26,8 +26,14 @@ public:
     int Dano;
     bool SePuedeAtacar=true;
     QTimer *Atacar = new QTimer;
+    QTimer *timer_anim = new QTimer;
+public slots:
+    void animate();
+    void anim_counter();
 private slots:
     void HabilitarAtaque();
+private:
+    int i=0;  //index for animation
 
 };
 
