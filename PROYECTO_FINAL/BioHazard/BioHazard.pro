@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
-
+QT      += multimedia
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = BioHazard
@@ -26,8 +26,12 @@ CONFIG += c++11
 
 SOURCES += \
         bullet.cpp \
+        bullet2.cpp \
         enemy.cpp \
+        enemyship.cpp \
         game.cpp \
+        game2.cpp \
+        health.cpp \
         inicarsesion2.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -36,12 +40,19 @@ SOURCES += \
         player1.cpp \
         principal.cpp \
         registro.cpp \
+        score.cpp \
+        sinenemyship.cpp \
+        spaceship.cpp \
         vec3.cpp
 
 HEADERS += \
         bullet.h \
+        bullet2.h \
         enemy.h \
+        enemyship.h \
         game.h \
+        game2.h \
+        health.h \
         inicarsesion2.h \
         mainwindow.h \
         nodo.h \
@@ -49,6 +60,9 @@ HEADERS += \
         player1.h \
         principal.h \
         registro.h \
+        score.h \
+        sinenemyship.h \
+        spaceship.h \
         vec3.h
 
 FORMS += \

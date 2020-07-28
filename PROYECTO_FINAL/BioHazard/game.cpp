@@ -11,6 +11,9 @@
 #include "bullet.h"
 #include <stdlib.h>
 #include <time.h>
+#include "game2.h"
+
+game2 extern *Game2;
 
 game::game(QWidget *parent)
 {
@@ -318,6 +321,8 @@ void game::VerificarSiYaPasadeNivel()
     if(Zombies.size()==0 and Orda==3){
          QMessageBox::information(this,"VICTORIA","EXCELENTE. VIAJA A LA SIGUIENTE CIUDAD. ");
          this->~game();
+         this->view->close();
+         Game2 = new game2;
     }
 }
 

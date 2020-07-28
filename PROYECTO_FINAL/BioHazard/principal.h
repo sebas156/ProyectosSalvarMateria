@@ -8,6 +8,7 @@
 #include <vector>
 #include <fstream>
 #include <string>
+#include "game2.h"
 
 namespace Ui {
 class principal;

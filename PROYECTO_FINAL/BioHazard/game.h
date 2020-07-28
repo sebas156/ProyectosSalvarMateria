@@ -16,6 +16,7 @@
 #include <iostream>
 #include "nodo.h"
 #include "enemy.h"
+#include "game2.h"
 
 class game: public QGraphicsView
 {

@@ -8,8 +8,9 @@
 #include "player1.h"
 #include <QTimer>
 #include "game.h"
-
+#include "game2.h"
 game * Game;
+game2 * Game2;
 
 int main(int argc, char *argv[])
 {

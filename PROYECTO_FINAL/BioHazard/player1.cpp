@@ -61,30 +61,42 @@ void player1::keyPressEvent(QKeyEvent *event)
 
     if(event->key() == Qt::Key_Left)
     {
-        bullet *Bullet = new bullet('l');
-        Bullet->setPos(x()-10,y()+25);
-        scene()->addItem(Bullet);
+        if(!event->isAutoRepeat())
+        {
+            bullet *Bullet = new bullet('l');
+            Bullet->setPos(x()-10,y()+25);
+            scene()->addItem(Bullet);
+        }
     }
 
     if(event->key() == Qt::Key_Right)
     {
-        bullet *Bullet = new bullet('r');
-        Bullet->setPos(x()+75,y()+25);
-        scene()->addItem(Bullet);
+        if(!event->isAutoRepeat())
+        {
+            bullet *Bullet = new bullet('r');
+            Bullet->setPos(x()+75,y()+25);
+            scene()->addItem(Bullet);
+        }
     }
 
     if(event->key() == Qt::Key_Up)
     {
-        bullet *Bullet = new bullet('u');
-        Bullet->setPos(x()+30,y()-10);
-        scene()->addItem(Bullet);
+        if(!event->isAutoRepeat())
+        {
+            bullet *Bullet = new bullet('u');
+            Bullet->setPos(x()+30,y()-10);
+            scene()->addItem(Bullet);
+        }
     }
 
     if(event->key() == Qt::Key_Down)
     {
-        bullet *Bullet = new bullet('d');
-        Bullet->setPos(x()+15,y()+75);
-        scene()->addItem(Bullet);
+        if(!event->isAutoRepeat())
+        {
+            bullet *Bullet = new bullet('d');
+            Bullet->setPos(x()+15,y()+75);
+            scene()->addItem(Bullet);
+        }
     }
 
 }

@@ -10,5 +10,13 @@
         <file>MOV/UR.png</file>
         <file>BGI/escenario.png</file>
         <file>BGI/escenario2.png</file>
+        <file>2D/city.gif</file>
+        <file>2D/laser.mp3</file>
+        <file>2D/laser.png</file>
+        <file>2D/off.png</file>
+        <file>2D/on.png</file>
+        <file>2D/Ship.png</file>
+        <file>2D/Ship2.png</file>
+        <file>2D/track1.mp3</file>
     </qresource>
 </RCC>
