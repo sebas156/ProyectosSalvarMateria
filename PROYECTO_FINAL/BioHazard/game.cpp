@@ -747,9 +747,9 @@ bool game::CrearObstaculosMapa(int fila, int columna)
             return true;
         else if((fila>=14 and fila <= 15)  and columna== 31)
             return true;
-        else if((fila>=14 and fila <= 15)  and (columna>=29 and columna<=30))
+        else if((fila>=18 and fila <= 19)  and (columna>=29 and columna<=30))
             return true;
-        else if((fila>=14 and fila <= 15) and ( columna>=2 and columna<=4))
+        else if((fila>=20 and fila <= 21) and ( columna>=2 and columna<=4))
             return true;
         else if((fila>=20 and fila <= 23) and ( columna>=36 and columna<=39))
             return true;
