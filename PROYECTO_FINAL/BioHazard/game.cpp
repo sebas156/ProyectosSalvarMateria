@@ -15,9 +15,10 @@
 
 game2 extern *Game2;
 
-game::game(QWidget *parent)
+game::game(int NivelInput,QWidget *parent)
 {
-    SetNivelOrda(2,1);
+    SetNivelOrda(NivelInput,1);
+
     //create a scene
     scene = new QGraphicsScene();
     scene->setSceneRect(0,0,2000,1200);

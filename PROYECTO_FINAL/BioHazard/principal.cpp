@@ -1,9 +1,6 @@
 #include "principal.h"
 #include "ui_principal.h"
 #include <math.h>
-#include "game.h"
-
-game extern *Game;
 
 principal::principal(QWidget *parent) :
     QWidget(parent),
@@ -15,6 +12,8 @@ principal::principal(QWidget *parent) :
     LeerRegistroDeUsuarios();
     connect(InterfazRegistrar,SIGNAL(buttonPressed()),this,SLOT(VerificarNoEstaRegistar()));
     connect(InterfazIniciarSesion,SIGNAL(buttonPressed()),this,SLOT(VerificarSiEstaInicioSesion()));
+    //connect(InterFazParaUsuario,SIGNAL(buttonClicked()),this,SLOT(Aparecer()));
+    //connect(InterFazParaUsuario,&VentanaPrincipalUsuario::buttonClicked,this,&principal::Aparecer);
 }
 
 void principal::LeerRegistroDeUsuarios()
@@ -73,6 +72,8 @@ int principal::BusquedaBinaria(string Usuario, int EquivalenteUsuario, int maxim
 {
     // Metodo clasico de busqueda binario sobre el vector de usuarios registrados.
     int minimo=0,resultado;
+    if(UsuariosRegistrados.size()==0)
+        return -1;
     if(UsuariosRegistrados.size()==1){
         if(Usuario==UsuariosRegistrados[0].begin()->first)
             return 0;
@@ -132,11 +133,13 @@ principal::~principal()
 
 void principal::on_sesion_clicked()
 {
+    this->close();
     InterfazIniciarSesion->show();
 }
 
 void principal::on_pushButton_2_clicked()
 {
+    this->close();
     InterfazRegistrar->show();
 }
 
@@ -153,6 +156,10 @@ void principal::VerificarNoEstaRegistar()
             LlenarConUsuariosRegistrados(AuxUsuario+","+AuxPaswoord1);
             Ordenamiento_por_Insercion(UsuariosRegistrados.size());
             Registrar();
+            AuxUsuario+=".txt";
+            ofstream ArchivoUsuarioNuevo(AuxUsuario);
+            ArchivoUsuarioNuevo<<"1,0"<<endl;
+            ArchivoUsuarioNuevo.close();
             QMessageBox::information(this,"GUARDADO","El susario se ha creado exitosamente.");
         }
         else {
@@ -185,15 +192,45 @@ void principal::VerificarSiEstaInicioSesion()
         encontrar=-1;
     if(encontrar != -1 and UsuariosRegistrados[encontrar].begin()->first==AuxUsuario and UsuariosRegistrados[encontrar].begin()->second.begin()->first==AuxPaswoord1){
         InterfazIniciarSesion->close();
-        InterfazRegistrar->~Registro();
-        InterfazIniciarSesion->~InicarSesion2();
+        InterfazRegistrar->close();
+        InterfazIniciarSesion->close();
+        InterfazIniciarSesion->SetUserNameReiniciar("");
+        InterfazIniciarSesion->SetPaswoordReiniciar("");
         QMessageBox::information(this,"Sesion iniciada","Bienvenido usuario.");
         this->close();
-        Game = new game;
+        ifstream ArchivoUsuario(AuxUsuario+".txt");
+        string renglon;
+        getline(ArchivoUsuario,renglon);
+        int nivel=renglon[0]-48;
+        int encontrar=renglon.find(",");
+        renglon=renglon.substr(encontrar+1,renglon.size()-encontrar);
+        int puntos= StringANumero(renglon);
+        VentanaPrincipalUsuario *InterFazParaUsuario= new VentanaPrincipalUsuario(nivel,puntos,AuxUsuario);
+        connect(InterFazParaUsuario,&VentanaPrincipalUsuario::buttonClicked,this,&principal::Aparecer);
+        InterFazParaUsuario->show();
+
     }else {
         QMessageBox::warning(this,"ERROR","El usuario o contrasena es incorrecto. ");
         InterfazIniciarSesion->SetUserNameReiniciar("");
         InterfazIniciarSesion->SetPaswoordReiniciar("");
         InterfazIniciarSesion->close();
     }
+}
+
+void principal::Aparecer()
+{
+    this->show();
+}
+
+void principal::on_Cerrar_clicked()
+{
+    this->~principal();
+}
+
+int principal:: StringANumero(string cadena){
+    int acum=0;
+    for(int i=0; i<cadena.size();i++){
+        acum+=cadena[i]-48;
+    }
+    return acum;
 }

@@ -9,6 +9,7 @@
 #include <fstream>
 #include <string>
 #include "game2.h"
+#include "ventanaprincipalusuario.h"
 
 namespace Ui {
 class principal;
@@ -26,6 +27,7 @@ public:
     int BusquedaBinaria(string, int, int);
     void  Ordenamiento_por_Insercion(int);
     void Registrar();
+    int StringANumero(string);
     ~principal();
 
 private slots:
@@ -33,6 +35,10 @@ private slots:
     void on_pushButton_2_clicked();
     void VerificarNoEstaRegistar();
     void VerificarSiEstaInicioSesion();
+    void on_Cerrar_clicked();
+
+public slots:
+    void Aparecer();
 
 private:
     Ui::principal *ui;

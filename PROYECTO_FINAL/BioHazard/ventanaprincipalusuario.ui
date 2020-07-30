@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>VentanaPrincipalUsuario</class>
+ <widget class="QWidget" name="VentanaPrincipalUsuario">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QSplitter" name="splitter">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>50</y>
+     <width>251</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <widget class="QLabel" name="label">
+    <property name="text">
+     <string>Bienvenido: </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="NombreUsuario">
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QSplitter" name="splitter_2">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>100</y>
+     <width>211</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+   <widget class="QPushButton" name="Campana">
+    <property name="text">
+     <string>Campana</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Cooperativo">
+    <property name="text">
+     <string>Cooperativo</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Ranking">
+    <property name="text">
+     <string>Ranking</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="comojugar">
+    <property name="text">
+     <string>¿Como jugar?</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="CerrarSesion">
+    <property name="text">
+     <string>Cerrar Sesion</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -21,7 +21,7 @@
 class game: public QGraphicsView
 {
 public:
-    game(QWidget *parent = 0);
+    game(int,QWidget *parent = 0);
     ~game();
     void SetNivelOrda(int,int);
     QGraphicsScene * scene;

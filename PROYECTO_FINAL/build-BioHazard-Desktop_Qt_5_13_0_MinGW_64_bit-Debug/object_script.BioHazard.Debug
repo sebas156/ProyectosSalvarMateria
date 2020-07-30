@@ -14,9 +14,11 @@ debug/player1.o
 debug/principal.o
 debug/registro.o
 debug/score.o
+debug/seleccionarnivel.o
 debug/sinenemyship.o
 debug/spaceship.o
 debug/vec3.o
+debug/ventanaprincipalusuario.o
 debug/qrc_resources.o
 debug/moc_bullet.o
 debug/moc_bullet2.o
@@ -27,5 +29,7 @@ debug/moc_mainwindow.o
 debug/moc_player1.o
 debug/moc_principal.o
 debug/moc_registro.o
+debug/moc_seleccionarnivel.o
 debug/moc_sinenemyship.o
 debug/moc_spaceship.o
+debug/moc_ventanaprincipalusuario.o

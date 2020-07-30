@@ -11,7 +11,9 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSplitter>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -19,20 +21,33 @@ QT_BEGIN_NAMESPACE
 class Ui_principal
 {
 public:
+    QLabel *label;
+    QSplitter *splitter;
     QPushButton *sesion;
     QPushButton *pushButton_2;
+    QPushButton *Cerrar;
 
     void setupUi(QWidget *principal)
     {
         if (principal->objectName().isEmpty())
             principal->setObjectName(QString::fromUtf8("principal"));
         principal->resize(400, 300);
-        sesion = new QPushButton(principal);
+        label = new QLabel(principal);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(120, 30, 151, 51));
+        splitter = new QSplitter(principal);
+        splitter->setObjectName(QString::fromUtf8("splitter"));
+        splitter->setGeometry(QRect(110, 90, 181, 171));
+        splitter->setOrientation(Qt::Vertical);
+        sesion = new QPushButton(splitter);
         sesion->setObjectName(QString::fromUtf8("sesion"));
-        sesion->setGeometry(QRect(200, 70, 121, 51));
-        pushButton_2 = new QPushButton(principal);
+        splitter->addWidget(sesion);
+        pushButton_2 = new QPushButton(splitter);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(200, 160, 121, 51));
+        splitter->addWidget(pushButton_2);
+        Cerrar = new QPushButton(splitter);
+        Cerrar->setObjectName(QString::fromUtf8("Cerrar"));
+        splitter->addWidget(Cerrar);
 
         retranslateUi(principal);
 
@@ -42,8 +57,10 @@ public:
     void retranslateUi(QWidget *principal)
     {
         principal->setWindowTitle(QCoreApplication::translate("principal", "Form", nullptr));
+        label->setText(QCoreApplication::translate("principal", "BIOHAZARD", nullptr));
         sesion->setText(QCoreApplication::translate("principal", "Iniciar Sesion", nullptr));
         pushButton_2->setText(QCoreApplication::translate("principal", "Registro", nullptr));
+        Cerrar->setText(QCoreApplication::translate("principal", "Cerrar", nullptr));
     } // retranslateUi
 
 };

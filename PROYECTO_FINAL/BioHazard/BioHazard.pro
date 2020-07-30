@@ -42,9 +42,11 @@ SOURCES += \
         principal.cpp \
         registro.cpp \
         score.cpp \
+        seleccionarnivel.cpp \
         sinenemyship.cpp \
         spaceship.cpp \
-        vec3.cpp
+        vec3.cpp \
+        ventanaprincipalusuario.cpp
 
 HEADERS += \
         bullet.h \
@@ -62,14 +64,18 @@ HEADERS += \
         principal.h \
         registro.h \
         score.h \
+        seleccionarnivel.h \
         sinenemyship.h \
         spaceship.h \
-        vec3.h
+        vec3.h \
+        ventanaprincipalusuario.h
 
 FORMS += \
         inicarsesion2.ui \
         principal.ui \
-        registro.ui
+        registro.ui \
+        seleccionarnivel.ui \
+        ventanaprincipalusuario.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
