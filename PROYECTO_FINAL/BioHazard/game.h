@@ -66,6 +66,7 @@ private:
     queue <nodo *> frontera;
     int NIX,NIY;
     float t=0.1;
+    bool BnaderaTecladoDesactivado=false;
 };
 
 #endif // GAME_H
