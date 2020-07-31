@@ -1,10 +1,6 @@
 #include "seleccionarnivel.h"
 #include "ui_seleccionarnivel.h"
-#include "game.h"
-#include "game2.h"
 
-game2 extern *Game2;
-game extern *Game;
 SeleccionarNivel::SeleccionarNivel(int NivelIput, string UsuarioInput,QWidget *parent) :
     QWidget(parent),
     ui(new Ui::SeleccionarNivel)
@@ -20,11 +16,17 @@ SeleccionarNivel::~SeleccionarNivel()
     delete ui;
 }
 
+int SeleccionarNivel::GetNivelSeleccionado()
+{
+    return nivel;
+}
+
 void SeleccionarNivel::on_pushButton_clicked()
 {
     if(nivel>=1){
-        this->~SeleccionarNivel();
-        Game= new game(1);
+        nivel=1;
+        emit buttonClicked2();
+        this->close();
     }
     else {
         QMessageBox::warning(this,"Nivel Sin Desbloquear","Lo sentimos pero no has desbloqueado este nivel. ");
@@ -34,8 +36,9 @@ void SeleccionarNivel::on_pushButton_clicked()
 void SeleccionarNivel::on_pushButton_2_clicked()
 {
     if(nivel>=2){
-        this->~SeleccionarNivel();
-        Game2=new game2;
+        nivel=2;
+        emit buttonClicked2();
+        this->close();
     }
     else {
         QMessageBox::warning(this,"Nivel Sin Desbloquear","Lo sentimos pero no has desbloqueado este nivel. ");
@@ -45,8 +48,9 @@ void SeleccionarNivel::on_pushButton_2_clicked()
 void SeleccionarNivel::on_pushButton_3_clicked()
 {
     if(nivel>=3){
-        this->~SeleccionarNivel();
-        Game= new game(3);
+        nivel=3;
+        emit buttonClicked2();
+        this->close();
     }
     else {
         QMessageBox::warning(this,"Nivel Sin Desbloquear","Lo sentimos pero no has desbloqueado este nivel. ");

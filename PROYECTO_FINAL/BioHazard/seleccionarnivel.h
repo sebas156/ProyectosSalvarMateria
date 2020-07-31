@@ -19,6 +19,7 @@ class SeleccionarNivel : public QWidget
 public:
     explicit SeleccionarNivel(int, string,QWidget *parent = nullptr);
     ~SeleccionarNivel();
+    int GetNivelSeleccionado();
 
 private slots:
     void on_pushButton_clicked();
@@ -30,6 +31,7 @@ private slots:
     void on_pushButton_4_clicked();
 signals:
     void buttonClicked();
+    void buttonClicked2();
 private:
     Ui::SeleccionarNivel *ui;
     int nivel;

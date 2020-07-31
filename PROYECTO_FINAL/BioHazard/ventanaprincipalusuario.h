@@ -26,6 +26,7 @@ private slots:
     void on_CerrarSesion_clicked();
     void Aparecer();
     void on_comojugar_clicked();
+    void IniciarNivelSeleccionado();
 
 signals:
     void buttonClicked();
@@ -33,6 +34,7 @@ private:
     Ui::VentanaPrincipalUsuario *ui;
     QString NickName;
     int NivelActual;
+    SeleccionarNivel *SeleccionarNivelUsuario;
 };
 
 #endif // VENTANAPRINCIPALUSUARIO_H
