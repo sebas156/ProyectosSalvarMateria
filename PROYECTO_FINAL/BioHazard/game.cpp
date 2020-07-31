@@ -15,10 +15,14 @@
 
 game2 extern *Game2;
 
-game::game(int NivelInput,QWidget *parent)
+game::game(int * NivelInput,int ModoInput,string InicioSesion,QWidget *parent)
 {
-    SetNivelOrda(NivelInput,1);
-
+    modo = ModoInput;
+    NickNameInicioSesion=QString::fromStdString(InicioSesion);
+    NivelRetornar=NivelInput;
+    SetNivelOrda(*NivelInput,1);
+    InterfazPausa=new pausar(NickNameInicioSesion);
+    connect(InterfazPausa,&pausar::buttonClicked,this,&game::ContinuarJugando);
     //create a scene
     scene = new QGraphicsScene();
     scene->setSceneRect(0,0,2000,1200);
@@ -59,15 +63,16 @@ game::game(int NivelInput,QWidget *parent)
     ConstruccionCampoVectorial();
     ArregloMatrizAbstracta[NIX][NIY].Direccion.x=0;
     ArregloMatrizAbstracta[NIX][NIY].Direccion.y=0;
-    QTimer * OrdasZombies = new QTimer;
+    OrdasZombies = new QTimer;
     connect(OrdasZombies, &QTimer::timeout,this,&game::LiberarOrdasZombies);
     OrdasZombies->start(TiempoEntreOrdas);
     connect(player,&player1::buttonClicked,this,&game::PerdisteElJuego);
     connect(player,&player1::buttonPressed,this,&game::ActualizarCamporVectorial);
-    QTimer * timer = new QTimer;
+    connect(player,&player1::buttonClicked2,this,&game::PausarTodoJuego);
+    timer = new QTimer;
     connect(timer, &QTimer::timeout,this,&game::ActualizarZombies);
     timer->start(20);
-    QTimer * VerificarSiPasaNivel = new QTimer;
+    VerificarSiPasaNivel = new QTimer;
     connect(VerificarSiPasaNivel, &QTimer::timeout,this,&game::VerificarSiYaPasadeNivel);
     VerificarSiPasaNivel->start(20);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -529,6 +534,15 @@ void game::VerificarSiYaPasadeNivel()
     }
 }
 
+void game::ContinuarJugando()
+{
+    OrdasZombies->start(TiempoEntreOrdas);
+    timer->start(20);
+    VerificarSiPasaNivel->start(20);
+    InterfazPausa->close();
+    player->TecladoBloqueado=false;
+}
+
 void game::InicializarCuadros()
 {
     // Si se cambia de mapa tener cuidado si se cambia la cantidad de cuadros que hay.
@@ -808,6 +822,14 @@ void game::CaracteristicasZombiesPorNivelYOrda(enemy * actual)
     }
 }
 
+void game::PausarTodoJuego()
+{
+    OrdasZombies->stop();
+    timer->stop();
+    VerificarSiPasaNivel->stop();
+    InterfazPausa->show();
+
+}
 
 void game::ActualizarCamporVectorial()
 {

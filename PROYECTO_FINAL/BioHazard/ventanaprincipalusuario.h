@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include "seleccionarnivel.h"
+#include <QTimer>
 
 using namespace std;
 namespace Ui {
@@ -27,6 +28,7 @@ private slots:
     void Aparecer();
     void on_comojugar_clicked();
     void IniciarNivelSeleccionado();
+    void InterrumpidoPausa();
 
 signals:
     void buttonClicked();
@@ -34,6 +36,8 @@ private:
     Ui::VentanaPrincipalUsuario *ui;
     QString NickName;
     int NivelActual;
+    int ModoDeJuego;
+    int nivelSeleccionado;
     SeleccionarNivel *SeleccionarNivelUsuario;
 };
 

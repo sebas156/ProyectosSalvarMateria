@@ -21,6 +21,7 @@ public:
     float Vf = 1.4;
     float a = 0.1;
     void RestarVida(int);
+    bool TecladoBloqueado=false;
 public slots:
     void spawn();
     void move();
@@ -30,6 +31,7 @@ public slots:
 signals:
     void buttonPressed();
     void buttonClicked();
+    void buttonClicked2();
 private:
     int Vida=100000;
     int L=0;

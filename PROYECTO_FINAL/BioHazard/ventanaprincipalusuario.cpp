@@ -22,6 +22,7 @@ VentanaPrincipalUsuario::~VentanaPrincipalUsuario()
 
 void VentanaPrincipalUsuario::on_Campana_clicked()
 {
+    ModoDeJuego=1;
     this->close();
     SeleccionarNivelUsuario = new SeleccionarNivel(NivelActual,NickName.toStdString());
     connect(SeleccionarNivelUsuario,&SeleccionarNivel::buttonClicked,this,&VentanaPrincipalUsuario::Aparecer);
@@ -31,7 +32,7 @@ void VentanaPrincipalUsuario::on_Campana_clicked()
 
 void VentanaPrincipalUsuario::on_Cooperativo_clicked()
 {
-
+    ModoDeJuego=2;
 }
 
 void VentanaPrincipalUsuario::on_Ranking_clicked()
@@ -57,15 +58,26 @@ void VentanaPrincipalUsuario::on_comojugar_clicked()
 
 void VentanaPrincipalUsuario::IniciarNivelSeleccionado()
 {
-    int nivelSeleccionado=SeleccionarNivelUsuario->GetNivelSeleccionado();
+   nivelSeleccionado=SeleccionarNivelUsuario->GetNivelSeleccionado();
     SeleccionarNivelUsuario->~SeleccionarNivel();
     if(nivelSeleccionado==1){
-        Game=new game(1);
+        Game=new game(&nivelSeleccionado,ModoDeJuego,NickName.toStdString());
+        connect(Game->InterfazPausa,&pausar::buttonClicked2,this,&VentanaPrincipalUsuario::InterrumpidoPausa);
     }
     else if (nivelSeleccionado==2) {
         Game2=new game2();
     }
     else {
-        Game=new game(3);
+        Game=new game(&nivelSeleccionado,ModoDeJuego,NickName.toStdString());
     }
 }
+
+void VentanaPrincipalUsuario::InterrumpidoPausa()
+{
+    Game->InterfazPausa->close();
+    Game->view->close();
+    Game->music->stop();
+    Game->close();
+    this->show();
+}
+

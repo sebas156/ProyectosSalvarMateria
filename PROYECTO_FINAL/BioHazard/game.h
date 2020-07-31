@@ -17,11 +17,11 @@
 #include "nodo.h"
 #include "enemy.h"
 #include "game2.h"
-
+#include "pausar.h"
 class game: public QGraphicsView
 {
 public:
-    game(int,QWidget *parent = 0);
+    game(int*,int,string,QWidget *parent = 0);
     ~game();
     void SetNivelOrda(int,int);
     QGraphicsScene * scene;
@@ -48,18 +48,29 @@ public:
     QList<enemy *> Zombies;
     void BorrarZombie();
     void CaracteristicasZombiesPorNivelYOrda(enemy *);
+
+    pausar * InterfazPausa;
+
 public slots:
+    void PausarTodoJuego();
     void LiberarOrdasZombies();
     void ActualizarCamporVectorial();
     void ActualizarZombies();
     void follow_char();
     void PerdisteElJuego();
     void VerificarSiYaPasadeNivel();
+    void ContinuarJugando();
 
 private:
+    QTimer * OrdasZombies;
+    QTimer * timer;
+    QTimer * VerificarSiPasaNivel;
     int nivel;
     int Orda;
     int TiempoEntreOrdas;
+    int modo;
+    int *NivelRetornar;
+    QString NickNameInicioSesion;
     QList <obstaculo *> Paredes;
     nodo ArregloMatrizAbstracta[24][40];
     int NumeroZombies;

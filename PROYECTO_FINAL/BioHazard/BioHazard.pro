@@ -38,6 +38,7 @@ SOURCES += \
         mainwindow.cpp \
         nodo.cpp \
         obstaculo.cpp \
+        pausar.cpp \
         player1.cpp \
         principal.cpp \
         registro.cpp \
@@ -60,6 +61,7 @@ HEADERS += \
         mainwindow.h \
         nodo.h \
         obstaculo.h \
+        pausar.h \
         player1.h \
         principal.h \
         registro.h \
@@ -72,6 +74,7 @@ HEADERS += \
 
 FORMS += \
         inicarsesion2.ui \
+        pausar.ui \
         principal.ui \
         registro.ui \
         seleccionarnivel.ui \

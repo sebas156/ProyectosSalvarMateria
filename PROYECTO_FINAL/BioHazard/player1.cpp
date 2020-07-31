@@ -98,11 +98,20 @@ void player1::keyPressEvent(QKeyEvent *event)
             scene()->addItem(Bullet);
         }
     }
+    if(event->key() == Qt::Key_P)
+    {
+        TecladoBloqueado=true;
+        emit buttonClicked2();
+
+    }
 
 }
 
 void player1::keyReleaseEvent(QKeyEvent *event)
 {
+    if(TecladoBloqueado==true){
+        return;
+    }
     if(event->key() == Qt::Key_A)
     {
         if(!event->isAutoRepeat())
