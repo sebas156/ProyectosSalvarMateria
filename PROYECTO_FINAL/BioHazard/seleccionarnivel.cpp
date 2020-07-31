@@ -26,7 +26,6 @@ void SeleccionarNivel::on_pushButton_clicked()
     if(nivel>=1){
         nivel=1;
         emit buttonClicked2();
-        this->close();
     }
     else {
         QMessageBox::warning(this,"Nivel Sin Desbloquear","Lo sentimos pero no has desbloqueado este nivel. ");
@@ -38,7 +37,6 @@ void SeleccionarNivel::on_pushButton_2_clicked()
     if(nivel>=2){
         nivel=2;
         emit buttonClicked2();
-        this->close();
     }
     else {
         QMessageBox::warning(this,"Nivel Sin Desbloquear","Lo sentimos pero no has desbloqueado este nivel. ");
@@ -50,7 +48,6 @@ void SeleccionarNivel::on_pushButton_3_clicked()
     if(nivel>=3){
         nivel=3;
         emit buttonClicked2();
-        this->close();
     }
     else {
         QMessageBox::warning(this,"Nivel Sin Desbloquear","Lo sentimos pero no has desbloqueado este nivel. ");

@@ -4,6 +4,7 @@
 #include "game2.h"
 game2 extern *Game2;
 game extern *Game;
+
 VentanaPrincipalUsuario::VentanaPrincipalUsuario(int nivel, int puntos, string NombreUsuario,QWidget *parent) :
     QWidget(parent),
     ui(new Ui::VentanaPrincipalUsuario)
@@ -62,7 +63,7 @@ void VentanaPrincipalUsuario::IniciarNivelSeleccionado()
         Game=new game(1);
     }
     else if (nivelSeleccionado==2) {
-        Game2=new game2 ();
+        Game2=new game2();
     }
     else {
         Game=new game(3);
