@@ -143,6 +143,14 @@ void player1::RestarVida(int recibido)
         emit buttonClicked();
 }
 
+void player1::PonerTodoEnCero()
+{
+     L=0;
+     R=0;
+     U=0;
+     D=0;
+}
+
 void player1::spawn()
 {
     //create enemies
@@ -152,10 +160,16 @@ void player1::spawn()
 
 void player1::move()
 {
+
     float tempx=x();
     float tempy=y();
-    if(x()+Vx>0 && x()+Vx<1900 && y()+Vy>100 && y()+Vy<1100)
-    setPos(x()+Vx,y()+Vy);
+    if((x()+Vx>0 && x()+Vx<1900 && y()+Vy>100 && y()+Vy<1100) and TecladoBloqueado==false){
+        setPos(x()+Vx,y()+Vy);
+    }
+    else {
+        Vx=0;
+        Vy=0;
+    }
     Game->view->centerOn(x(),y());
     QList<QGraphicsItem *> colliding_items = collidingItems();
     for(int i=0, n = colliding_items.size(); i<n ; i++)

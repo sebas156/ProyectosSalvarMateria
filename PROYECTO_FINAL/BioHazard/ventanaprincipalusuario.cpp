@@ -9,6 +9,7 @@ VentanaPrincipalUsuario::VentanaPrincipalUsuario(int nivel, int puntos, string N
     QWidget(parent),
     ui(new Ui::VentanaPrincipalUsuario)
 {
+    PuntosActuales=puntos;
     NivelActual=nivel;
     ui->setupUi(this);
     NickName = QString::fromStdString(NombreUsuario);
@@ -58,26 +59,84 @@ void VentanaPrincipalUsuario::on_comojugar_clicked()
 
 void VentanaPrincipalUsuario::IniciarNivelSeleccionado()
 {
-   nivelSeleccionado=SeleccionarNivelUsuario->GetNivelSeleccionado();
+    nivelSeleccionado=SeleccionarNivelUsuario->GetNivelSeleccionado();
     SeleccionarNivelUsuario->~SeleccionarNivel();
+    IniciarNivel();
+}
+
+void VentanaPrincipalUsuario::InterrumpidoPausa()
+{
+    Game->InterfazPerder->close();
+    Game->InterfazPausa->close();
+    Game->~game();
+    this->show();
+}
+
+void VentanaPrincipalUsuario::LlamarIniciarJuego()
+{
+    if(nivelSeleccionado==1 or nivelSeleccionado==3){
+        Game->InterfazPausa->close();
+        Game->InterfazPerder->close();
+       Game->~game();
+    }
+    IniciarNivel();
+}
+
+void VentanaPrincipalUsuario::CompararPasarNivelInmediatamente()
+{
+    if(nivelSeleccionado>NivelActual){
+        NivelActual=nivelSeleccionado;
+        RegistrarEnElArchivo();
+    }
+    Game->InterfazPasarNivel->close();
+    Game->~game();
+    IniciarNivel();
+}
+
+void VentanaPrincipalUsuario::SubirNivelSinEjecutar()
+{
+    if(nivelSeleccionado>NivelActual){
+        NivelActual=nivelSeleccionado;
+        RegistrarEnElArchivo();
+    }
+    Game->InterfazPasarNivel->close();
+    Game->~game();
+    this->show();
+}
+
+void VentanaPrincipalUsuario::RegistrarEnElArchivo()
+{
+    ofstream archivo(NickName.toStdString()+".txt");
+    if(archivo.fail())
+        QMessageBox::warning(this, "ERROR","No se pudo abrir el archivo. ");
+    else {
+        archivo<<NivelActual<<","<<PuntosActuales<<endl;
+    }
+    archivo.close();
+}
+
+void VentanaPrincipalUsuario::IniciarNivel()
+{
     if(nivelSeleccionado==1){
         Game=new game(&nivelSeleccionado,ModoDeJuego,NickName.toStdString());
         connect(Game->InterfazPausa,&pausar::buttonClicked2,this,&VentanaPrincipalUsuario::InterrumpidoPausa);
+        connect(Game->InterfazPerder,&perder::buttonClicked2,this,&VentanaPrincipalUsuario::InterrumpidoPausa);
+        connect(Game->InterfazPerder,&perder::buttonClicked,this,&VentanaPrincipalUsuario::LlamarIniciarJuego);
+        connect(Game->InterfazPasarNivel,&PasarNivel::buttonClicked,this,&VentanaPrincipalUsuario::CompararPasarNivelInmediatamente);
+        connect(Game->InterfazPasarNivel,&PasarNivel::buttonClicked2,this,&VentanaPrincipalUsuario::SubirNivelSinEjecutar);
+
     }
     else if (nivelSeleccionado==2) {
         Game2=new game2();
     }
     else {
         Game=new game(&nivelSeleccionado,ModoDeJuego,NickName.toStdString());
+        connect(Game->InterfazPausa,&pausar::buttonClicked2,this,&VentanaPrincipalUsuario::InterrumpidoPausa);
+        connect(Game->InterfazPerder,&perder::buttonClicked2,this,&VentanaPrincipalUsuario::InterrumpidoPausa);
+        connect(Game->InterfazPerder,&perder::buttonClicked,this,&VentanaPrincipalUsuario::LlamarIniciarJuego);
+        connect(Game->InterfazPasarNivel,&PasarNivel::buttonClicked,this,&VentanaPrincipalUsuario::CompararPasarNivelInmediatamente);
+        connect(Game->InterfazPasarNivel,&PasarNivel::buttonClicked2,this,&VentanaPrincipalUsuario::SubirNivelSinEjecutar);
     }
-}
 
-void VentanaPrincipalUsuario::InterrumpidoPausa()
-{
-    Game->InterfazPausa->close();
-    Game->view->close();
-    Game->music->stop();
-    Game->close();
-    this->show();
 }
 

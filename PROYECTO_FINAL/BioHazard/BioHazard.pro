@@ -32,13 +32,16 @@ SOURCES += \
         enemyship.cpp \
         game.cpp \
         game2.cpp \
+        ganar.cpp \
         health.cpp \
         inicarsesion2.cpp \
         main.cpp \
         mainwindow.cpp \
         nodo.cpp \
         obstaculo.cpp \
+        pasarnivel.cpp \
         pausar.cpp \
+        perder.cpp \
         player1.cpp \
         principal.cpp \
         registro.cpp \
@@ -56,12 +59,15 @@ HEADERS += \
         enemyship.h \
         game.h \
         game2.h \
+        ganar.h \
         health.h \
         inicarsesion2.h \
         mainwindow.h \
         nodo.h \
         obstaculo.h \
+        pasarnivel.h \
         pausar.h \
+        perder.h \
         player1.h \
         principal.h \
         registro.h \
@@ -73,8 +79,11 @@ HEADERS += \
         ventanaprincipalusuario.h
 
 FORMS += \
+        ganar.ui \
         inicarsesion2.ui \
+        pasarnivel.ui \
         pausar.ui \
+        perder.ui \
         principal.ui \
         registro.ui \
         seleccionarnivel.ui \

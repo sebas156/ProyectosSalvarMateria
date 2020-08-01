@@ -18,6 +18,9 @@
 #include "enemy.h"
 #include "game2.h"
 #include "pausar.h"
+#include "perder.h"
+#include "pasarnivel.h"
+
 class game: public QGraphicsView
 {
 public:
@@ -50,6 +53,8 @@ public:
     void CaracteristicasZombiesPorNivelYOrda(enemy *);
 
     pausar * InterfazPausa;
+    perder * InterfazPerder;
+    PasarNivel * InterfazPasarNivel;
 
 public slots:
     void PausarTodoJuego();

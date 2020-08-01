@@ -10,7 +10,9 @@ debug/main.o
 debug/mainwindow.o
 debug/nodo.o
 debug/obstaculo.o
+debug/pasarnivel.o
 debug/pausar.o
+debug/perder.o
 debug/player1.o
 debug/principal.o
 debug/registro.o
@@ -27,7 +29,9 @@ debug/moc_enemy.o
 debug/moc_enemyship.o
 debug/moc_inicarsesion2.o
 debug/moc_mainwindow.o
+debug/moc_pasarnivel.o
 debug/moc_pausar.o
+debug/moc_perder.o
 debug/moc_player1.o
 debug/moc_principal.o
 debug/moc_registro.o

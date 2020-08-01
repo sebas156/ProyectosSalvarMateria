@@ -10,7 +10,9 @@ release/main.o
 release/mainwindow.o
 release/nodo.o
 release/obstaculo.o
+release/pasarnivel.o
 release/pausar.o
+release/perder.o
 release/player1.o
 release/principal.o
 release/registro.o
@@ -27,7 +29,9 @@ release/moc_enemy.o
 release/moc_enemyship.o
 release/moc_inicarsesion2.o
 release/moc_mainwindow.o
+release/moc_pasarnivel.o
 release/moc_pausar.o
+release/moc_perder.o
 release/moc_player1.o
 release/moc_principal.o
 release/moc_registro.o

@@ -11,9 +11,6 @@
 #include "bullet.h"
 #include <stdlib.h>
 #include <time.h>
-#include "game2.h"
-
-game2 extern *Game2;
 
 game::game(int * NivelInput,int ModoInput,string InicioSesion,QWidget *parent)
 {
@@ -21,8 +18,14 @@ game::game(int * NivelInput,int ModoInput,string InicioSesion,QWidget *parent)
     NickNameInicioSesion=QString::fromStdString(InicioSesion);
     NivelRetornar=NivelInput;
     SetNivelOrda(*NivelInput,1);
+
+
     InterfazPausa=new pausar(NickNameInicioSesion);
     connect(InterfazPausa,&pausar::buttonClicked,this,&game::ContinuarJugando);
+
+
+    InterfazPerder= new perder();
+    InterfazPasarNivel= new PasarNivel();
     //create a scene
     scene = new QGraphicsScene();
     scene->setSceneRect(0,0,2000,1200);
@@ -87,7 +90,9 @@ game::game(int * NivelInput,int ModoInput,string InicioSesion,QWidget *parent)
 
 game::~game()
 {
-    //delete this;
+    view->close();
+    music->stop();
+    this->close();
 }
 
 void game::SetNivelOrda(int NivelAux, int OrdaAux)
@@ -509,6 +514,7 @@ bool game::EstablecerPisoQuitaVida()
 
 void game::SetNumeroZombies(int Dificultad)
 {
+    // Establece el numero de zombies que salen por cada orda.
     NumeroZombies=Dificultad;
 }
 
@@ -519,18 +525,30 @@ void game::follow_char()
 
 void game::PerdisteElJuego()
 {
-    QMessageBox::information(this,"DERROTA","PERDISTE. ERAS LA ULTIMA ESPERANZA DE LA HUMANIDAD Y FALLASTE. ");
-    this->~game();
+    // Se detienen todos los timers y muestra la interfaz de perder.
+    InterfazPerder->show();
+    OrdasZombies->stop();
+    timer->stop();
+    VerificarSiPasaNivel->stop();
+    player->TecladoBloqueado=true;
+    player->PonerTodoEnCero();
+    music->stop();
+    //this->~game();
 }
 
 void game::VerificarSiYaPasadeNivel()
 {
     if((Zombies.size()==0 and Orda==2)){
-         QMessageBox::information(this,"VICTORIA","EXCELENTE. VIAJA A LA SIGUIENTE CIUDAD. ");
-         this->~game();
-         view->close();
+        *NivelRetornar+=1;
+        InterfazPasarNivel->show();
+         player->TecladoBloqueado=true;
+         player->PonerTodoEnCero();
+         OrdasZombies->stop();
+         timer->stop();
+         VerificarSiPasaNivel->stop();
+         player->TecladoBloqueado=true;
+         player->PonerTodoEnCero();
          music->stop();
-         Game2 = new game2;
     }
 }
 
@@ -541,6 +559,7 @@ void game::ContinuarJugando()
     VerificarSiPasaNivel->start(20);
     InterfazPausa->close();
     player->TecladoBloqueado=false;
+    player->PonerTodoEnCero();
 }
 
 void game::InicializarCuadros()
