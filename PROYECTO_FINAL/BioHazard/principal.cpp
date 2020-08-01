@@ -168,6 +168,7 @@ void principal::VerificarNoEstaRegistar()
         InterfazRegistrar->SetPaswoordReiniciar("");
         InterfazRegistrar->SetUsuarioNameReiniciar("");
         InterfazRegistrar->close();
+        this->show();
 
     }
     else {
@@ -214,6 +215,7 @@ void principal::VerificarSiEstaInicioSesion()
         InterfazIniciarSesion->SetUserNameReiniciar("");
         InterfazIniciarSesion->SetPaswoordReiniciar("");
         InterfazIniciarSesion->close();
+        this->show();
     }
 }
 
@@ -228,6 +230,7 @@ void principal::on_Cerrar_clicked()
 }
 
 int principal:: StringANumero(string cadena){
+    //Convierte una cadena de caracteres al numero que está representando.
     int acum=0;
     for(int i=0; i<cadena.size();i++){
         acum+=cadena[i]-48;
