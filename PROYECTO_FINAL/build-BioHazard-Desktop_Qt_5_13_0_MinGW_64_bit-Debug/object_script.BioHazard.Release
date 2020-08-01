@@ -4,6 +4,7 @@ release/enemy.o
 release/enemyship.o
 release/game.o
 release/game2.o
+release/ganar.o
 release/health.o
 release/inicarsesion2.o
 release/main.o
@@ -27,6 +28,7 @@ release/moc_bullet.o
 release/moc_bullet2.o
 release/moc_enemy.o
 release/moc_enemyship.o
+release/moc_ganar.o
 release/moc_inicarsesion2.o
 release/moc_mainwindow.o
 release/moc_pasarnivel.o

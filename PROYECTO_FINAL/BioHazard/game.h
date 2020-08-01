@@ -20,6 +20,7 @@
 #include "pausar.h"
 #include "perder.h"
 #include "pasarnivel.h"
+#include "ganar.h"
 
 class game: public QGraphicsView
 {
@@ -55,6 +56,7 @@ public:
     pausar * InterfazPausa;
     perder * InterfazPerder;
     PasarNivel * InterfazPasarNivel;
+    ganar * InterfazGanar;
 
 public slots:
     void PausarTodoJuego();

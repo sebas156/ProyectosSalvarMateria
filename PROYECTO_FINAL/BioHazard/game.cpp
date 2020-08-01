@@ -14,18 +14,26 @@
 
 game::game(int * NivelInput,int ModoInput,string InicioSesion,QWidget *parent)
 {
+    // Modo de juego.
     modo = ModoInput;
+    // Nombre del usuario que ha iniciado sesion.
     NickNameInicioSesion=QString::fromStdString(InicioSesion);
+
+    //Apuntadores. De esta manera puedo afectar la Variable NivelInput desde la variable NivelRetorna.
     NivelRetornar=NivelInput;
     SetNivelOrda(*NivelInput,1);
 
-
+    // Crea la variable de la interfaz que se genera si el jugador pausa el juego.
     InterfazPausa=new pausar(NickNameInicioSesion);
     connect(InterfazPausa,&pausar::buttonClicked,this,&game::ContinuarJugando);
 
-
+    // Crea la variable de la interfaz que se genera si al juador lo matan.
     InterfazPerder= new perder();
     InterfazPasarNivel= new PasarNivel();
+
+    //Crea la variable con la interfaz que se genera si el jugador gana el juego (Pasa el ultimo nivel.)
+    InterfazGanar= new ganar();
+
     //create a scene
     scene = new QGraphicsScene();
     scene->setSceneRect(0,0,2000,1200);
@@ -55,7 +63,12 @@ game::game(int * NivelInput,int ModoInput,string InicioSesion,QWidget *parent)
     player->setPos(700,700);
 
     view->show();
+    // Esta funcion esta blece los zombies que salen segun la ordan en la que se encuentre.
     SetZombiesPorOrda();
+
+
+    //Las funciones a continuacion inicializan y constituyen el campo vectorial.
+    //______________________________________________
     InicializarCuadros();
     EstablecerVecinos();
     EstablecerPisoQuitaVida();
@@ -66,18 +79,34 @@ game::game(int * NivelInput,int ModoInput,string InicioSesion,QWidget *parent)
     ConstruccionCampoVectorial();
     ArregloMatrizAbstracta[NIX][NIY].Direccion.x=0;
     ArregloMatrizAbstracta[NIX][NIY].Direccion.y=0;
+    //________________________________________________
+
+
+    // Este timer libera un numero de zombies cada TiempoEntreOrdas segundos.
     OrdasZombies = new QTimer;
     connect(OrdasZombies, &QTimer::timeout,this,&game::LiberarOrdasZombies);
     OrdasZombies->start(TiempoEntreOrdas);
+
+
+
     connect(player,&player1::buttonClicked,this,&game::PerdisteElJuego);
     connect(player,&player1::buttonPressed,this,&game::ActualizarCamporVectorial);
     connect(player,&player1::buttonClicked2,this,&game::PausarTodoJuego);
+
+
+    // Actualiza la posicion de los zombies.
     timer = new QTimer;
     connect(timer, &QTimer::timeout,this,&game::ActualizarZombies);
     timer->start(20);
+
+
+    // Está verificando si se pasa de nivel.
     VerificarSiPasaNivel = new QTimer;
     connect(VerificarSiPasaNivel, &QTimer::timeout,this,&game::VerificarSiYaPasadeNivel);
     VerificarSiPasaNivel->start(20);
+
+
+
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
@@ -90,6 +119,7 @@ game::game(int * NivelInput,int ModoInput,string InicioSesion,QWidget *parent)
 
 game::~game()
 {
+    // Falta corregir.
     view->close();
     music->stop();
     this->close();
@@ -97,12 +127,14 @@ game::~game()
 
 void game::SetNivelOrda(int NivelAux, int OrdaAux)
 {
+    // Establece la orda y el nivel actual.
     nivel=NivelAux;
     Orda=OrdaAux;
 }
 
 void game::SetZombiesPorOrda()
 {
+    //Esta funcion establece el numero de zombies cada vez que el timer OrdasZombies se inicie. Según la orda en la que se encuentre.
     if(Orda==1){
         TiempoEntreOrdas=6000;
         SetNumeroZombies(6);
@@ -119,6 +151,7 @@ void game::SetZombiesPorOrda()
 
 void game::EstablecerMuros()
 {
+    // Busqueda exhaustiva y coloca un objeto obstaculo.
     QPen blackPen(Qt::black);
     for(int fila=0;fila<24;fila++){
         for(int columna =0; columna<40; columna++){
@@ -372,6 +405,7 @@ void game::EstablecerMuros()
 
 bool game::PisoConFriccion()
 {
+    // Busqueda exhaustiva y establece en cual de los puntos del mapa hay fricción.
     for(int fila=0;fila<24;fila++){
         for(int columna =0; columna<40; columna++){
             if(nivel==1){
@@ -456,6 +490,7 @@ bool game::PisoConFriccion()
 
 bool game::EstablecerPisoQuitaVida()
 {
+    // Busqueda exhaustiva y establece las zonas del mapa en las que el jugador recibe daño por el suelo.
     for(int fila=0;fila<24;fila++){
         for(int columna =0; columna<40; columna++){
             if(nivel==1){
@@ -533,12 +568,24 @@ void game::PerdisteElJuego()
     player->TecladoBloqueado=true;
     player->PonerTodoEnCero();
     music->stop();
-    //this->~game();
 }
 
 void game::VerificarSiYaPasadeNivel()
 {
-    if((Zombies.size()==0 and Orda==2)){
+    // Verifica si ya pasó de nivel o en su defecto ganó el juego.
+    qDebug()<<Zombies.size()<<" "<<nivel<<" "<<Orda;
+    if(Zombies.size()==0 and nivel==3 and Orda==2){
+        InterfazGanar->show();
+        player->TecladoBloqueado=true;
+        player->PonerTodoEnCero();
+        OrdasZombies->stop();
+        timer->stop();
+        VerificarSiPasaNivel->stop();
+        player->TecladoBloqueado=true;
+        player->PonerTodoEnCero();
+        music->stop();
+    }
+    else if((Zombies.size()==0 and Orda==2)){
         *NivelRetornar+=1;
         InterfazPasarNivel->show();
          player->TecladoBloqueado=true;
@@ -554,20 +601,20 @@ void game::VerificarSiYaPasadeNivel()
 
 void game::ContinuarJugando()
 {
+    // Inicializa nuevamente todos los timers.
     OrdasZombies->start(TiempoEntreOrdas);
     timer->start(20);
     VerificarSiPasaNivel->start(20);
     InterfazPausa->close();
     player->TecladoBloqueado=false;
     player->PonerTodoEnCero();
+    music->play();
 }
 
 void game::InicializarCuadros()
 {
     // Si se cambia de mapa tener cuidado si se cambia la cantidad de cuadros que hay.
-    QPen BlackPen(Qt::black);
-    QBrush BlackBrush(Qt::black);
-
+    // Estable las posiciones en la escena de todos los nodos y determina si son intrasitables o no.
     int posy = 25;
     for(int fila =0;fila <24;fila++){
         int posx=25;
@@ -591,11 +638,7 @@ void game::InicializarCuadros()
 void game::EstablecerZombies(float PosicionInicialX, float PosicionInicialY)
 {
     // Esta funcion crea un zombie, lo pone en la posicion (PosicionInicialX, PosicionInicialY) y lo agrega a la lista de enemigos.
-//    QPen BlackPen(Qt::black);
-//    QBrush RedBrush(Qt::yellow);
     enemy * aux = new enemy ();
-//    aux->setBrush(RedBrush);
-//    aux->setPen(BlackPen);
     aux->posx=PosicionInicialX;
     aux->posy=PosicionInicialY;
     CaracteristicasZombiesPorNivelYOrda(aux);
@@ -792,13 +835,9 @@ bool game::CrearObstaculosMapa(int fila, int columna)
     }
 }
 
-void game::BorrarZombie()
-{
-
-}
-
 void game::CaracteristicasZombiesPorNivelYOrda(enemy * actual)
 {
+    // Dependiendo del nivel y orda en el que se encuentre el personaje los zombies van a tener ciertas caracteristicas.
     if(nivel==1){
         if(Orda==1){
             actual->Dano=1;
@@ -843,9 +882,11 @@ void game::CaracteristicasZombiesPorNivelYOrda(enemy * actual)
 
 void game::PausarTodoJuego()
 {
+    // Detiene todos los timers
     OrdasZombies->stop();
     timer->stop();
     VerificarSiPasaNivel->stop();
+    music->stop();
     InterfazPausa->show();
 
 }

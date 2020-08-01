@@ -64,8 +64,9 @@ void VentanaPrincipalUsuario::IniciarNivelSeleccionado()
     IniciarNivel();
 }
 
-void VentanaPrincipalUsuario::InterrumpidoPausa()
+void VentanaPrincipalUsuario::InterrumpidoRegresarMenuPrincipal()
 {
+    Game->InterfazGanar->close();
     Game->InterfazPerder->close();
     Game->InterfazPausa->close();
     Game->~game();
@@ -119,23 +120,24 @@ void VentanaPrincipalUsuario::IniciarNivel()
 {
     if(nivelSeleccionado==1){
         Game=new game(&nivelSeleccionado,ModoDeJuego,NickName.toStdString());
-        connect(Game->InterfazPausa,&pausar::buttonClicked2,this,&VentanaPrincipalUsuario::InterrumpidoPausa);
-        connect(Game->InterfazPerder,&perder::buttonClicked2,this,&VentanaPrincipalUsuario::InterrumpidoPausa);
+        connect(Game->InterfazPausa,&pausar::buttonClicked2,this,&VentanaPrincipalUsuario::InterrumpidoRegresarMenuPrincipal);
+        connect(Game->InterfazPerder,&perder::buttonClicked2,this,&VentanaPrincipalUsuario::InterrumpidoRegresarMenuPrincipal);
         connect(Game->InterfazPerder,&perder::buttonClicked,this,&VentanaPrincipalUsuario::LlamarIniciarJuego);
         connect(Game->InterfazPasarNivel,&PasarNivel::buttonClicked,this,&VentanaPrincipalUsuario::CompararPasarNivelInmediatamente);
         connect(Game->InterfazPasarNivel,&PasarNivel::buttonClicked2,this,&VentanaPrincipalUsuario::SubirNivelSinEjecutar);
-
+        connect(Game->InterfazGanar,&ganar::buttonClicked,this,&VentanaPrincipalUsuario::InterrumpidoRegresarMenuPrincipal);
     }
     else if (nivelSeleccionado==2) {
         Game2=new game2();
     }
     else {
         Game=new game(&nivelSeleccionado,ModoDeJuego,NickName.toStdString());
-        connect(Game->InterfazPausa,&pausar::buttonClicked2,this,&VentanaPrincipalUsuario::InterrumpidoPausa);
-        connect(Game->InterfazPerder,&perder::buttonClicked2,this,&VentanaPrincipalUsuario::InterrumpidoPausa);
+        connect(Game->InterfazPausa,&pausar::buttonClicked2,this,&VentanaPrincipalUsuario::InterrumpidoRegresarMenuPrincipal);
+        connect(Game->InterfazPerder,&perder::buttonClicked2,this,&VentanaPrincipalUsuario::InterrumpidoRegresarMenuPrincipal);
         connect(Game->InterfazPerder,&perder::buttonClicked,this,&VentanaPrincipalUsuario::LlamarIniciarJuego);
         connect(Game->InterfazPasarNivel,&PasarNivel::buttonClicked,this,&VentanaPrincipalUsuario::CompararPasarNivelInmediatamente);
         connect(Game->InterfazPasarNivel,&PasarNivel::buttonClicked2,this,&VentanaPrincipalUsuario::SubirNivelSinEjecutar);
+        connect(Game->InterfazGanar,&ganar::buttonClicked,this,&VentanaPrincipalUsuario::InterrumpidoRegresarMenuPrincipal);
     }
 
 }

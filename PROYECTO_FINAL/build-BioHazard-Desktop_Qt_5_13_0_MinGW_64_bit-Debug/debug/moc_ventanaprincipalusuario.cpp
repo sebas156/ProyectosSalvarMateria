@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_VentanaPrincipalUsuario_t {
     QByteArrayData data[14];
-    char stringdata0[271];
+    char stringdata0[287];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -42,17 +42,18 @@ QT_MOC_LITERAL(6, 100, 23), // "on_CerrarSesion_clicked"
 QT_MOC_LITERAL(7, 124, 8), // "Aparecer"
 QT_MOC_LITERAL(8, 133, 20), // "on_comojugar_clicked"
 QT_MOC_LITERAL(9, 154, 24), // "IniciarNivelSeleccionado"
-QT_MOC_LITERAL(10, 179, 17), // "InterrumpidoPausa"
-QT_MOC_LITERAL(11, 197, 18), // "LlamarIniciarJuego"
-QT_MOC_LITERAL(12, 216, 32), // "CompararPasarNivelInmediatamente"
-QT_MOC_LITERAL(13, 249, 21) // "SubirNivelSinEjecutar"
+QT_MOC_LITERAL(10, 179, 33), // "InterrumpidoRegresarMenuPrinc..."
+QT_MOC_LITERAL(11, 213, 18), // "LlamarIniciarJuego"
+QT_MOC_LITERAL(12, 232, 32), // "CompararPasarNivelInmediatamente"
+QT_MOC_LITERAL(13, 265, 21) // "SubirNivelSinEjecutar"
 
     },
     "VentanaPrincipalUsuario\0buttonClicked\0"
     "\0on_Campana_clicked\0on_Cooperativo_clicked\0"
     "on_Ranking_clicked\0on_CerrarSesion_clicked\0"
     "Aparecer\0on_comojugar_clicked\0"
-    "IniciarNivelSeleccionado\0InterrumpidoPausa\0"
+    "IniciarNivelSeleccionado\0"
+    "InterrumpidoRegresarMenuPrincipal\0"
     "LlamarIniciarJuego\0CompararPasarNivelInmediatamente\0"
     "SubirNivelSinEjecutar"
 };
@@ -120,7 +121,7 @@ void VentanaPrincipalUsuario::qt_static_metacall(QObject *_o, QMetaObject::Call 
         case 5: _t->Aparecer(); break;
         case 6: _t->on_comojugar_clicked(); break;
         case 7: _t->IniciarNivelSeleccionado(); break;
-        case 8: _t->InterrumpidoPausa(); break;
+        case 8: _t->InterrumpidoRegresarMenuPrincipal(); break;
         case 9: _t->LlamarIniciarJuego(); break;
         case 10: _t->CompararPasarNivelInmediatamente(); break;
         case 11: _t->SubirNivelSinEjecutar(); break;

@@ -29,7 +29,7 @@ private slots:
     void Aparecer();
     void on_comojugar_clicked();
     void IniciarNivelSeleccionado();
-    void InterrumpidoPausa();
+    void InterrumpidoRegresarMenuPrincipal();
     void LlamarIniciarJuego();
     void CompararPasarNivelInmediatamente();
     void SubirNivelSinEjecutar();

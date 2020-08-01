@@ -59,7 +59,7 @@ public:
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; font-style:italic;\">Tras ver The Walking Dead uno aprende a valorar a los Zombies. Ellos no te quieren por el f\303\255sico, s\303\263lo por el cerebro... y eso es muy bonito.</span></p></body></html>", nullptr));
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'arial,sans-serif'; font-size:12pt; font-style:italic; color:#222222; background-color:#ffffff;\">&quot;No entraremos en silencio hacia la noche, no moriremos sin pelear. A esos alienigenas vamos a derrotar. &quot;</span></p></body></html>", nullptr));
     } // retranslateUi
 
 };

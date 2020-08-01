@@ -15,6 +15,11 @@ public:
     explicit ganar(QWidget *parent = nullptr);
     ~ganar();
 
+private slots:
+    void on_aceptar_clicked();
+signals:
+    void buttonClicked();
+
 private:
     Ui::ganar *ui;
 };

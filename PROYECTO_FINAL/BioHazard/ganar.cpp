@@ -12,3 +12,8 @@ ganar::~ganar()
 {
     delete ui;
 }
+
+void ganar::on_aceptar_clicked()
+{
+    emit buttonClicked();
+}
