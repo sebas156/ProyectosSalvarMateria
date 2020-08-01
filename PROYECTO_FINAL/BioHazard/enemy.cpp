@@ -30,8 +30,8 @@ enemy::enemy()
 
 enemy::~enemy()
 {
-    Atacar->~QTimer();
-    timer_anim->~QTimer();
+    delete Atacar;
+    delete timer_anim;
 }
 
 void enemy::reducir_salud()

@@ -60,7 +60,7 @@ void VentanaPrincipalUsuario::on_comojugar_clicked()
 void VentanaPrincipalUsuario::IniciarNivelSeleccionado()
 {
     nivelSeleccionado=SeleccionarNivelUsuario->GetNivelSeleccionado();
-    SeleccionarNivelUsuario->~SeleccionarNivel();
+    delete SeleccionarNivelUsuario;
     IniciarNivel();
 }
 
@@ -69,7 +69,8 @@ void VentanaPrincipalUsuario::InterrumpidoRegresarMenuPrincipal()
     Game->InterfazGanar->close();
     Game->InterfazPerder->close();
     Game->InterfazPausa->close();
-    Game->~game();
+    Game->InterfazPasarNivel->close();
+    delete Game;
     this->show();
 }
 
@@ -78,7 +79,7 @@ void VentanaPrincipalUsuario::LlamarIniciarJuego()
     if(nivelSeleccionado==1 or nivelSeleccionado==3){
         Game->InterfazPausa->close();
         Game->InterfazPerder->close();
-       Game->~game();
+       delete Game;
     }
     IniciarNivel();
 }
@@ -90,7 +91,7 @@ void VentanaPrincipalUsuario::CompararPasarNivelInmediatamente()
         RegistrarEnElArchivo();
     }
     Game->InterfazPasarNivel->close();
-    Game->~game();
+    delete Game;
     IniciarNivel();
 }
 
@@ -101,7 +102,7 @@ void VentanaPrincipalUsuario::SubirNivelSinEjecutar()
         RegistrarEnElArchivo();
     }
     Game->InterfazPasarNivel->close();
-    Game->~game();
+    delete Game;
     this->show();
 }
 

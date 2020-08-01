@@ -84,6 +84,7 @@ private:
     queue <nodo *> frontera;              // Al amacena los nodos en los que el algoritmo de creacion del mapa de calor se va parando.
     int NIX,NIY;                          // Guarda la posision en la matriz de los nodos iniciales.
     float t=0.1;                          // Variable de tiempo para las ecuaciones de movimientos de los zombies.
+    int ContadorNumeroMaximoZombies=0;
 };
 
 #endif // GAME_H

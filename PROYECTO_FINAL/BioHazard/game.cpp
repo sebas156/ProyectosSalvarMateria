@@ -135,16 +135,16 @@ game::~game()
         V.~iterator();
     }
     delete player;
-    scene->~QGraphicsScene();
-    view->~QGraphicsView();
-    music->~QMediaPlayer();
-    InterfazGanar->~ganar();
-    InterfazPausa->~pausar();
-    InterfazPerder->~perder();
-    InterfazPasarNivel->~PasarNivel();
-    OrdasZombies->~QTimer();
-    timer->~QTimer();
-    VerificarSiPasaNivel->~QTimer();
+    delete scene;
+    delete view;
+    delete music;
+    delete InterfazGanar;
+    delete InterfazPausa;
+    delete InterfazPerder;
+    delete InterfazPasarNivel;
+    delete OrdasZombies;
+    delete timer;
+    delete VerificarSiPasaNivel;
 }
 
 void game::SetNivelOrda(int NivelAux, int OrdaAux)
@@ -739,7 +739,6 @@ void game::LiberarOrdasZombies()
 {
     // Esta funcion Despliega los zombies dada la posicion de un determinado nodo.
     // Esta funcion en realidad va a ser un slot. Cada determinado segundo va a liberar una nueva orda de zombies.
-    int static ContadorNumeroMaximoZombies=0;
     ContadorNumeroMaximoZombies+=NumeroZombies;
     if(Orda==1){
         if(ContadorNumeroMaximoZombies>=60){
