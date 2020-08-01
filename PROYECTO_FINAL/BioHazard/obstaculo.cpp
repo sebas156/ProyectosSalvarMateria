@@ -1,5 +1,4 @@
 #include "obstaculo.h"
-#include <QGraphicsEllipseItem>
 
 obstaculo::obstaculo(int X, int Y, int Ancho, int Largo)
 {

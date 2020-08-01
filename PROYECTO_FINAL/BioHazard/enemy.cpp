@@ -28,6 +28,12 @@ enemy::enemy()
 
 }
 
+enemy::~enemy()
+{
+    Atacar->~QTimer();
+    timer_anim->~QTimer();
+}
+
 void enemy::reducir_salud()
 {
     salud-=reduccion;

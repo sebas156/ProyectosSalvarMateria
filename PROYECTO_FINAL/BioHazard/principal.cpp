@@ -214,8 +214,8 @@ void principal::VerificarSiEstaInicioSesion()
         QMessageBox::warning(this,"ERROR","El usuario o contrasena es incorrecto. ");
         InterfazIniciarSesion->SetUserNameReiniciar("");
         InterfazIniciarSesion->SetPaswoordReiniciar("");
-        InterfazIniciarSesion->close();
         this->show();
+        InterfazIniciarSesion->close();
     }
 }
 

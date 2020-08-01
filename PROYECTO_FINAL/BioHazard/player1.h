@@ -11,6 +11,7 @@ class player1: public QObject, /*public QGraphicsRectItem,*/ public QGraphicsPix
     Q_OBJECT
 public:
     player1();
+    ~player1();
     void keyPressEvent(QKeyEvent * event);
     void keyReleaseEvent(QKeyEvent *event);
     QTimer *movtimer;
@@ -34,7 +35,7 @@ signals:
     void buttonClicked();
     void buttonClicked2();
 private:
-    int Vida=1000;
+    int Vida=100;
     int L=0;
     int R=0;
     int U=0;

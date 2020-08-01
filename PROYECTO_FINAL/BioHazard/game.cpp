@@ -119,10 +119,32 @@ game::game(int * NivelInput,int ModoInput,string InicioSesion,QWidget *parent)
 
 game::~game()
 {
-    // Falta corregir.
-    view->close();
-    music->stop();
-    this->close();
+    for(int i=0;i<Zombies.size();i++){
+        QList<enemy *>::iterator h=Zombies.begin();
+        delete Zombies.at(i);
+        h+=i;
+        Zombies.erase(h);
+        h.~iterator();
+    }
+
+    for (int i = 0; i<Paredes.size();i++){
+        QList<obstaculo *>::iterator V=Paredes.begin();
+        delete Paredes.at(i);
+        V+=i;
+        Paredes.erase(V);
+        V.~iterator();
+    }
+    delete player;
+    scene->~QGraphicsScene();
+    view->~QGraphicsView();
+    music->~QMediaPlayer();
+    InterfazGanar->~ganar();
+    InterfazPausa->~pausar();
+    InterfazPerder->~perder();
+    InterfazPasarNivel->~PasarNivel();
+    OrdasZombies->~QTimer();
+    timer->~QTimer();
+    VerificarSiPasaNivel->~QTimer();
 }
 
 void game::SetNivelOrda(int NivelAux, int OrdaAux)

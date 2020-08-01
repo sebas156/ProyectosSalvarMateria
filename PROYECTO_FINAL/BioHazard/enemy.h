@@ -13,6 +13,7 @@ class enemy: public QObject/*, public QGraphicsRectItem*/, public QGraphicsPixma
     Q_OBJECT
 public:
     enemy();
+    ~enemy();
     int VelocidadMaxima;
     float posx;
     float posy;

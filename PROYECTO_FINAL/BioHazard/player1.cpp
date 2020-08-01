@@ -26,13 +26,20 @@ player1::player1():QGraphicsPixmapItem()
     connect(timer_anim,&QTimer::timeout,this,&player1::animate);
     timer_anim->start(60);
 
-    QTimer *movtimer = new QTimer();
+    movtimer = new QTimer();
     connect(movtimer,SIGNAL(timeout()),this,SLOT(move()));
     movtimer->start(5);
 
-    QTimer *acelerate = new QTimer();
+    acelerate = new QTimer();
     connect(acelerate,SIGNAL(timeout()),this,SLOT(change_speed()));
     acelerate->start(30);
+}
+
+player1::~player1()
+{
+    delete movtimer;
+    delete acelerate;
+    delete timer_anim;
 }
 
 void player1::keyPressEvent(QKeyEvent *event)
@@ -180,7 +187,7 @@ void player1::move()
             Vy=0;
             setPos(tempx,tempy);
 //            setPos(x(),y());
-//            break;
+            break;
         }
     }
 }
