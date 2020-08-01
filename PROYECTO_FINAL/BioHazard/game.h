@@ -30,7 +30,7 @@ public:
     void SetNivelOrda(int,int);
     QGraphicsScene * scene; // Variable para la escena.
     player1 * player;       // Jugador.
-    QGraphicsView * view;
+    QGraphicsView * view; // el view.
     QMediaPlayer * music;
     void SetZombiesPorOrda();   // Establece los zombies que se despliegan cada TiempoEntreOrdas segundos.
     void EstablecerMuros();
