@@ -40,11 +40,17 @@ void enemy::ColisionRetroceder(float AX, float AY)
     float tempx=x();
     float tempy=y();
     while (velocidad.Magnitud()>2) {
-        velocidad.x = velocidad.x + AX*dt;
-        velocidad.y = velocidad.y + AY*dt;
-        posx = posx + velocidad.x*dt + (AX*dt*dt)/2;
-        posy = posy + velocidad.y*dt + (AY*dt*dt)/2;
-        this->setPos(posx,posy);
+        if(posx>0 && posx<1900 && posy>100 && posy<1100){
+            velocidad.x = velocidad.x + AX*dt;
+            velocidad.y = velocidad.y + AY*dt;
+            posx = posx + velocidad.x*dt + (AX*dt*dt)/2;
+            posy = posy + velocidad.y*dt + (AY*dt*dt)/2;
+            this->setPos(posx,posy);
+        }else {
+            velocidad.x=0;
+            velocidad.y=0;
+            setPos(tempx,tempy);
+        }
         QList<QGraphicsItem *> colliding_items = collidingItems();
         for(int i=0, n = colliding_items.size(); i<n ; i++)
         {

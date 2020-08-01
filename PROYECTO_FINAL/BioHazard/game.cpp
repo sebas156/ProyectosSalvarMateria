@@ -152,17 +152,18 @@ void game::SetZombiesPorOrda()
 void game::EstablecerMuros()
 {
     // Busqueda exhaustiva y coloca un objeto obstaculo.
-    QPen blackPen(Qt::black);
     for(int fila=0;fila<24;fila++){
         for(int columna =0; columna<40; columna++){
             if(nivel==1){
                 if(fila==6 and columna==15 ){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,145);
+                     Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==7 and columna==22 ){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,95);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
@@ -233,11 +234,13 @@ void game::EstablecerMuros()
                 }
                 else if(fila==15 and columna==38){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,95);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==16 and columna==37){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,95);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
@@ -743,20 +746,33 @@ void game::LiberarOrdasZombies()
     }
 
     srand(time(NULL));
-    vector <int> ColumnasDespliegue1={5,12,13,14,20,19,18,24,25,26,33};
-    vector <int> FilasDespliegue1={15,14,13,12};
-    vector <int> FilasDespliegue2={14,13,12,11,10,9,8};
-    for(int contadorZombies=0;contadorZombies<(NumeroZombies*2)/3;contadorZombies++){
-        int ColumnaAleatoria= rand()% 9 ;
-        EstablecerZombies(ArregloMatrizAbstracta[3][ColumnasDespliegue1[ColumnaAleatoria]].PosRX-23,ArregloMatrizAbstracta[3][ColumnasDespliegue1[ColumnaAleatoria]].PosRY-23);
+    if(nivel==1){
+        vector <int> ColumnasDespliegue1={5,12,13,14,20,19,18,24,25,26,33};
+        vector <int> FilasDespliegue1={15,14,13,12};
+        vector <int> FilasDespliegue2={14,13,12,11,10,9,8};
+        for(int contadorZombies=0;contadorZombies<(NumeroZombies*2)/3;contadorZombies++){
+            int ColumnaAleatoria= rand()% 9 ;
+            EstablecerZombies(ArregloMatrizAbstracta[3][ColumnasDespliegue1[ColumnaAleatoria]].PosRX-23,ArregloMatrizAbstracta[3][ColumnasDespliegue1[ColumnaAleatoria]].PosRY-23);
+        }
+        for(int contadorZombies=0; contadorZombies<(NumeroZombies)/6;contadorZombies++){
+            int FilaAleatoria = rand()% 3;
+            EstablecerZombies(ArregloMatrizAbstracta[FilasDespliegue1[FilaAleatoria]][0].PosRX-23,ArregloMatrizAbstracta[FilasDespliegue1[FilaAleatoria]][0].PosRY-23);
+        }
+        for(int contadorZombies=0; contadorZombies<(NumeroZombies)/6;contadorZombies++){
+            int FilaAleatoria=rand()% 7;
+            EstablecerZombies(ArregloMatrizAbstracta[FilasDespliegue2[FilaAleatoria]][39].PosRX-23,ArregloMatrizAbstracta[FilasDespliegue2[FilaAleatoria]][39].PosRY-23);
+        }
     }
-    for(int contadorZombies=0; contadorZombies<(NumeroZombies)/6;contadorZombies++){
-        int FilaAleatoria = rand()% 3;
-        EstablecerZombies(ArregloMatrizAbstracta[FilasDespliegue1[FilaAleatoria]][0].PosRX-23,ArregloMatrizAbstracta[FilasDespliegue1[FilaAleatoria]][0].PosRY-23);
-    }
-    for(int contadorZombies=0; contadorZombies<(NumeroZombies)/6;contadorZombies++){
-        int FilaAleatoria=rand()% 7;
-        EstablecerZombies(ArregloMatrizAbstracta[FilasDespliegue2[FilaAleatoria]][39].PosRX-23,ArregloMatrizAbstracta[FilasDespliegue2[FilaAleatoria]][39].PosRY-23);
+    else {
+        vector <int> ColumnasDespliegue1={12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29};
+        for(int contadorZombies=0;contadorZombies<(NumeroZombies);contadorZombies++){
+            int ColumnaAleatoria= rand()% 17 ;
+            EstablecerZombies(ArregloMatrizAbstracta[22][ColumnasDespliegue1[ColumnaAleatoria]].PosRX-23,ArregloMatrizAbstracta[22][ColumnasDespliegue1[ColumnaAleatoria]].PosRY-23);
+        }
+        for(int contadorZombies=0;contadorZombies<(NumeroZombies/2);contadorZombies++){
+            int ColumnaAleatoria= rand()% 17 ;
+            EstablecerZombies(ArregloMatrizAbstracta[1][ColumnasDespliegue1[ColumnaAleatoria]].PosRX-23,ArregloMatrizAbstracta[1][ColumnasDespliegue1[ColumnaAleatoria]].PosRY-23);
+        }
     }
 
 }

@@ -179,8 +179,8 @@ void player1::move()
             Vx=0;
             Vy=0;
             setPos(tempx,tempy);
-            setPos(x(),y());
-            break;
+//            setPos(x(),y());
+//            break;
         }
     }
 }
