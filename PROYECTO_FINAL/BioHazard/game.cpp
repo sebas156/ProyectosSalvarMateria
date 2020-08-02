@@ -103,8 +103,12 @@ game::game(int * NivelInput,int ModoInput,string InicioSesion,QWidget *parent)
     // Está verificando si se pasa de nivel.
     VerificarSiPasaNivel = new QTimer;
     connect(VerificarSiPasaNivel, &QTimer::timeout,this,&game::VerificarSiYaPasadeNivel);
-    VerificarSiPasaNivel->start(20);
+    VerificarSiPasaNivel->start(10);
 
+    // crear barra de salud
+    hbar = new healthbar(player->get_vida());
+    scene->addItem(hbar);
+    hbar->setPos(player->x(),player->y()-20);
 
 
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -622,6 +626,13 @@ void game::VerificarSiYaPasadeNivel()
          player->PonerTodoEnCero();
          music->stop();
     }
+    //////////// aprovecha la siguiente función, llamada por un timer cada X milisegundos para actualizar la posición de la Healthbar
+    hbar->setPos(player->x(),player->y()-20);
+    hbar->setWidth(player->get_vida());
+    scene->update();
+    //hbar2->setPos(player_2->x(),player_2->y()-20);
+    //hbar2->setWidth(player_2->get_vida());
+    view->centerOn(player->x(),player->y());
 }
 
 void game::ContinuarJugando()

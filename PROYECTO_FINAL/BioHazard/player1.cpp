@@ -146,6 +146,7 @@ void player1::RestarVida(int recibido)
 {
 
     Vida-=recibido;
+    Game->hbar->setWidth(Vida);
     if(Vida<=0)
         emit buttonClicked();
 }
@@ -165,6 +166,11 @@ void player1::spawn()
     scene()->addItem(Enemy);
 }
 
+float player1::get_vida()
+{
+    return Vida;
+}
+
 void player1::move()
 {
 
@@ -177,7 +183,7 @@ void player1::move()
         Vx=0;
         Vy=0;
     }
-    Game->view->centerOn(x(),y());
+    //Game->view->centerOn(x(),y());
     QList<QGraphicsItem *> colliding_items = collidingItems();
     for(int i=0, n = colliding_items.size(); i<n ; i++)
     {

@@ -6,6 +6,7 @@ debug/game.o
 debug/game2.o
 debug/ganar.o
 debug/health.o
+debug/healthbar.o
 debug/inicarsesion2.o
 debug/main.o
 debug/mainwindow.o

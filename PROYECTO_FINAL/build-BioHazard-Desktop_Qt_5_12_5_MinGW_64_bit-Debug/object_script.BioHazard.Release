@@ -6,6 +6,7 @@ release/game.o
 release/game2.o
 release/ganar.o
 release/health.o
+release/healthbar.o
 release/inicarsesion2.o
 release/main.o
 release/mainwindow.o

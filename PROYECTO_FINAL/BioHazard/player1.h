@@ -24,6 +24,7 @@ public:
     void RestarVida(int);
     bool TecladoBloqueado=false;
     void PonerTodoEnCero();
+    float get_vida();
 public slots:
     void spawn();
     void move();
