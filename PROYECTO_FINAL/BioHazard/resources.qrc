@@ -20,5 +20,7 @@
         <file>MOV/mutant.png</file>
         <file>AUD/00.mp3</file>
         <file>BGI/escenario.png</file>
+        <file>2D/ammo.png</file>
+        <file>2D/healer.png</file>
     </qresource>
 </RCC>

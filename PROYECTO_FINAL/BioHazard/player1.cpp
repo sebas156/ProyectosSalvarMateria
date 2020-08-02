@@ -195,6 +195,14 @@ void player1::move()
 //            setPos(x(),y());
             break;
         }
+
+        if(typeid(*(colliding_items[i])) == typeid(healer))
+        {
+            Game->Healer->setPos(-20,-20);
+            Vida+=50;
+            if(Vida>100)
+                Vida=100;
+        }
     }
 }
 

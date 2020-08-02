@@ -22,6 +22,7 @@
 #include "pasarnivel.h"
 #include "ganar.h"
 #include "healthbar.h"
+#include "healer.h"
 
 class game: public QGraphicsView
 {
@@ -34,6 +35,7 @@ public:
     QGraphicsView * view; // el view.
     QMediaPlayer * music;
     healthbar *hbar;
+    healer * Healer;
     void SetZombiesPorOrda();   // Establece los zombies que se despliegan cada TiempoEntreOrdas segundos.
     void EstablecerMuros();
     bool PisoConFriccion();

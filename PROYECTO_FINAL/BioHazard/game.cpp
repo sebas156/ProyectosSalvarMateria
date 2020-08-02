@@ -110,6 +110,11 @@ game::game(int * NivelInput,int ModoInput,string InicioSesion,QWidget *parent)
     scene->addItem(hbar);
     hbar->setPos(player->x(),player->y()-20);
 
+    //add healer
+    Healer = new healer;
+    scene->addItem(Healer);
+    Healer->setPos(100,335);
+
 
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -757,6 +762,7 @@ void game::LiberarOrdasZombies()
                 Orda++;
                 SetZombiesPorOrda();
                 ContadorNumeroMaximoZombies=0;
+                Healer->setPos(100,335);
             }
             return;
         }
@@ -767,6 +773,7 @@ void game::LiberarOrdasZombies()
                 Orda++;
                 SetZombiesPorOrda();
                 ContadorNumeroMaximoZombies=0;
+                Healer->setPos(100,335);
             }
             return;
         }

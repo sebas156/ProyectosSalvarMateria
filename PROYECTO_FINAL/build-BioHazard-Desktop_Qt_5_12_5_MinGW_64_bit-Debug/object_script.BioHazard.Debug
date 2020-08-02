@@ -5,6 +5,7 @@ debug/enemyship.o
 debug/game.o
 debug/game2.o
 debug/ganar.o
+debug/healer.o
 debug/health.o
 debug/healthbar.o
 debug/inicarsesion2.o
@@ -30,6 +31,7 @@ debug/moc_bullet.o
 debug/moc_bullet2.o
 debug/moc_enemy.o
 debug/moc_ganar.o
+debug/moc_healer.o
 debug/moc_inicarsesion2.o
 debug/moc_mainwindow.o
 debug/moc_pasarnivel.o
