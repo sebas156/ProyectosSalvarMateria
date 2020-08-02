@@ -7,7 +7,6 @@
 #include <QObject>
 #include <QWidget>
 #include "score.h"
-#include "health.h"
 #include "healthbar.h"
 
 class game2: public QGraphicsView
@@ -19,7 +18,6 @@ public:
     QGraphicsScene * scene;
     spaceship * ship;
     Score * score;
-    Health * health;
     healthbar * bar;
 public slots:
     void spawn();

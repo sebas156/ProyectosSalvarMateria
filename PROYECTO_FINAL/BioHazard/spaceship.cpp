@@ -6,7 +6,6 @@
 #include "enemyship.h"
 #include "sinenemyship.h"
 #include "game2.h"
-#include "health.h"
 
 extern game2 * Game2;
 
@@ -114,7 +113,7 @@ void spaceship::move()
 {
     setPos(x(),y()+v);
     if(y()>800)
-       Game2->health->decrease(Game2->health->getHealth());
+       health=0;
 }
 
 void spaceship::change_speed()

@@ -35,7 +35,6 @@ SOURCES += \
         game2.cpp \
         ganar.cpp \
         healer.cpp \
-        health.cpp \
         healthbar.cpp \
         inicarsesion2.cpp \
         main.cpp \
@@ -66,7 +65,6 @@ HEADERS += \
         game2.h \
         ganar.h \
         healer.h \
-        health.h \
         healthbar.h \
         inicarsesion2.h \
         mainwindow.h \
