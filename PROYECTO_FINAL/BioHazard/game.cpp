@@ -154,8 +154,6 @@ game::~game()
         V.~iterator();
     }
     delete player;
-    delete scene;
-    delete view;
     delete music;
     delete InterfazGanar;
     delete InterfazPausa;
@@ -164,6 +162,8 @@ game::~game()
     delete OrdasZombies;
     delete timer;
     delete VerificarSiPasaNivel;
+    delete scene;
+    delete view;
 }
 
 void game::SetNivelOrda(int NivelAux, int OrdaAux)

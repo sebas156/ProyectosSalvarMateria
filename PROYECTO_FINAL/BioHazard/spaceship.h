@@ -4,12 +4,16 @@
 #include <QObject>
 #include <QMediaPlayer>
 #include <QTimer>
+#include <QList>
+#include "enemyship.h"
+#include "sinenemyship.h"
 
 class spaceship:public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
     spaceship(QGraphicsItem * parent = 0);
+    ~spaceship();
     void keyPressEvent(QKeyEvent * event);
     void keyReleaseEvent(QKeyEvent *event);
     QTimer *movtimer;
@@ -18,6 +22,10 @@ public:
     QTimer *seedtimer;
     void reduce_health();
     int get_health();
+    void PausarTodosLosTimers();
+    void ReactivarTodosLosTimers();
+    QList<enemyship *> EnemyClase1;
+    QList<sinenemyship *> EnemyClase2;
 public slots:
     void spawn();
     void move();
@@ -25,6 +33,8 @@ public slots:
     void animate();
     void anim_counter();
     void increase_seed();
+signals:
+    void buttonClicked();
 private:
     QMediaPlayer * bulletsound;
     float v=0;      //speed
@@ -36,6 +46,8 @@ private:
     int i=0;        //index for each animation frame
     int seed=0;
     int health=100;
+    bool TecladoBloqueado=false;
+
 };
 
 #endif // SPACESHIP_H

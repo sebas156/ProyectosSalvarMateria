@@ -12,6 +12,9 @@ public:
 public slots:
     void move();
 
+private:
+    bool SeElimina=false;
+
 };
 
 #endif // BULLET2_H
