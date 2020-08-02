@@ -23,6 +23,7 @@
 #include "ganar.h"
 #include "healthbar.h"
 #include "healer.h"
+#include "ammo.h"
 
 class game: public QGraphicsView
 {
@@ -36,6 +37,7 @@ public:
     QMediaPlayer * music;
     healthbar *hbar;
     healer * Healer;
+    ammo * Ammo;
     void SetZombiesPorOrda();   // Establece los zombies que se despliegan cada TiempoEntreOrdas segundos.
     void EstablecerMuros();
     bool PisoConFriccion();
@@ -71,6 +73,7 @@ public slots:
     void PerdisteElJuego();          // Slot que detiene todos los timers y muestra la interfaz de perder.
     void VerificarSiYaPasadeNivel(); // Verifica si pasa de nivel o en su defecto gana el juego
     void ContinuarJugando();        // Inicia todos los timers.
+    void respawnAmmo();
 
 private:
     QTimer * OrdasZombies;

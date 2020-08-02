@@ -115,6 +115,16 @@ game::game(int * NivelInput,int ModoInput,string InicioSesion,QWidget *parent)
     scene->addItem(Healer);
     Healer->setPos(100,335);
 
+    //add ammo re-fill
+    Ammo = new ammo;
+    scene->addItem(Ammo);
+    Ammo->setPos(1780,1050);
+
+    //set ammo re-spawn time
+    QTimer *re_fill = new QTimer;
+    connect(re_fill, &QTimer::timeout,this,&game::respawnAmmo);
+    re_fill->start(15000);
+
 
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -650,6 +660,11 @@ void game::ContinuarJugando()
     player->TecladoBloqueado=false;
     player->PonerTodoEnCero();
     music->play();
+}
+
+void game::respawnAmmo()
+{
+    Ammo->setPos(1780,1050);
 }
 
 void game::InicializarCuadros()

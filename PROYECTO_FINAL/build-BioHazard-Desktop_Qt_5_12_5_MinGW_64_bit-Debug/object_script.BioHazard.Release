@@ -1,3 +1,4 @@
+release/ammo.o
 release/bullet.o
 release/bullet2.o
 release/enemy.o
@@ -27,6 +28,7 @@ release/spaceship.o
 release/vec3.o
 release/ventanaprincipalusuario.o
 release/qrc_resources.o
+release/moc_ammo.o
 release/moc_bullet.o
 release/moc_bullet2.o
 release/moc_enemy.o

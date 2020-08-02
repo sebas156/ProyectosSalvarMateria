@@ -26,6 +26,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        ammo.cpp \
         bullet.cpp \
         bullet2.cpp \
         enemy.cpp \
@@ -56,6 +57,7 @@ SOURCES += \
         ventanaprincipalusuario.cpp
 
 HEADERS += \
+        ammo.h \
         bullet.h \
         bullet2.h \
         enemy.h \

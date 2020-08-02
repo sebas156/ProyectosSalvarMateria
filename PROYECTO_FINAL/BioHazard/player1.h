@@ -43,6 +43,7 @@ private:
     int D=0;
     int i=0;    //animation index
     char aim;
+    int shots=0; //shots counter (cartridge)
 
     //float V = 0;
 

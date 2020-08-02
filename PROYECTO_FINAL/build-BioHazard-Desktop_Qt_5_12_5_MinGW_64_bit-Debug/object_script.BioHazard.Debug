@@ -1,3 +1,4 @@
+debug/ammo.o
 debug/bullet.o
 debug/bullet2.o
 debug/enemy.o
@@ -27,6 +28,7 @@ debug/spaceship.o
 debug/vec3.o
 debug/ventanaprincipalusuario.o
 debug/qrc_resources.o
+debug/moc_ammo.o
 debug/moc_bullet.o
 debug/moc_bullet2.o
 debug/moc_enemy.o
