@@ -2,7 +2,7 @@
 #include "QDebug"
 healthbar::healthbar(int width)
 {
-    W = width;
+    QRect::setRect(0,0,width,10);
 }
 
 void healthbar::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -10,5 +10,5 @@ void healthbar::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
     painter->setBrush(Qt::green);
     painter->setPen(Qt::black);
     painter->drawRect(QRectF(0,0,this->width(),10));
-    qDebug()<<this->width();
+
 }

@@ -71,6 +71,19 @@ void spaceship::keyReleaseEvent(QKeyEvent *event)
             I=0;
 }
 
+void spaceship::reduce_health()
+{
+    if(health>0){
+        health-=5;
+        Game2->bar->setWidth(health);
+    }
+}
+
+int spaceship::get_health()
+{
+    return health;
+}
+
 void spaceship::spawn()
 {
     //create enemies
@@ -95,12 +108,10 @@ void spaceship::spawn()
         sinenemyship * Sinenemyship = new sinenemyship(1);
         scene()->addItem(Sinenemyship);
     }
-
 }
 
 void spaceship::move()
 {
-    //qDebug()<<"V: "<<v;
     setPos(x(),y()+v);
     if(y()>800)
        Game2->health->decrease(Game2->health->getHealth());

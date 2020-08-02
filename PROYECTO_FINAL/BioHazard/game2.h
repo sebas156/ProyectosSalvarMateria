@@ -8,6 +8,7 @@
 #include <QWidget>
 #include "score.h"
 #include "health.h"
+#include "healthbar.h"
 
 class game2: public QGraphicsView
 {
@@ -19,6 +20,7 @@ public:
     spaceship * ship;
     Score * score;
     Health * health;
+    healthbar * bar;
 public slots:
     void spawn();
     void increase_seed();

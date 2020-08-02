@@ -8,6 +8,7 @@
 #include <QMediaPlayer>
 #include <QMovie>
 #include <QLabel>
+#include "healthbar.h"
 
 
 game2::game2(QWidget *parent)
@@ -52,12 +53,15 @@ game2::game2(QWidget *parent)
     //view->setBackgroundBrush(Qt::black);
 
 
-    //create the score/Health
+    //create the score/Health and add them to scene
     score = new Score();
     scene->addItem(score);
-    health = new Health();
-    health->setPos(health->x(),health->y()+25);
-    scene->addItem(health);
+    bar = new healthbar(100);
+    scene->addItem(bar);
+    bar->setZValue(5);
+    bar->setPos(0,0);
+    scene->update();
+    score->setPos(0,10);
 
 
     //Spawn enemies

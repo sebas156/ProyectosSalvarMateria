@@ -16,6 +16,8 @@ public:
     QTimer *acelerate;
     QTimer *anim;
     QTimer *seedtimer;
+    void reduce_health();
+    int get_health();
 public slots:
     void spawn();
     void move();
@@ -33,6 +35,7 @@ private:
     int I=0;        //thruster state // 1 = ON, 0 = OFF
     int i=0;        //index for each animation frame
     int seed=0;
+    int health=100;
 };
 
 #endif // SPACESHIP_H

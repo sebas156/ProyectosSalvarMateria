@@ -73,11 +73,10 @@ void ship::move()
             collidingItems().clear();
             scene()->removeItem(this);
             delete this;
-            Game2->health->decrease(5);
+            Game2->ship->reduce_health();
             Game2->score->reduce(50);
         }
     }
-
 }
 
 void ship::animate()
