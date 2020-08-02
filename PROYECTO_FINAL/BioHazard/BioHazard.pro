@@ -47,6 +47,7 @@ SOURCES += \
         registro.cpp \
         score.cpp \
         seleccionarnivel.cpp \
+        ship.cpp \
         sinenemyship.cpp \
         spaceship.cpp \
         vec3.cpp \
@@ -73,6 +74,7 @@ HEADERS += \
         registro.h \
         score.h \
         seleccionarnivel.h \
+        ship.h \
         sinenemyship.h \
         spaceship.h \
         vec3.h \

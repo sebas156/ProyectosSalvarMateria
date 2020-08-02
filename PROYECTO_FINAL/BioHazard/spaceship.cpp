@@ -76,25 +76,23 @@ void spaceship::spawn()
     //create enemies
     if(seed==0)
     {
-        enemyship * Enemyship = new enemyship();
+        enemyship * Enemyship = new enemyship;
         scene()->addItem(Enemyship);
     }
 
     if(seed==1)
     {
-        sinenemyship * Sinenemyship = new sinenemyship();
-        Sinenemyship->mode=2;
+        sinenemyship * Sinenemyship = new sinenemyship(2);
         scene()->addItem(Sinenemyship);
 
-        enemyship * Enemyship = new enemyship();
+        enemyship * Enemyship = new enemyship;
         scene()->addItem(Enemyship);
         Enemyship->setX(Sinenemyship->x()+120);
     }
 
     if(seed==2)
     {
-        sinenemyship * Sinenemyship = new sinenemyship();
-        Sinenemyship->mode=1;
+        sinenemyship * Sinenemyship = new sinenemyship(1);
         scene()->addItem(Sinenemyship);
     }
 

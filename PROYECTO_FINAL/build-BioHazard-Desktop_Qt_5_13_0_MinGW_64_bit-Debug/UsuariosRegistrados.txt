@@ -1,4 +1,0 @@
-test,1234
-bonilla,1234
-lucifer,987654321
-LuciferC137,123456
