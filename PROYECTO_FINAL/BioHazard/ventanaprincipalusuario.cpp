@@ -33,6 +33,7 @@ void VentanaPrincipalUsuario::on_Campana_clicked()
 
 void VentanaPrincipalUsuario::on_Cooperativo_clicked()
 {
+    this->close();
     ModoDeJuego=2;
     nivelSeleccionado=3;
     Game = new game(&contadorPuntos,&nivelSeleccionado,ModoDeJuego,"Jugadores");
@@ -169,6 +170,7 @@ void VentanaPrincipalUsuario::RegistrarEnElArchivo()
 
 void VentanaPrincipalUsuario::IniciarNivel()
 {
+    this->close();
     if(nivelSeleccionado==3 && ModoDeJuego==2)
     {
         Game = new game(&contadorPuntos,&nivelSeleccionado,ModoDeJuego,"Jugadores");
@@ -176,7 +178,7 @@ void VentanaPrincipalUsuario::IniciarNivel()
         connect(Game->InterfazPerder,&perder::buttonClicked2,this,&VentanaPrincipalUsuario::InterrumpidoRegresarMenuPrincipal);
         connect(Game->InterfazPerder,&perder::buttonClicked,this,&VentanaPrincipalUsuario::LlamarIniciarJuego);
     }
-    if(nivelSeleccionado==1){
+    else if(nivelSeleccionado==1){
         Game=new game(&contadorPuntos,&nivelSeleccionado,ModoDeJuego,NickName.toStdString());
         connect(Game->InterfazPausa,&pausar::buttonClicked2,this,&VentanaPrincipalUsuario::InterrumpidoRegresarMenuPrincipal);
         connect(Game->InterfazPerder,&perder::buttonClicked2,this,&VentanaPrincipalUsuario::InterrumpidoRegresarMenuPrincipal);
