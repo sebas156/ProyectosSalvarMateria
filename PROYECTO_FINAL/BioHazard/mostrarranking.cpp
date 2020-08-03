@@ -21,7 +21,7 @@ void mostrarranking::PonerLainfoEnPantalla()
     ui->plainTextEdit->appendPlainText(QString::fromStdString(auxiliar2));
     for(int fila=MostrarRanqueados.size()-1; fila>=0;fila--){
         auxiliar2=MostrarRanqueados[fila].begin()->first;
-        int limiteEspacios=23- MostrarRanqueados[fila].begin()->first.size();
+        int limiteEspacios=23 - auxiliar2.size();
         for(int columna=0;columna<limiteEspacios;columna++){
             auxiliar2+=" ";
         }

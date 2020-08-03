@@ -82,7 +82,7 @@ int principal::BusquedaBinaria(string Usuario, int EquivalenteUsuario, int maxim
     }
     while(minimo<=maximo){
         resultado=(minimo+maximo)/2;
-        if(resultado>maximo-1){
+        if(resultado>UsuariosRegistrados.size()-1){
             return -1;
         }
         if(EquivalenteUsuario > UsuariosRegistrados[resultado].begin()->second.begin()->second)
