@@ -11,7 +11,9 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QTextBrowser>
+#include <QtWidgets/QPlainTextEdit>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QSplitter>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -21,7 +23,9 @@ class Ui_mostrarranking
 {
 public:
     QVBoxLayout *verticalLayout;
-    QTextBrowser *textBrowser;
+    QSplitter *splitter;
+    QPlainTextEdit *plainTextEdit;
+    QPushButton *volver;
 
     void setupUi(QWidget *mostrarranking)
     {
@@ -30,10 +34,17 @@ public:
         mostrarranking->resize(400, 300);
         verticalLayout = new QVBoxLayout(mostrarranking);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        textBrowser = new QTextBrowser(mostrarranking);
-        textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
+        splitter = new QSplitter(mostrarranking);
+        splitter->setObjectName(QString::fromUtf8("splitter"));
+        splitter->setOrientation(Qt::Vertical);
+        plainTextEdit = new QPlainTextEdit(splitter);
+        plainTextEdit->setObjectName(QString::fromUtf8("plainTextEdit"));
+        splitter->addWidget(plainTextEdit);
+        volver = new QPushButton(splitter);
+        volver->setObjectName(QString::fromUtf8("volver"));
+        splitter->addWidget(volver);
 
-        verticalLayout->addWidget(textBrowser);
+        verticalLayout->addWidget(splitter);
 
 
         retranslateUi(mostrarranking);
@@ -44,6 +55,7 @@ public:
     void retranslateUi(QWidget *mostrarranking)
     {
         mostrarranking->setWindowTitle(QCoreApplication::translate("mostrarranking", "Form", nullptr));
+        volver->setText(QCoreApplication::translate("mostrarranking", "Volver", nullptr));
     } // retranslateUi
 
 };

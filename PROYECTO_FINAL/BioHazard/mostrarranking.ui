@@ -15,7 +15,17 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QTextBrowser" name="textBrowser"/>
+    <widget class="QSplitter" name="splitter">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <widget class="QPlainTextEdit" name="plainTextEdit"/>
+     <widget class="QPushButton" name="volver">
+      <property name="text">
+       <string>Volver</string>
+      </property>
+     </widget>
+    </widget>
    </item>
   </layout>
  </widget>

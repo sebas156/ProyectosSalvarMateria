@@ -10,6 +10,7 @@
 #include <map>
 #include <vector>
 #include <iostream>
+#include "mostrarranking.h"
 
 using namespace std;
 namespace Ui {
@@ -41,10 +42,12 @@ private slots:
     void SubirNivelSinEjecutar();
     void  Ordenamiento_por_Insercion(int);
     void RegistarCambiosEnElRanking();
+    void eliminarInterfazMostarRankingUsuarios();
 
 signals:
     void buttonClicked();
 private:
+    mostrarranking * InterfazMostarRanking;
     void RegistrarEnElArchivo();
     void IniciarNivel();
     Ui::VentanaPrincipalUsuario *ui;

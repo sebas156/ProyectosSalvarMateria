@@ -1226,6 +1226,7 @@ release/moc_mainwindow.cpp: ../BioHazard/mainwindow.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qlabel.h \
 		../BioHazard/ventanaprincipalusuario.h \
 		../BioHazard/seleccionarnivel.h \
+		../BioHazard/mostrarranking.h \
 		release/moc_predefs.h \
 		C:/Qt/5.13.0/mingw73_64/bin/moc.exe
 	C:\Qt\5.13.0\mingw73_64\bin\moc.exe $(DEFINES) --include "C:/Users/SEBASTIAN BONILLA/Desktop/informartica/Informatica 2.0/Proyecto Final/ProyectosSalvarMateria/PROYECTO_FINAL/build-BioHazard-Desktop_Qt_5_13_0_MinGW_64_bit-Debug/release/moc_predefs.h" -IC:/Qt/5.13.0/mingw73_64/mkspecs/win32-g++ -I"C:/Users/SEBASTIAN BONILLA/Desktop/informartica/Informatica 2.0/Proyecto Final/ProyectosSalvarMateria/PROYECTO_FINAL/BioHazard" -IC:/Qt/5.13.0/mingw73_64/include -IC:/Qt/5.13.0/mingw73_64/include/QtMultimedia -IC:/Qt/5.13.0/mingw73_64/include/QtWidgets -IC:/Qt/5.13.0/mingw73_64/include/QtGui -IC:/Qt/5.13.0/mingw73_64/include/QtANGLE -IC:/Qt/5.13.0/mingw73_64/include/QtNetwork -IC:/Qt/5.13.0/mingw73_64/include/QtCore -I. -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_64/x86_64-w64-mingw32/include ..\BioHazard\mainwindow.h -o release\moc_mainwindow.cpp
@@ -2033,6 +2034,7 @@ release/moc_principal.cpp: ../BioHazard/principal.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qlabel.h \
 		../BioHazard/ventanaprincipalusuario.h \
 		../BioHazard/seleccionarnivel.h \
+		../BioHazard/mostrarranking.h \
 		release/moc_predefs.h \
 		C:/Qt/5.13.0/mingw73_64/bin/moc.exe
 	C:\Qt\5.13.0\mingw73_64\bin\moc.exe $(DEFINES) --include "C:/Users/SEBASTIAN BONILLA/Desktop/informartica/Informatica 2.0/Proyecto Final/ProyectosSalvarMateria/PROYECTO_FINAL/build-BioHazard-Desktop_Qt_5_13_0_MinGW_64_bit-Debug/release/moc_predefs.h" -IC:/Qt/5.13.0/mingw73_64/mkspecs/win32-g++ -I"C:/Users/SEBASTIAN BONILLA/Desktop/informartica/Informatica 2.0/Proyecto Final/ProyectosSalvarMateria/PROYECTO_FINAL/BioHazard" -IC:/Qt/5.13.0/mingw73_64/include -IC:/Qt/5.13.0/mingw73_64/include/QtMultimedia -IC:/Qt/5.13.0/mingw73_64/include/QtWidgets -IC:/Qt/5.13.0/mingw73_64/include/QtGui -IC:/Qt/5.13.0/mingw73_64/include/QtANGLE -IC:/Qt/5.13.0/mingw73_64/include/QtNetwork -IC:/Qt/5.13.0/mingw73_64/include/QtCore -I. -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_64/x86_64-w64-mingw32/include ..\BioHazard\principal.h -o release\moc_principal.cpp
@@ -2592,6 +2594,7 @@ release/moc_ventanaprincipalusuario.cpp: ../BioHazard/ventanaprincipalusuario.h 
 		C:/Qt/5.13.0/mingw73_64/include/QtCore/QTimer \
 		C:/Qt/5.13.0/mingw73_64/include/QtCore/qtimer.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtCore/qbasictimer.h \
+		../BioHazard/mostrarranking.h \
 		release/moc_predefs.h \
 		C:/Qt/5.13.0/mingw73_64/bin/moc.exe
 	C:\Qt\5.13.0\mingw73_64\bin\moc.exe $(DEFINES) --include "C:/Users/SEBASTIAN BONILLA/Desktop/informartica/Informatica 2.0/Proyecto Final/ProyectosSalvarMateria/PROYECTO_FINAL/build-BioHazard-Desktop_Qt_5_13_0_MinGW_64_bit-Debug/release/moc_predefs.h" -IC:/Qt/5.13.0/mingw73_64/mkspecs/win32-g++ -I"C:/Users/SEBASTIAN BONILLA/Desktop/informartica/Informatica 2.0/Proyecto Final/ProyectosSalvarMateria/PROYECTO_FINAL/BioHazard" -IC:/Qt/5.13.0/mingw73_64/include -IC:/Qt/5.13.0/mingw73_64/include/QtMultimedia -IC:/Qt/5.13.0/mingw73_64/include/QtWidgets -IC:/Qt/5.13.0/mingw73_64/include/QtGui -IC:/Qt/5.13.0/mingw73_64/include/QtANGLE -IC:/Qt/5.13.0/mingw73_64/include/QtNetwork -IC:/Qt/5.13.0/mingw73_64/include/QtCore -I. -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IC:/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Tools/mingw730_64/x86_64-w64-mingw32/include ..\BioHazard\ventanaprincipalusuario.h -o release\moc_ventanaprincipalusuario.cpp
@@ -3807,31 +3810,7 @@ release/ganar.o: ../BioHazard/ganar.cpp ../BioHazard/ganar.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtCore/qfiledevice.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtGui/qvector2d.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtouchdevice.h \
-		ui_ganar.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/QVariant \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QApplication \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/qcoreapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/qeventloop.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qguiapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qinputmethod.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QPushButton \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qicon.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QSplitter \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qsplitter.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qframe.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QTextBrowser \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qtextbrowser.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qtextedit.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtextdocument.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtextoption.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtextcursor.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtextformat.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qpen.h
+		ui_ganar.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\ganar.o ..\BioHazard\ganar.cpp
 
 release/healer.o: ../BioHazard/healer.cpp ../BioHazard/healer.h \
@@ -4213,30 +4192,7 @@ release/inicarsesion2.o: ../BioHazard/inicarsesion2.cpp ../BioHazard/inicarsesio
 		C:/Qt/5.13.0/mingw73_64/include/QtCore/qfiledevice.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtGui/qvector2d.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtouchdevice.h \
-		ui_inicarsesion2.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/QVariant \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QApplication \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/qcoreapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/qeventloop.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qguiapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qinputmethod.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QGroupBox \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qgroupbox.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qframe.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QLabel \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qlabel.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QLineEdit \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qlineedit.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtextcursor.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtextformat.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qpen.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtextoption.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QPushButton \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qicon.h
+		ui_inicarsesion2.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\inicarsesion2.o ..\BioHazard\inicarsesion2.cpp
 
 release/main.o: ../BioHazard/main.cpp ../BioHazard/mainwindow.h \
@@ -4408,6 +4364,7 @@ release/main.o: ../BioHazard/main.cpp ../BioHazard/mainwindow.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qlabel.h \
 		../BioHazard/ventanaprincipalusuario.h \
 		../BioHazard/seleccionarnivel.h \
+		../BioHazard/mostrarranking.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QApplication \
 		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qapplication.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtCore/qcoreapplication.h \
@@ -4597,7 +4554,8 @@ release/mainwindow.o: ../BioHazard/mainwindow.cpp ../BioHazard/mainwindow.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QLabel \
 		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qlabel.h \
 		../BioHazard/ventanaprincipalusuario.h \
-		../BioHazard/seleccionarnivel.h
+		../BioHazard/seleccionarnivel.h \
+		../BioHazard/mostrarranking.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\BioHazard\mainwindow.cpp
 
 release/mostrarranking.o: ../BioHazard/mostrarranking.cpp ../BioHazard/mostrarranking.h \
@@ -4906,31 +4864,7 @@ release/pasarnivel.o: ../BioHazard/pasarnivel.cpp ../BioHazard/pasarnivel.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtCore/qfiledevice.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtGui/qvector2d.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtouchdevice.h \
-		ui_pasarnivel.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/QVariant \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QApplication \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/qcoreapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/qeventloop.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qguiapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qinputmethod.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QPushButton \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qicon.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QSplitter \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qsplitter.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qframe.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QTextBrowser \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qtextbrowser.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qtextedit.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtextdocument.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtextoption.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtextcursor.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtextformat.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qpen.h
+		ui_pasarnivel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\pasarnivel.o ..\BioHazard\pasarnivel.cpp
 
 release/pausar.o: ../BioHazard/pausar.cpp ../BioHazard/pausar.h \
@@ -5037,31 +4971,7 @@ release/pausar.o: ../BioHazard/pausar.cpp ../BioHazard/pausar.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtCore/qfiledevice.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtGui/qvector2d.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtouchdevice.h \
-		ui_pausar.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/QVariant \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QApplication \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/qcoreapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/qeventloop.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qguiapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qinputmethod.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QLabel \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qlabel.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qframe.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QPushButton \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qicon.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QTextBrowser \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qtextbrowser.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qtextedit.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtextdocument.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtextoption.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtextcursor.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtextformat.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qpen.h
+		ui_pausar.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\pausar.o ..\BioHazard\pausar.cpp
 
 release/perder.o: ../BioHazard/perder.cpp ../BioHazard/perder.h \
@@ -5168,31 +5078,7 @@ release/perder.o: ../BioHazard/perder.cpp ../BioHazard/perder.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtCore/qfiledevice.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtGui/qvector2d.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtouchdevice.h \
-		ui_perder.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/QVariant \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QApplication \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/qcoreapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/qeventloop.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qguiapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qinputmethod.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QPushButton \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qicon.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QSplitter \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qsplitter.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qframe.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QTextBrowser \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qtextbrowser.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qtextedit.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtextdocument.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtextoption.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtextcursor.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtextformat.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qpen.h
+		ui_perder.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\perder.o ..\BioHazard\perder.cpp
 
 release/player1.o: ../BioHazard/player1.cpp ../BioHazard/player1.h \
@@ -5713,20 +5599,8 @@ release/principal.o: ../BioHazard/principal.cpp ../BioHazard/principal.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qlabel.h \
 		../BioHazard/ventanaprincipalusuario.h \
 		../BioHazard/seleccionarnivel.h \
-		ui_principal.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QApplication \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/qcoreapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/qeventloop.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qguiapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qinputmethod.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QPushButton \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qicon.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QSplitter \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qsplitter.h
+		../BioHazard/mostrarranking.h \
+		ui_principal.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\principal.o ..\BioHazard\principal.cpp
 
 release/registro.o: ../BioHazard/registro.cpp ../BioHazard/registro.h \
@@ -5836,30 +5710,7 @@ release/registro.o: ../BioHazard/registro.cpp ../BioHazard/registro.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QMessageBox \
 		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qdialog.h \
-		ui_registro.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/QVariant \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QApplication \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/qcoreapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/qeventloop.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qguiapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qinputmethod.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QGroupBox \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qgroupbox.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qframe.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QLabel \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qlabel.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QLineEdit \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qlineedit.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtextcursor.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtextformat.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qpen.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtextoption.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QPushButton \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qicon.h
+		ui_registro.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\registro.o ..\BioHazard\registro.cpp
 
 release/score.o: ../BioHazard/score.cpp ../BioHazard/score.h \
@@ -6062,24 +5913,7 @@ release/seleccionarnivel.o: ../BioHazard/seleccionarnivel.cpp ../BioHazard/selec
 		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QMessageBox \
 		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qdialog.h \
-		ui_seleccionarnivel.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/QVariant \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QApplication \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/qcoreapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/qeventloop.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qguiapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qinputmethod.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QLabel \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qlabel.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qframe.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QPushButton \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qicon.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QSplitter \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qsplitter.h
+		ui_seleccionarnivel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\seleccionarnivel.o ..\BioHazard\seleccionarnivel.cpp
 
 release/ship.o: ../BioHazard/ship.cpp ../BioHazard/ship.h \
@@ -6677,24 +6511,8 @@ release/ventanaprincipalusuario.o: ../BioHazard/ventanaprincipalusuario.cpp ../B
 		C:/Qt/5.13.0/mingw73_64/include/QtCore/QTimer \
 		C:/Qt/5.13.0/mingw73_64/include/QtCore/qtimer.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtCore/qbasictimer.h \
+		../BioHazard/mostrarranking.h \
 		ui_ventanaprincipalusuario.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/QVariant \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QApplication \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/qcoreapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtCore/qeventloop.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qguiapplication.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qinputmethod.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QLabel \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qlabel.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qframe.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QPushButton \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtGui/qicon.h \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QSplitter \
-		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qsplitter.h \
 		../BioHazard/game.h \
 		../BioHazard/obstaculo.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QGraphicsRectItem \
@@ -6710,6 +6528,7 @@ release/ventanaprincipalusuario.o: ../BioHazard/ventanaprincipalusuario.cpp ../B
 		C:/Qt/5.13.0/mingw73_64/include/QtGui/qtextoption.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qscrollarea.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qframe.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtCore/QObject \
 		../BioHazard/player1.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QGraphicsPixmapItem \
@@ -6734,6 +6553,7 @@ release/ventanaprincipalusuario.o: ../BioHazard/ventanaprincipalusuario.cpp ../B
 		C:/Qt/5.13.0/mingw73_64/include/QtCore/QSharedDataPointer \
 		C:/Qt/5.13.0/mingw73_64/include/QtCore/QString \
 		C:/Qt/5.13.0/mingw73_64/include/QtCore/QUrl \
+		C:/Qt/5.13.0/mingw73_64/include/QtCore/QVariant \
 		C:/Qt/5.13.0/mingw73_64/include/QtMultimedia/qmediaenumdebug.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtCore/qmetaobject.h \
 		C:/Qt/5.13.0/mingw73_64/include/QtMultimedia/qaudio.h \
@@ -6749,6 +6569,8 @@ release/ventanaprincipalusuario.o: ../BioHazard/ventanaprincipalusuario.cpp ../B
 		../BioHazard/pausar.h \
 		../BioHazard/perder.h \
 		../BioHazard/pasarnivel.h \
+		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/QLabel \
+		C:/Qt/5.13.0/mingw73_64/include/QtWidgets/qlabel.h \
 		../BioHazard/ganar.h \
 		../BioHazard/healer.h \
 		../BioHazard/ammo.h \

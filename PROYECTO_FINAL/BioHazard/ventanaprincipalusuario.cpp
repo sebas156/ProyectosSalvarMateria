@@ -16,6 +16,7 @@ VentanaPrincipalUsuario::VentanaPrincipalUsuario(int nivel, int puntos, string N
     ui->setupUi(this);
     NickName = QString::fromStdString(NombreUsuario);
     ui->NombreUsuario->setText(NickName);
+    Ordenamiento_por_Insercion(RankingDeUsuarios.size());
 }
 
 VentanaPrincipalUsuario::~VentanaPrincipalUsuario()
@@ -73,7 +74,9 @@ void VentanaPrincipalUsuario::on_Cooperativo_clicked()
 
 void VentanaPrincipalUsuario::on_Ranking_clicked()
 {
-
+    InterfazMostarRanking= new mostrarranking(RankingDeUsuarios);
+    InterfazMostarRanking->show();
+    connect(InterfazMostarRanking,&mostrarranking::buttonClicked,this,&VentanaPrincipalUsuario::eliminarInterfazMostarRankingUsuarios);
 }
 
 void VentanaPrincipalUsuario::on_CerrarSesion_clicked()
@@ -230,6 +233,12 @@ void VentanaPrincipalUsuario::RegistarCambiosEnElRanking()
         }
     }
     EscribirArchivoRanking.close();
+}
+
+void VentanaPrincipalUsuario::eliminarInterfazMostarRankingUsuarios()
+{
+    InterfazMostarRanking->close();
+    delete InterfazMostarRanking;
 }
 
 void VentanaPrincipalUsuario::RegistrarEnElArchivo()
