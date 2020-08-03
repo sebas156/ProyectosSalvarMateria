@@ -16,7 +16,7 @@ public:
     ~spaceship();
     void keyPressEvent(QKeyEvent * event);
     void keyReleaseEvent(QKeyEvent *event);
-    QTimer *movtimer;
+    QTimer *movtimer; // Timer que ejecuta el slot que actualiza la psocion de la nave.
     QTimer *acelerate;
     QTimer *anim;
     QTimer *seedtimer;

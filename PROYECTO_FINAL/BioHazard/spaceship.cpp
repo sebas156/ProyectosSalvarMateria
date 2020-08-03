@@ -168,12 +168,14 @@ void spaceship::move()
     for (int i = 0;i<EnemyClase1.size();i++) {
         float DistanciaHeroEnemigo=pow(pow(EnemyClase1.at(i)->x()-(this->x()+30),2)+pow(EnemyClase1.at(i)->y()-(this->y()+30),2),0.5);
         if(DistanciaHeroEnemigo<=40){
+            reduce_health();
             EnemyClase1.at(i)->SeDebeEliminar=true;
         }
     }
     for (int i = 0;i<EnemyClase2.size();i++) {
         float DistanciaHeroEnemigo=pow(pow(EnemyClase2.at(i)->x()-this->x(),2)+pow(EnemyClase2.at(i)->y()-this->y(),2),0.5);
         if(DistanciaHeroEnemigo<=40){
+            reduce_health();
             EnemyClase2.at(i)->SeDebeEliminar=true;
         }
     }

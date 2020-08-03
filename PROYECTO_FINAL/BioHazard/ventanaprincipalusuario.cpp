@@ -89,6 +89,11 @@ void VentanaPrincipalUsuario::LlamarIniciarJuego()
         Game->InterfazPerder->close();
        delete Game;
     }
+    else{
+        Game2->InterfazPausar->close();
+        Game2->InterfazPerder->close();
+       delete Game2;
+    }
     IniciarNivel();
 }
 

@@ -3,7 +3,7 @@
 
 #include "ship.h"
 
-class enemyship:public ship
+class enemyship:public ship // Herencia de la clase ship.
 {
 public:
     enemyship(QGraphicsItem * parent=0);

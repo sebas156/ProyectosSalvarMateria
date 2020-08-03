@@ -8,12 +8,6 @@
 
 enemy::enemy()
 {
-//    //set random position
-//    int random_number = rand()% 700;
-//    posx=random_number;
-//    posy=0;
-    //draw the enemy
-//    setRect(0,0,46,46);
 
     setPixmap(QPixmap(":/MOV/mutant.png").copy(0,0,46,46));
     setShapeMode(BoundingRectShape);
@@ -43,22 +37,24 @@ void enemy::reducir_salud()
 
 void enemy::ColisionRetroceder(float AX, float AY)
 {
+    // Posicion que llevaba el enemigo antes de ser impactado por la bala.
     float tempx=x();
     float tempy=y();
-    while (velocidad.Magnitud()>2) {
-        if(posx>0 && posx<1900 && posy>100 && posy<1100){
+    while (velocidad.Magnitud()>2) { // Bucle que se repite mientras que la velocidad del enemigo al cual le han disparado sea mayor que 2
+        if(posx>0 && posx<1900 && posy>100 && posy<1100){  // Verifica si el zombie se encuentra dentro de la escena.
             velocidad.x = velocidad.x + AX*dt;
             velocidad.y = velocidad.y + AY*dt;
             posx = posx + velocidad.x*dt + (AX*dt*dt)/2;
             posy = posy + velocidad.y*dt + (AY*dt*dt)/2;
             this->setPos(posx,posy);
         }else {
+            // Si no se encuentra dentro de la escene se queda justo donde está... A pesar que le disparen.
             velocidad.x=0;
             velocidad.y=0;
             setPos(tempx,tempy);
         }
-        QList<QGraphicsItem *> colliding_items = collidingItems();
-        for(int i=0, n = colliding_items.size(); i<n ; i++)
+        QList<QGraphicsItem *> colliding_items = collidingItems(); // Estas lineas de codigo verifican si debido al retroceso del enemigo por el disparo.
+        for(int i=0, n = colliding_items.size(); i<n ; i++)       // el enemigo choca contra un muro.
         {
             if(typeid (*(colliding_items[i])) == typeid(obstaculo))
             {

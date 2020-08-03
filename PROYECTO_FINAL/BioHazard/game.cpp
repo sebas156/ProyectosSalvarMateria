@@ -153,6 +153,9 @@ game::~game()
         Paredes.erase(V);
         V.~iterator();
     }
+    delete hbar;
+    delete Healer;
+    delete Ammo;
     delete player;
     delete music;
     delete InterfazGanar;
@@ -210,66 +213,79 @@ void game::EstablecerMuros()
                 }
                 else if(fila==5 and columna==2 ){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,95);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==6 and columna==28 ){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,145);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==4 and columna==0){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==7 and columna==32){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==8 and columna==25){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,95);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==10 and columna==5){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,145);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==8 and columna==0){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,195,245);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==13 and columna==11){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==11 and columna==15){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==14 and columna==17){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,95);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==13 and columna==22){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==13 and columna==30){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,95);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==9 and columna==31){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,145,195);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
@@ -287,31 +303,37 @@ void game::EstablecerMuros()
                 }
                 else if(fila==17 and columna==1){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,145);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==19 and columna==9){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,145);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==19 and columna==18){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,145);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==23 and columna==22){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,145);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==18 and columna==26){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==16 and columna==32){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
@@ -319,126 +341,151 @@ void game::EstablecerMuros()
             else {
                 if(fila==1 and columna==0 ){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==5 and columna==2 ){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,95);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==4 and columna==24 ){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==6 and columna==13 ){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==6 and columna==17){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,145);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==4 and columna==24){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==6 and columna==24){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,95);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==9 and columna==17){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,45);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==9 and columna==21){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,245);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==9 and columna==26){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==10 and columna==9){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,45);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==8 and columna==33){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,195);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==8 and columna==38){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==12 and columna==17){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,195);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==12 and columna==25){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,45);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==14 and columna==1){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,45);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==14 and columna==7){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,45);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==13 and columna==17){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,45);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==14 and columna==31){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,45);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==16 and columna==23){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,45);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==20 and columna==2){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,145);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==20 and columna==17){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,45);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==21 and columna==25){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,45,45);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==21 and columna==37){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,145,145);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
                 else if(fila==18 and columna==29){
                     obstaculo * Auxiliar = new obstaculo(ArregloMatrizAbstracta[fila][columna].PosRX,ArregloMatrizAbstracta[fila][columna].PosRY,95,95);
+                    Auxiliar->setPen(Qt::NoPen);
                     scene->addItem(Auxiliar);
                     Paredes.push_back(Auxiliar);
                 }
