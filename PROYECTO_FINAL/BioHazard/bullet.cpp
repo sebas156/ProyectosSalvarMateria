@@ -71,6 +71,15 @@ void bullet::move()
             delete this;
             break;
         }
+
+        if(typeid (*(colliding_items[i])) == typeid(player1))
+                {
+                    delete this;
+                    Game->player->RestarVida(-25);
+                    if(Game->player->get_vida()>100)
+                        Game->player->set_vida(100);
+                    break;
+                }
     }
 
 // ******************************   E R R O R    A Q U I   **********************************//

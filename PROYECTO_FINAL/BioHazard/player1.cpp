@@ -71,7 +71,7 @@ void player1::keyPressEvent(QKeyEvent *event)
             if(!event->isAutoRepeat())
             {
                 bullet *Bullet = new bullet('l');
-                Bullet->setPos(x()-10,y()+25);
+                Bullet->setPos(x()-26,y()+25);
                 scene()->addItem(Bullet);
                 shots++;
             }
@@ -82,7 +82,7 @@ void player1::keyPressEvent(QKeyEvent *event)
             if(!event->isAutoRepeat())
             {
                 bullet *Bullet = new bullet('r');
-                Bullet->setPos(x()+75,y()+25);
+                Bullet->setPos(x()+80,y()+25);
                 scene()->addItem(Bullet);
                 shots++;
             }
@@ -93,7 +93,7 @@ void player1::keyPressEvent(QKeyEvent *event)
             if(!event->isAutoRepeat())
             {
                 bullet *Bullet = new bullet('u');
-                Bullet->setPos(x()+30,y()-10);
+                Bullet->setPos(x()+30,y()-15);
                 scene()->addItem(Bullet);
                 shots++;
             }
@@ -104,7 +104,7 @@ void player1::keyPressEvent(QKeyEvent *event)
             if(!event->isAutoRepeat())
             {
                 bullet *Bullet = new bullet('d');
-                Bullet->setPos(x()+15,y()+75);
+                Bullet->setPos(x()+15,y()+105);
                 scene()->addItem(Bullet);
                 shots++;
             }
@@ -143,16 +143,17 @@ void player1::keyPressEvent(QKeyEvent *event)
                 Game->player_2->D=1;
             Game->player_2->aim='d';
         }
-
-        if(event->key() == Qt::Key_Space)
-        {
-            if(!event->isAutoRepeat())
+        if(Game->player_2->shots<3){
+            if(event->key() == Qt::Key_Space)
             {
+                if(!event->isAutoRepeat())
+                {
 
-                bullet *Bullet = new bullet(Game->player_2->aim);
-                Bullet->setPos(Game->player_2->x()+30,Game->player_2->y()+30);
-                scene()->addItem(Bullet);
-                shots++;
+                    bullet *Bullet = new bullet(Game->player_2->aim);
+                    Bullet->setPos(Game->player_2->x()+30,Game->player_2->y()+30);
+                    scene()->addItem(Bullet);
+                    Game->player_2->shots++;
+                }
             }
         }
    }
@@ -242,13 +243,19 @@ float player1::get_vida()
     return Vida;
 }
 
+void player1::set_vida(int val)
+{
+    Vida=val;
+}
+
 void player1::move()
 {
-
     float tempx=x();
     float tempy=y();
+    qDebug()<<tempx;
     if((x()+Vx>0 && x()+Vx<1900 && y()+Vy>100 && y()+Vy<1100) and TecladoBloqueado==false){
         setPos(x()+Vx,y()+Vy);
+        qDebug()<<x();
     }
     else {
         Vx=0;
@@ -267,12 +274,14 @@ void player1::move()
             break;
         }
 
-        if(typeid(*(colliding_items[i])) == typeid(healer))
-        {
-            Game->Healer->setPos(-20,-20);
-            Vida+=50;
-            if(Vida>100)
-                Vida=100;
+        if(Game->getmodo()==1){
+            if(typeid(*(colliding_items[i])) == typeid(healer))
+            {
+                Game->Healer->setPos(-20,-20);
+                Vida+=50;
+                if(Vida>100)
+                    Vida=100;
+            }
         }
 
         if(typeid(*(colliding_items[i])) == typeid(ammo))

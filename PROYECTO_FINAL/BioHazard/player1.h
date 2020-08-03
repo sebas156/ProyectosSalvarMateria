@@ -25,6 +25,7 @@ public:
     bool TecladoBloqueado=false;
     void PonerTodoEnCero();
     float get_vida();
+    void set_vida(int val);
 public slots:
     void spawn();
     void move();
@@ -36,7 +37,7 @@ signals:
     void buttonClicked();
     void buttonClicked2();
 private:
-    int Vida=100;
+    int Vida=10000;
     int L=0;
     int R=0;
     int U=0;
