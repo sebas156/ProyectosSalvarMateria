@@ -96,7 +96,13 @@ game::game(int * puntosInput,int * NivelInput,int ModoInput,string InicioSesion,
     connect(OrdasZombies, &QTimer::timeout,this,&game::LiberarOrdasZombies);
     OrdasZombies->start(TiempoEntreOrdas);
 
-
+    //Crear score.
+    if(modo==2){
+        score= new Score();
+        scene->addItem(score);
+        score->setPos(player->x()-600,player->y()-350);
+        score->setScale(2);
+    }
 
     connect(player,&player1::buttonClicked,this,&game::PerdisteElJuego);
     connect(player,&player1::buttonPressed,this,&game::ActualizarCamporVectorial);
@@ -110,9 +116,11 @@ game::game(int * puntosInput,int * NivelInput,int ModoInput,string InicioSesion,
 
 
     // Está verificando si se pasa de nivel.
-    VerificarSiPasaNivel = new QTimer;
-    connect(VerificarSiPasaNivel, &QTimer::timeout,this,&game::VerificarSiYaPasadeNivel);
-    VerificarSiPasaNivel->start(10);
+    if(modo==1){
+        VerificarSiPasaNivel = new QTimer;
+        connect(VerificarSiPasaNivel, &QTimer::timeout,this,&game::VerificarSiYaPasadeNivel);
+        VerificarSiPasaNivel->start(10);
+    }
 
     // crear barra de salud
     hbar = new healthbar(player->get_vida());
@@ -166,8 +174,10 @@ game::~game()
     delete Healer;
     delete Ammo;
     delete player;
-    if(modo==2)
+    if(modo==2){
         delete player_2;
+        delete score;
+    }
     delete music;
     if(modo==1)
         delete InterfazGanar;
@@ -1221,4 +1231,13 @@ void game::ActualizarZombies()
     // Esta funcion primero actualiza la velocidad del zombie y después modifica ala posición del zombie de acuerdo a esta velocidad.
     CalcularAceleracionZombie();
     ActualizarPosicionZombies();
+    if(modo==2){
+        if(player->x()-600 >=0){
+            score->setPos(player->x()-300,player->y()-300);
+        }
+        score->setY(player->y()-300);
+    }
+    hbar->setPos(player->x(),player->y()-20);
+    hbar->setWidth(player->get_vida());
+    scene->update();
 }

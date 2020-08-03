@@ -25,6 +25,7 @@
 #include "healer.h"
 #include "ammo.h"
 #include "player2.h"
+#include "score.h"
 
 class game: public QGraphicsView
 {
@@ -40,6 +41,7 @@ public:
     healthbar *hbar;
     healer * Healer;
     ammo * Ammo;
+    Score * score;
     void SetZombiesPorOrda();   // Establece los zombies que se despliegan cada TiempoEntreOrdas segundos.
     void EstablecerMuros();
     bool PisoConFriccion();
