@@ -47,6 +47,7 @@ private:
     int nivelSeleccionado;
     bool reinicio=false;
     SeleccionarNivel *SeleccionarNivelUsuario;
+    int contadorPuntos=0;
 };
 
 #endif // VENTANAPRINCIPALUSUARIO_H

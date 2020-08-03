@@ -24,15 +24,17 @@
 #include "healthbar.h"
 #include "healer.h"
 #include "ammo.h"
+#include "player2.h"
 
 class game: public QGraphicsView
 {
 public:
-    game(int*,int,string,QWidget *parent = 0);
+    game(int *,int*,int,string,QWidget *parent = 0);
     ~game();
     void SetNivelOrda(int,int);
     QGraphicsScene * scene; // Variable para la escena.
     player1 * player;       // Jugador.
+    player2 * player_2;      //jugador 2.
     QGraphicsView * view; // el view.
     QMediaPlayer * music;
     healthbar *hbar;
@@ -58,12 +60,12 @@ public:
     QList<enemy *> Zombies;
     void BorrarZombie();
     void CaracteristicasZombiesPorNivelYOrda(enemy *);
-
+    int getmodo();
     pausar * InterfazPausa;
     perder * InterfazPerder;
     PasarNivel * InterfazPasarNivel;
     ganar * InterfazGanar;
-
+    int * puntosTotales;
 public slots:
     void PausarTodoJuego();      // Slot que al ejecutarse para todos los timers.
     void LiberarOrdasZombies();  // Libera una cierta cantidad de zombies cada TiempoEntreOrdas segundos.
@@ -81,7 +83,7 @@ private:
     QTimer * VerificarSiPasaNivel;
     int nivel;                      //Nivel actual del juador.
     int Orda;                       // Orda actual del jugador.
-    int TiempoEntreOrdas;           // Tiempo que hay entre en despliegue de zombies y otro.
+    int TiempoEntreOrdas=6000;           // Tiempo que hay entre en despliegue de zombies y otro.
     int modo;
     int *NivelRetornar;             // NivelRetornar recibe la direccion de memoria de la variable en la que se guardó el nivel que se selecciono.
     QString NickNameInicioSesion;   // Almacena el nombre del usuario que ha iniciado sesion.
@@ -92,6 +94,9 @@ private:
     int NIX,NIY;                          // Guarda la posision en la matriz de los nodos iniciales.
     float t=0.1;                          // Variable de tiempo para las ecuaciones de movimientos de los zombies.
     int ContadorNumeroMaximoZombies=0;
+    int zombiesPorSpawn=6;
+    int maximoNumeroZombiesPorOrda=30;
+
 };
 
 #endif // GAME_H

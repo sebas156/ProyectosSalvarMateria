@@ -22,5 +22,13 @@
         <file>BGI/escenario.png</file>
         <file>2D/ammo.png</file>
         <file>2D/healer.png</file>
+        <file>MOV/D2.png</file>
+        <file>MOV/DL2.png</file>
+        <file>MOV/DR2.png</file>
+        <file>MOV/L2.png</file>
+        <file>MOV/R2.png</file>
+        <file>MOV/U2.png</file>
+        <file>MOV/UL2.png</file>
+        <file>MOV/UR2.png</file>
     </qresource>
 </RCC>

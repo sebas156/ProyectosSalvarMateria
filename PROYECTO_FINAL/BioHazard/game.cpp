@@ -11,9 +11,11 @@
 #include "bullet.h"
 #include <stdlib.h>
 #include <time.h>
+#include "player2.h"
 
-game::game(int * NivelInput,int ModoInput,string InicioSesion,QWidget *parent)
+game::game(int * puntosInput,int * NivelInput,int ModoInput,string InicioSesion,QWidget *parent)
 {
+    puntosTotales=puntosInput;
     // Modo de juego.
     modo = ModoInput;
     // Nombre del usuario que ha iniciado sesion.
@@ -29,10 +31,12 @@ game::game(int * NivelInput,int ModoInput,string InicioSesion,QWidget *parent)
 
     // Crea la variable de la interfaz que se genera si al juador lo matan.
     InterfazPerder= new perder();
-    InterfazPasarNivel= new PasarNivel();
+    if(modo==1)
+        InterfazPasarNivel= new PasarNivel();
 
     //Crea la variable con la interfaz que se genera si el jugador gana el juego (Pasa el ultimo nivel.)
-    InterfazGanar= new ganar();
+    if(modo==1)
+        InterfazGanar= new ganar();
 
     //create a scene
     scene = new QGraphicsScene();
@@ -41,13 +45,12 @@ game::game(int * NivelInput,int ModoInput,string InicioSesion,QWidget *parent)
 
     //create an item to put into the scene
     player = new player1();
-
+    if(modo==2)
+        player_2=new player2();
     //add previous item to the scene
-    scene->addItem(player);
-
-    //make rect focusable
-    player->setFlag(QGraphicsItem::ItemIsFocusable);
-    player->setFocus();
+    //scene->addItem(player);
+    if(modo==2)
+        scene->addItem(player_2);
 
     //add view
     view = new QGraphicsView(scene);
@@ -57,10 +60,17 @@ game::game(int * NivelInput,int ModoInput,string InicioSesion,QWidget *parent)
         view->setBackgroundBrush(QBrush(QImage(":/BGI/escenario2.png")));
     //view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     //view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
+    scene->addItem(player);
     view->setFixedSize(800,600);
-
+    if(modo==2)
+        view->setFixedSize(1280,720);
     player->setPos(700,700);
+    if(modo==2)
+        player_2->setPos(700,700);
+
+    //make rect focusable
+    player->setFlag(QGraphicsItem::ItemIsFocusable);
+    player->setFocus();
 
     view->show();
     // Esta funcion esta blece los zombies que salen segun la ordan en la que se encuentre.
@@ -80,7 +90,6 @@ game::game(int * NivelInput,int ModoInput,string InicioSesion,QWidget *parent)
     ArregloMatrizAbstracta[NIX][NIY].Direccion.x=0;
     ArregloMatrizAbstracta[NIX][NIY].Direccion.y=0;
     //________________________________________________
-
 
     // Este timer libera un numero de zombies cada TiempoEntreOrdas segundos.
     OrdasZombies = new QTimer;
@@ -157,14 +166,19 @@ game::~game()
     delete Healer;
     delete Ammo;
     delete player;
+    if(modo==2)
+        delete player_2;
     delete music;
-    delete InterfazGanar;
+    if(modo==1)
+        delete InterfazGanar;
     delete InterfazPausa;
     delete InterfazPerder;
-    delete InterfazPasarNivel;
+    if(modo==1)
+        delete InterfazPasarNivel;
     delete OrdasZombies;
     delete timer;
-    delete VerificarSiPasaNivel;
+    if(modo==1)
+        delete VerificarSiPasaNivel;
     delete scene;
     delete view;
 }
@@ -179,17 +193,27 @@ void game::SetNivelOrda(int NivelAux, int OrdaAux)
 void game::SetZombiesPorOrda()
 {
     //Esta funcion establece el numero de zombies cada vez que el timer OrdasZombies se inicie. Según la orda en la que se encuentre.
-    if(Orda==1){
-        TiempoEntreOrdas=6000;
-        SetNumeroZombies(6);
+    if(modo==1){
+        if(Orda==1){
+            TiempoEntreOrdas=6000;
+            SetNumeroZombies(6);
+        }
+        else if(Orda==2){
+            TiempoEntreOrdas=15000;
+            SetNumeroZombies(9);
+        }
+        else if(Orda==3){
+            TiempoEntreOrdas=18000;
+            SetNumeroZombies(12);
+        }
     }
-    else if(Orda==2){
-        TiempoEntreOrdas=15000;
-        SetNumeroZombies(9);
-    }
-    else if(Orda==3){
-        TiempoEntreOrdas=18000;
-        SetNumeroZombies(12);
+    else
+    {
+        TiempoEntreOrdas+=1000;
+        zombiesPorSpawn+=2;
+        SetNumeroZombies(zombiesPorSpawn);
+
+
     }
 }
 
@@ -655,9 +679,12 @@ void game::PerdisteElJuego()
     InterfazPerder->show();
     OrdasZombies->stop();
     timer->stop();
-    VerificarSiPasaNivel->stop();
+    if(modo==1)
+        VerificarSiPasaNivel->stop();
     player->TecladoBloqueado=true;
     player->PonerTodoEnCero();
+    if(modo==2)
+        player_2->PonerTodoEnCero();
     music->stop();
 }
 
@@ -702,10 +729,13 @@ void game::ContinuarJugando()
     // Inicializa nuevamente todos los timers.
     OrdasZombies->start(TiempoEntreOrdas);
     timer->start(20);
-    VerificarSiPasaNivel->start(20);
+    if(modo==1)
+        VerificarSiPasaNivel->start(20);
     InterfazPausa->close();
     player->TecladoBloqueado=false;
     player->PonerTodoEnCero();
+    if(modo==2)
+        player_2->PonerTodoEnCero();
     music->play();
 }
 
@@ -818,34 +848,51 @@ void game::LiberarOrdasZombies()
     // Esta funcion Despliega los zombies dada la posicion de un determinado nodo.
     // Esta funcion en realidad va a ser un slot. Cada determinado segundo va a liberar una nueva orda de zombies.
     ContadorNumeroMaximoZombies+=NumeroZombies;
-    if(Orda==1){
-        if(ContadorNumeroMaximoZombies>=60){
-            if(Zombies.size()==0){
+    if(modo==1)
+    {
+        if(Orda==1){
+            if(ContadorNumeroMaximoZombies>=60){
+                if(Zombies.size()==0){
+                    Orda++;
+                    SetZombiesPorOrda();
+                    ContadorNumeroMaximoZombies=0;
+                    Healer->setPos(100,335);
+                }
+                return;
+            }
+        }
+        else if(Orda==2){
+            if(ContadorNumeroMaximoZombies>=90){
+                if(Zombies.size()==0){
+                    Orda++;
+                    SetZombiesPorOrda();
+                    ContadorNumeroMaximoZombies=0;
+                    Healer->setPos(100,335);
+                }
+                return;
+            }
+        }
+        else if(Orda==3){
+            if(ContadorNumeroMaximoZombies>=120){
+                return;
+            }
+        }
+    }
+    else
+    {
+        if(ContadorNumeroMaximoZombies>=maximoNumeroZombiesPorOrda)
+        {
+            if(Zombies.size()==0)
+            {
                 Orda++;
                 SetZombiesPorOrda();
                 ContadorNumeroMaximoZombies=0;
                 Healer->setPos(100,335);
+                maximoNumeroZombiesPorOrda+=4;
             }
             return;
         }
     }
-    else if(Orda==2){
-        if(ContadorNumeroMaximoZombies>=90){
-            if(Zombies.size()==0){
-                Orda++;
-                SetZombiesPorOrda();
-                ContadorNumeroMaximoZombies=0;
-                Healer->setPos(100,335);
-            }
-            return;
-        }
-    }
-    else if(Orda==3){
-        if(ContadorNumeroMaximoZombies>=120){
-            return;
-        }
-    }
-
     srand(time(NULL));
     if(nivel==1){
         vector <int> ColumnasDespliegue1={5,12,13,14,20,19,18,24,25,26,33};
@@ -955,46 +1002,60 @@ bool game::CrearObstaculosMapa(int fila, int columna)
 void game::CaracteristicasZombiesPorNivelYOrda(enemy * actual)
 {
     // Dependiendo del nivel y orda en el que se encuentre el personaje los zombies van a tener ciertas caracteristicas.
-    if(nivel==1){
-        if(Orda==1){
-            actual->Dano=1;
-            actual->Masa=80;
-            actual->VelocidadMaxima=30;
-            actual->reduccion=30;
+    if(modo==1)
+    {
+        if(nivel==1){
+            if(Orda==1){
+                actual->Dano=1;
+                actual->Masa=80;
+                actual->VelocidadMaxima=30;
+                actual->reduccion=30;
+            }
+            else if (Orda==2) {
+                actual->Dano=2;
+                actual->Masa=70;
+                actual->VelocidadMaxima=40;
+                actual->reduccion=25;
+            }
+            else if (Orda==3) {
+                actual->Dano=3;
+                actual->Masa=60;
+                actual->VelocidadMaxima=50;
+                actual->reduccion=20;
+            }
         }
-        else if (Orda==2) {
-            actual->Dano=2;
-            actual->Masa=70;
-            actual->VelocidadMaxima=40;
-            actual->reduccion=25;
-        }
-        else if (Orda==3) {
-            actual->Dano=3;
-            actual->Masa=60;
-            actual->VelocidadMaxima=50;
-            actual->reduccion=20;
+        else {
+            if(Orda==1){
+                actual->Dano=3;
+                actual->Masa=100;
+                actual->VelocidadMaxima=50;
+                actual->reduccion=25;
+            }
+            else if (Orda==2) {
+                actual->Dano=4;
+                actual->Masa=90;
+                actual->VelocidadMaxima=55;
+                actual->reduccion=20;
+            }
+            else if (Orda==3) {
+                actual->Dano=5;
+                actual->Masa=80;
+                actual->VelocidadMaxima=60;
+                actual->reduccion=15;
+            }
         }
     }
-    else {
-        if(Orda==1){
-            actual->Dano=3;
-            actual->Masa=100;
-            actual->VelocidadMaxima=50;
-            actual->reduccion=25;
-        }
-        else if (Orda==2) {
-            actual->Dano=4;
-            actual->Masa=90;
-            actual->VelocidadMaxima=55;
-            actual->reduccion=20;
-        }
-        else if (Orda==3) {
-            actual->Dano=5;
-            actual->Masa=80;
-            actual->VelocidadMaxima=60;
-            actual->reduccion=15;
-        }
+    else
+    {
+        actual->Dano=Orda;
+        actual->Masa=(Orda*10)+60;
+        actual->VelocidadMaxima=40;
+        actual->reduccion=25;
     }
+}
+int game::getmodo()
+{
+    return modo;
 }
 
 void game::PausarTodoJuego()

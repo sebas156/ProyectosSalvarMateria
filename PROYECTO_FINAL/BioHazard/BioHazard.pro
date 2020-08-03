@@ -45,6 +45,7 @@ SOURCES += \
         pausar.cpp \
         perder.cpp \
         player1.cpp \
+        player2.cpp \
         principal.cpp \
         registro.cpp \
         score.cpp \
@@ -74,6 +75,7 @@ HEADERS += \
         pausar.h \
         perder.h \
         player1.h \
+        player2.h \
         principal.h \
         registro.h \
         score.h \

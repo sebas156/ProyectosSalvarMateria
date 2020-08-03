@@ -34,6 +34,11 @@ void VentanaPrincipalUsuario::on_Campana_clicked()
 void VentanaPrincipalUsuario::on_Cooperativo_clicked()
 {
     ModoDeJuego=2;
+    nivelSeleccionado=3;
+    Game = new game(&contadorPuntos,&nivelSeleccionado,ModoDeJuego,"Jugadores");
+    connect(Game->InterfazPausa,&pausar::buttonClicked2,this,&VentanaPrincipalUsuario::InterrumpidoRegresarMenuPrincipal);
+    connect(Game->InterfazPerder,&perder::buttonClicked2,this,&VentanaPrincipalUsuario::InterrumpidoRegresarMenuPrincipal);
+    connect(Game->InterfazPerder,&perder::buttonClicked,this,&VentanaPrincipalUsuario::LlamarIniciarJuego);
 }
 
 void VentanaPrincipalUsuario::on_Ranking_clicked()
@@ -67,10 +72,20 @@ void VentanaPrincipalUsuario::IniciarNivelSeleccionado()
 void VentanaPrincipalUsuario::InterrumpidoRegresarMenuPrincipal()
 {
     if(nivelSeleccionado==1 or nivelSeleccionado==3){
-        Game->InterfazGanar->close();
+        if(ModoDeJuego==2)
+        {
+            if(contadorPuntos>PuntosActuales){
+                PuntosActuales=contadorPuntos;
+                RegistrarEnElArchivo();
+            }
+            contadorPuntos=0;
+        }
+        if(ModoDeJuego==1)
+            Game->InterfazGanar->close();
         Game->InterfazPerder->close();
         Game->InterfazPausa->close();
-        Game->InterfazPasarNivel->close();
+        if(ModoDeJuego==1)
+            Game->InterfazPasarNivel->close();
         delete Game;
     }
     else{
@@ -80,11 +95,21 @@ void VentanaPrincipalUsuario::InterrumpidoRegresarMenuPrincipal()
         delete Game2;
     }
     this->show();
+
 }
 
 void VentanaPrincipalUsuario::LlamarIniciarJuego()
 {
     if(nivelSeleccionado==1 or nivelSeleccionado==3){
+        if(ModoDeJuego==2)
+        {
+            if(contadorPuntos>PuntosActuales)
+            {
+                PuntosActuales=contadorPuntos;
+                RegistrarEnElArchivo();
+            }
+            contadorPuntos=0;
+        }
         Game->InterfazPausa->close();
         Game->InterfazPerder->close();
        delete Game;
@@ -92,7 +117,7 @@ void VentanaPrincipalUsuario::LlamarIniciarJuego()
     else{
         Game2->InterfazPausar->close();
         Game2->InterfazPerder->close();
-       delete Game2;
+        delete Game2;
     }
     IniciarNivel();
 }
@@ -144,8 +169,15 @@ void VentanaPrincipalUsuario::RegistrarEnElArchivo()
 
 void VentanaPrincipalUsuario::IniciarNivel()
 {
+    if(nivelSeleccionado==3 && ModoDeJuego==2)
+    {
+        Game = new game(&contadorPuntos,&nivelSeleccionado,ModoDeJuego,"Jugadores");
+        connect(Game->InterfazPausa,&pausar::buttonClicked2,this,&VentanaPrincipalUsuario::InterrumpidoRegresarMenuPrincipal);
+        connect(Game->InterfazPerder,&perder::buttonClicked2,this,&VentanaPrincipalUsuario::InterrumpidoRegresarMenuPrincipal);
+        connect(Game->InterfazPerder,&perder::buttonClicked,this,&VentanaPrincipalUsuario::LlamarIniciarJuego);
+    }
     if(nivelSeleccionado==1){
-        Game=new game(&nivelSeleccionado,ModoDeJuego,NickName.toStdString());
+        Game=new game(&contadorPuntos,&nivelSeleccionado,ModoDeJuego,NickName.toStdString());
         connect(Game->InterfazPausa,&pausar::buttonClicked2,this,&VentanaPrincipalUsuario::InterrumpidoRegresarMenuPrincipal);
         connect(Game->InterfazPerder,&perder::buttonClicked2,this,&VentanaPrincipalUsuario::InterrumpidoRegresarMenuPrincipal);
         connect(Game->InterfazPerder,&perder::buttonClicked,this,&VentanaPrincipalUsuario::LlamarIniciarJuego);
@@ -162,7 +194,7 @@ void VentanaPrincipalUsuario::IniciarNivel()
         connect(Game2->InterfazPasarNivel,&PasarNivel::buttonClicked2,this,&VentanaPrincipalUsuario::SubirNivelSinEjecutar);
     }
     else {
-        Game=new game(&nivelSeleccionado,ModoDeJuego,NickName.toStdString());
+        Game=new game(&contadorPuntos,&nivelSeleccionado,ModoDeJuego,NickName.toStdString());
         connect(Game->InterfazPausa,&pausar::buttonClicked2,this,&VentanaPrincipalUsuario::InterrumpidoRegresarMenuPrincipal);
         connect(Game->InterfazPerder,&perder::buttonClicked2,this,&VentanaPrincipalUsuario::InterrumpidoRegresarMenuPrincipal);
         connect(Game->InterfazPerder,&perder::buttonClicked,this,&VentanaPrincipalUsuario::LlamarIniciarJuego);

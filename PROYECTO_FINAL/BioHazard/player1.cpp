@@ -66,7 +66,7 @@ void player1::keyPressEvent(QKeyEvent *event)
             D=1;
     }
     if(shots<=50){
-        if(event->key() == Qt::Key_Left)
+        if(event->key() == Qt::Key_F)
         {
             if(!event->isAutoRepeat())
             {
@@ -77,7 +77,7 @@ void player1::keyPressEvent(QKeyEvent *event)
             }
         }
 
-        if(event->key() == Qt::Key_Right)
+        if(event->key() == Qt::Key_H)
         {
             if(!event->isAutoRepeat())
             {
@@ -88,7 +88,7 @@ void player1::keyPressEvent(QKeyEvent *event)
             }
         }
 
-        if(event->key() == Qt::Key_Up)
+        if(event->key() == Qt::Key_T)
         {
             if(!event->isAutoRepeat())
             {
@@ -99,7 +99,7 @@ void player1::keyPressEvent(QKeyEvent *event)
             }
         }
 
-        if(event->key() == Qt::Key_Down)
+        if(event->key() == Qt::Key_G)
         {
             if(!event->isAutoRepeat())
             {
@@ -116,6 +116,47 @@ void player1::keyPressEvent(QKeyEvent *event)
         emit buttonClicked2();
 
     }
+
+    // FOR PLAYER 2 //////////////////////////////////////////////////////////
+    if(Game->getmodo()==2){
+        if(event->key() == Qt::Key_Left)
+        {
+            if(!event->isAutoRepeat())
+                Game->player_2->L=1;
+            Game->player_2->aim='l';
+        }
+        if(event->key() == Qt::Key_Right)
+        {
+            if(!event->isAutoRepeat())
+                Game->player_2->R=1;
+            Game->player_2->aim='r';
+        }
+        if(event->key() == Qt::Key_Up)
+        {
+            if(!event->isAutoRepeat())
+                Game->player_2->U=1;
+            Game->player_2->aim='u';
+        }
+        if(event->key() == Qt::Key_Down)
+        {
+            if(!event->isAutoRepeat())
+                Game->player_2->D=1;
+            Game->player_2->aim='d';
+        }
+
+        if(event->key() == Qt::Key_Space)
+        {
+            if(!event->isAutoRepeat())
+            {
+
+                bullet *Bullet = new bullet(Game->player_2->aim);
+                Bullet->setPos(Game->player_2->x()+30,Game->player_2->y()+30);
+                scene()->addItem(Bullet);
+                shots++;
+            }
+        }
+   }
+
 
 }
 
@@ -145,6 +186,31 @@ void player1::keyReleaseEvent(QKeyEvent *event)
             D=0;
     }
     emit buttonPressed();
+
+    // FOR PLAYER 2 //////////////////////////////////////////////////
+    if(Game->getmodo()==2)
+    {
+        if(event->key() == Qt::Key_Left)
+        {
+            if(!event->isAutoRepeat())
+                Game->player_2->L=0;
+        }
+        if(event->key() == Qt::Key_Right)
+        {
+            if(!event->isAutoRepeat())
+                Game->player_2->R=0;
+        }
+        if(event->key() == Qt::Key_Up)
+        {
+            if(!event->isAutoRepeat())
+                Game->player_2->U=0;
+        }
+        if(event->key() == Qt::Key_Down)
+        {
+            if(!event->isAutoRepeat())
+                Game->player_2->D=0;
+        }
+    }
 }
 
 void player1::RestarVida(int recibido)
@@ -188,7 +254,7 @@ void player1::move()
         Vx=0;
         Vy=0;
     }
-    //Game->view->centerOn(x(),y());
+    Game->view->centerOn(x(),y());
     QList<QGraphicsItem *> colliding_items = collidingItems();
     for(int i=0, n = colliding_items.size(); i<n ; i++)
     {
