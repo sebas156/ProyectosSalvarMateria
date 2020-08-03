@@ -2,6 +2,7 @@
 #include "ui_ventanaprincipalusuario.h"
 #include "game.h"
 #include "game2.h"
+
 game2 extern *Game2;
 game extern *Game;
 
@@ -9,6 +10,7 @@ VentanaPrincipalUsuario::VentanaPrincipalUsuario(int nivel, int puntos, string N
     QWidget(parent),
     ui(new Ui::VentanaPrincipalUsuario)
 {
+    LeerRankingDeJugadores();
     PuntosActuales=puntos;
     NivelActual=nivel;
     ui->setupUi(this);
@@ -19,6 +21,33 @@ VentanaPrincipalUsuario::VentanaPrincipalUsuario(int nivel, int puntos, string N
 VentanaPrincipalUsuario::~VentanaPrincipalUsuario()
 {
     delete ui;
+}
+
+void VentanaPrincipalUsuario::LeerRankingDeJugadores()
+{
+   ifstream ArchivoRanking("RankingDeUsuarios.txt");
+   if(ArchivoRanking.fail())
+       QMessageBox::warning(this,"ERROR","No se pudo abrir el archivo. ");
+   else {
+       while (!ArchivoRanking.eof()) {
+           string renglon="";
+           getline(ArchivoRanking,renglon);
+           if(renglon!=""){
+                PonerEnElvector(renglon);
+           }
+
+       }
+   }
+   ArchivoRanking.close();
+}
+
+void VentanaPrincipalUsuario::PonerEnElvector(string lineaActual)
+{
+    map<string,int> Auxiliar;
+    int encontrar=lineaActual.find(",");
+    int Puntaje=StringANumero(lineaActual.substr(encontrar+1,lineaActual.size()-encontrar));
+    Auxiliar[lineaActual.substr(0,encontrar)]=Puntaje;
+    RankingDeUsuarios.push_back(Auxiliar);
 }
 
 void VentanaPrincipalUsuario::on_Campana_clicked()
@@ -78,6 +107,14 @@ void VentanaPrincipalUsuario::InterrumpidoRegresarMenuPrincipal()
             if(contadorPuntos>PuntosActuales){
                 PuntosActuales=contadorPuntos;
                 RegistrarEnElArchivo();
+                for(int i=0;i<RankingDeUsuarios.size();i++){
+                    if(RankingDeUsuarios[i].begin()->first==NickName.toStdString()){
+                        RankingDeUsuarios[i].begin()->second=PuntosActuales;
+                        Ordenamiento_por_Insercion(RankingDeUsuarios.size());
+                        RegistarCambiosEnElRanking();
+                        break;
+                    }
+                }
             }
             contadorPuntos=0;
         }
@@ -108,6 +145,14 @@ void VentanaPrincipalUsuario::LlamarIniciarJuego()
             {
                 PuntosActuales=contadorPuntos;
                 RegistrarEnElArchivo();
+                for(int i=0;i<RankingDeUsuarios.size();i++){
+                    if(RankingDeUsuarios[i].begin()->first==NickName.toStdString()){
+                        RankingDeUsuarios[i].begin()->second=PuntosActuales;
+                        Ordenamiento_por_Insercion(RankingDeUsuarios.size());
+                        RegistarCambiosEnElRanking();
+                        break;
+                    }
+                }
             }
             contadorPuntos=0;
         }
@@ -157,6 +202,36 @@ void VentanaPrincipalUsuario::SubirNivelSinEjecutar()
     this->show();
 }
 
+void VentanaPrincipalUsuario::Ordenamiento_por_Insercion(int tamanio)
+{
+    // Metodo clasico de ordenamiento por insercion sobre el vector de UsuariosRanking. Tomando como eje de comparacion
+    // los puntos de cada uno de los usarios.
+    int pos;
+    map<string,int> aux;
+    for (int i = 0;i<tamanio;i++) {
+        pos=i;
+        aux=RankingDeUsuarios[i];
+        while ((pos>0) and RankingDeUsuarios[pos-1].begin()->second > aux.begin()->second) {
+            RankingDeUsuarios[pos]=RankingDeUsuarios[pos-1];
+            pos--;
+        }
+       RankingDeUsuarios[pos]=aux;
+    }
+}
+
+void VentanaPrincipalUsuario::RegistarCambiosEnElRanking()
+{
+    ofstream EscribirArchivoRanking("RankingDeUsuarios.txt");
+    if(EscribirArchivoRanking.fail())
+        QMessageBox::warning(this,"ERROR","No se pudo abrir el archivo. ");
+    else {
+        for(int i=0;i<RankingDeUsuarios.size();i++){
+            EscribirArchivoRanking<<RankingDeUsuarios[i].begin()->first<<","<<RankingDeUsuarios[i].begin()->second<<endl;
+        }
+    }
+    EscribirArchivoRanking.close();
+}
+
 void VentanaPrincipalUsuario::RegistrarEnElArchivo()
 {
     ofstream archivo(NickName.toStdString()+".txt");
@@ -203,5 +278,16 @@ void VentanaPrincipalUsuario::IniciarNivel()
         connect(Game->InterfazGanar,&ganar::buttonClicked,this,&VentanaPrincipalUsuario::InterrumpidoRegresarMenuPrincipal);
     }
 
+}
+
+int VentanaPrincipalUsuario:: StringANumero(string cadena){
+    //Convierte una cadena de caracteres al numero que está representando.
+    int acum=0;
+    for(int i=0; i<cadena.size();i++){
+        acum+=cadena[i]-48;
+        acum*=10;
+    }
+    acum/=10;
+    return acum;
 }
 

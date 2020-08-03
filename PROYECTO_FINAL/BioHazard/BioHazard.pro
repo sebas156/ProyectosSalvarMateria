@@ -39,6 +39,7 @@ SOURCES += \
         inicarsesion2.cpp \
         main.cpp \
         mainwindow.cpp \
+        mostrarranking.cpp \
         nodo.cpp \
         obstaculo.cpp \
         pasarnivel.cpp \
@@ -69,6 +70,7 @@ HEADERS += \
         healthbar.h \
         inicarsesion2.h \
         mainwindow.h \
+        mostrarranking.h \
         nodo.h \
         obstaculo.h \
         pasarnivel.h \
@@ -89,6 +91,7 @@ HEADERS += \
 FORMS += \
         ganar.ui \
         inicarsesion2.ui \
+        mostrarranking.ui \
         pasarnivel.ui \
         pausar.ui \
         perder.ui \

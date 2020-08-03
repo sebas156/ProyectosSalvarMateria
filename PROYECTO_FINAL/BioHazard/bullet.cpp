@@ -128,8 +128,10 @@ void bullet::move()
                 Game->Zombies[x]->ColisionRetroceder(Game->Zombies[x]->velocidad.x*(-1.5),Game->Zombies[x]->velocidad.y*(-1.5));
                 if(Game->Zombies[x]->salud<=0)
                 {
-                    if(Game->getmodo()==2)
+                    if(Game->getmodo()==2){
                         *(Game->puntosTotales)+=10;
+                        Game->score->increase(10);
+                    }
                     delete Game->Zombies[x];
                     Game->Zombies.erase(it);
                     break;

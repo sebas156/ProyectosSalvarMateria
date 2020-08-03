@@ -82,6 +82,9 @@ int principal::BusquedaBinaria(string Usuario, int EquivalenteUsuario, int maxim
     }
     while(minimo<=maximo){
         resultado=(minimo+maximo)/2;
+        if(resultado>maximo-1){
+            return -1;
+        }
         if(EquivalenteUsuario > UsuariosRegistrados[resultado].begin()->second.begin()->second)
             minimo=resultado+1;
         else if (EquivalenteUsuario < UsuariosRegistrados[resultado].begin()->second.begin()->second)
@@ -156,6 +159,9 @@ void principal::VerificarNoEstaRegistar()
             LlenarConUsuariosRegistrados(AuxUsuario+","+AuxPaswoord1);
             Ordenamiento_por_Insercion(UsuariosRegistrados.size());
             Registrar();
+            ofstream ArchivoUsuarioRanking("RankingDeUsuarios.txt",ios::app);
+            ArchivoUsuarioRanking<<AuxUsuario<<","<<"0"<<endl;
+            ArchivoUsuarioRanking.close();
             AuxUsuario+=".txt";
             ofstream ArchivoUsuarioNuevo(AuxUsuario);
             ArchivoUsuarioNuevo<<"1,0"<<endl;
@@ -234,6 +240,8 @@ int principal:: StringANumero(string cadena){
     int acum=0;
     for(int i=0; i<cadena.size();i++){
         acum+=cadena[i]-48;
+        acum*=10;
     }
+    acum/=10;
     return acum;
 }

@@ -1073,7 +1073,8 @@ void game::PausarTodoJuego()
     // Detiene todos los timers
     OrdasZombies->stop();
     timer->stop();
-    VerificarSiPasaNivel->stop();
+    if(modo==1)
+        VerificarSiPasaNivel->stop();
     music->stop();
     InterfazPausa->show();
 

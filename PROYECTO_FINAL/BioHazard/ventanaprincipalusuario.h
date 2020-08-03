@@ -7,6 +7,9 @@
 #include "seleccionarnivel.h"
 #include <QTimer>
 #include <fstream>
+#include <map>
+#include <vector>
+#include <iostream>
 
 using namespace std;
 namespace Ui {
@@ -20,6 +23,9 @@ class VentanaPrincipalUsuario : public QWidget
 public:
     explicit VentanaPrincipalUsuario(int,int,string,QWidget *parent = nullptr);
     ~VentanaPrincipalUsuario();
+    void LeerRankingDeJugadores();
+    void PonerEnElvector(string);
+    int StringANumero(string);
 
 private slots:
     void on_Campana_clicked();
@@ -33,6 +39,8 @@ private slots:
     void LlamarIniciarJuego();
     void CompararPasarNivelInmediatamente();
     void SubirNivelSinEjecutar();
+    void  Ordenamiento_por_Insercion(int);
+    void RegistarCambiosEnElRanking();
 
 signals:
     void buttonClicked();
@@ -48,6 +56,7 @@ private:
     bool reinicio=false;
     SeleccionarNivel *SeleccionarNivelUsuario;
     int contadorPuntos=0;
+    vector<map<string,int>> RankingDeUsuarios;
 };
 
 #endif // VENTANAPRINCIPALUSUARIO_H

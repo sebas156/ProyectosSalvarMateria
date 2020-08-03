@@ -127,7 +127,9 @@ void game2::QuierenPausar()
     ship->PausarTodosLosTimers();
     TiempoRestantePasarNivel=TiempoParaAguantar->remainingTime();
     TiempoParaAguantar->stop();
+    TimerPerdiste->stop();
     movie->stop();
+    music->stop();
     timer->stop();
     ship->PausarTodosLosTimers();
     InterfazPausar->show();
@@ -138,7 +140,9 @@ void game2::QuierenContinuar()
     ship->ReactivarTodosLosTimers();
     TiempoParaAguantar->start(TiempoRestantePasarNivel);
     movie->start();
+    music->play();
     timer->start(1000);
+    TimerPerdiste->start(5);
     ship->ReactivarTodosLosTimers();
     InterfazPausar->close();
 }
