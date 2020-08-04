@@ -30,6 +30,13 @@ player2::player2():QGraphicsPixmapItem()
     acelerate->start(30);
 }
 
+player2::~player2()
+{
+    delete movtimer;
+    delete acelerate;
+    delete timer_anim;
+}
+
 void player2::RestarVida(int recibido)
 {
 

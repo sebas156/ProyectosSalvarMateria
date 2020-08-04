@@ -127,10 +127,15 @@ game::game(int * puntosInput,int * NivelInput,int ModoInput,string InicioSesion,
     scene->addItem(hbar);
     hbar->setPos(player->x(),player->y()-20);
 
+    if(modo==1){
     //add healer
     Healer = new healer;
     scene->addItem(Healer);
-    Healer->setPos(100,335);
+    if(nivel==1)
+        Healer->setPos(100,335);
+    else
+        Healer->setPos(100,500);
+    }
 
     //add ammo re-fill
     Ammo = new ammo;
@@ -142,6 +147,10 @@ game::game(int * puntosInput,int * NivelInput,int ModoInput,string InicioSesion,
     connect(re_fill, &QTimer::timeout,this,&game::respawnAmmo);
     re_fill->start(15000);
 
+    // Actualiza la posicion de la bara de vida y el score.
+    PosicionHealth=new QTimer;
+    connect(PosicionHealth, &QTimer::timeout,this,&game::ActualizarPosicionScore);
+    PosicionHealth->start(3);
 
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -170,6 +179,7 @@ game::~game()
         Paredes.erase(V);
         V.~iterator();
     }
+    delete PosicionHealth;
     delete hbar;
     delete Healer;
     delete Ammo;
@@ -737,6 +747,7 @@ void game::VerificarSiYaPasadeNivel()
 void game::ContinuarJugando()
 {
     // Inicializa nuevamente todos los timers.
+    PosicionHealth->start(3);
     OrdasZombies->start(TiempoEntreOrdas);
     timer->start(20);
     if(modo==1)
@@ -752,6 +763,17 @@ void game::ContinuarJugando()
 void game::respawnAmmo()
 {
     Ammo->setPos(1780,1050);
+}
+
+void game::ActualizarPosicionScore()
+{
+    if(modo==2){
+        QPointF sceneCenter = view->mapToScene( view->viewport()->rect().center() );
+          score->setPos(sceneCenter.x()-600,sceneCenter.y()-300);
+    }
+    hbar->setPos(player->x(),player->y()-20);
+    hbar->setWidth(player->get_vida());
+    scene->update();
 }
 
 void game::InicializarCuadros()
@@ -866,7 +888,10 @@ void game::LiberarOrdasZombies()
                     Orda++;
                     SetZombiesPorOrda();
                     ContadorNumeroMaximoZombies=0;
-                    Healer->setPos(100,335);
+                    if(nivel==1)
+                        Healer->setPos(100,335);
+                    else
+                        Healer->setPos(100,500);
                 }
                 return;
             }
@@ -877,7 +902,10 @@ void game::LiberarOrdasZombies()
                     Orda++;
                     SetZombiesPorOrda();
                     ContadorNumeroMaximoZombies=0;
-                    Healer->setPos(100,335);
+                    if(nivel==1)
+                        Healer->setPos(100,335);
+                    else
+                        Healer->setPos(100,500);
                 }
                 return;
             }
@@ -897,7 +925,10 @@ void game::LiberarOrdasZombies()
                 Orda++;
                 SetZombiesPorOrda();
                 ContadorNumeroMaximoZombies=0;
-                Healer->setPos(100,335);
+                if(nivel==1)
+                    Healer->setPos(100,335);
+                else
+                    Healer->setPos(100,500);
                 maximoNumeroZombiesPorOrda+=4;
             }
             return;
@@ -1071,6 +1102,7 @@ int game::getmodo()
 void game::PausarTodoJuego()
 {
     // Detiene todos los timers
+    PosicionHealth->stop();
     OrdasZombies->stop();
     timer->stop();
     if(modo==1)
@@ -1232,11 +1264,4 @@ void game::ActualizarZombies()
     // Esta funcion primero actualiza la velocidad del zombie y después modifica ala posición del zombie de acuerdo a esta velocidad.
     CalcularAceleracionZombie();
     ActualizarPosicionZombies();
-    if(modo==2){
-        QPointF sceneCenter = view->mapToScene( view->viewport()->rect().center() );
-          score->setPos(sceneCenter.x()-600,sceneCenter.y()-300);
-    }
-    hbar->setPos(player->x(),player->y()-20);
-    hbar->setWidth(player->get_vida());
-    scene->update();
 }

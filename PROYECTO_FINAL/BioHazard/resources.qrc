@@ -30,5 +30,6 @@
         <file>MOV/U2.png</file>
         <file>MOV/UL2.png</file>
         <file>MOV/UR2.png</file>
+        <file>BGI/controles.jpeg</file>
     </qresource>
 </RCC>

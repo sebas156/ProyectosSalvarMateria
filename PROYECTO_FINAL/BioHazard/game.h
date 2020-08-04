@@ -69,7 +69,7 @@ public:
     ganar * InterfazGanar;
     int * puntosTotales;
 public slots:
-    void PausarTodoJuego();      // Slot que al ejecutarse para todos los timers.
+    void PausarTodoJuego();      // Slot que al ejecutarse detiene todos los timers.
     void LiberarOrdasZombies();  // Libera una cierta cantidad de zombies cada TiempoEntreOrdas segundos.
     void ActualizarCamporVectorial();  //
     void ActualizarZombies();         // Actualiza la posicion de los zombies.
@@ -78,11 +78,13 @@ public slots:
     void VerificarSiYaPasadeNivel(); // Verifica si pasa de nivel o en su defecto gana el juego
     void ContinuarJugando();        // Inicia todos los timers.
     void respawnAmmo();
+    void ActualizarPosicionScore();
 
 private:
     QTimer * OrdasZombies;
     QTimer * timer;
     QTimer * VerificarSiPasaNivel;
+    QTimer *PosicionHealth;
     int nivel;                      //Nivel actual del juador.
     int Orda;                       // Orda actual del jugador.
     int TiempoEntreOrdas=6000;           // Tiempo que hay entre en despliegue de zombies y otro.
