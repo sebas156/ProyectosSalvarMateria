@@ -12,6 +12,7 @@ class player2: public QObject,/* public QGraphicsRectItem,*/ public QGraphicsPix
     Q_OBJECT
 public:
     player2();
+    ~player2();
     QTimer *movtimer;
     QTimer *acelerate;
     QTimer *timer_anim;

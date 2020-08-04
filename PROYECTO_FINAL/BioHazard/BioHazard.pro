@@ -29,6 +29,7 @@ SOURCES += \
         ammo.cpp \
         bullet.cpp \
         bullet2.cpp \
+        controles.cpp \
         enemy.cpp \
         enemyship.cpp \
         game.cpp \
@@ -61,6 +62,7 @@ HEADERS += \
         ammo.h \
         bullet.h \
         bullet2.h \
+        controles.h \
         enemy.h \
         enemyship.h \
         game.h \
@@ -89,6 +91,7 @@ HEADERS += \
         ventanaprincipalusuario.h
 
 FORMS += \
+        controles.ui \
         ganar.ui \
         inicarsesion2.ui \
         mostrarranking.ui \

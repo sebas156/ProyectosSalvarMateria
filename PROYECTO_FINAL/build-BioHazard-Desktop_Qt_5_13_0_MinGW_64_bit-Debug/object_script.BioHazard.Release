@@ -1,6 +1,7 @@
 release/ammo.o
 release/bullet.o
 release/bullet2.o
+release/controles.o
 release/enemy.o
 release/enemyship.o
 release/game.o
@@ -32,6 +33,7 @@ release/qrc_resources.o
 release/moc_ammo.o
 release/moc_bullet.o
 release/moc_bullet2.o
+release/moc_controles.o
 release/moc_enemy.o
 release/moc_ganar.o
 release/moc_healer.o

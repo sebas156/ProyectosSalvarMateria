@@ -11,6 +11,7 @@
 #include <vector>
 #include <iostream>
 #include "mostrarranking.h"
+#include "controles.h"
 
 using namespace std;
 namespace Ui {
@@ -43,10 +44,12 @@ private slots:
     void  Ordenamiento_por_Insercion(int);
     void RegistarCambiosEnElRanking();
     void eliminarInterfazMostarRankingUsuarios();
+    void Destruircontroles();
 
 signals:
     void buttonClicked();
 private:
+    controles * InterfazControles;
     mostrarranking * InterfazMostarRanking;
     void RegistrarEnElArchivo();
     void IniciarNivel();

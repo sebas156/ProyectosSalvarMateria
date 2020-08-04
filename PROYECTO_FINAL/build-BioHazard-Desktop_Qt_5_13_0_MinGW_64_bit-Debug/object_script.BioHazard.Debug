@@ -1,6 +1,7 @@
 debug/ammo.o
 debug/bullet.o
 debug/bullet2.o
+debug/controles.o
 debug/enemy.o
 debug/enemyship.o
 debug/game.o
@@ -32,6 +33,7 @@ debug/qrc_resources.o
 debug/moc_ammo.o
 debug/moc_bullet.o
 debug/moc_bullet2.o
+debug/moc_controles.o
 debug/moc_enemy.o
 debug/moc_ganar.o
 debug/moc_healer.o

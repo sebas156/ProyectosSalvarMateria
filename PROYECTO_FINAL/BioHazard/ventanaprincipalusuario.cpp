@@ -92,6 +92,10 @@ void VentanaPrincipalUsuario::Aparecer()
 
 void VentanaPrincipalUsuario::on_comojugar_clicked()
 {
+    this->close();
+    InterfazControles= new controles();
+    InterfazControles->show();
+    connect(InterfazControles,&controles::buttonClicked,this,&VentanaPrincipalUsuario::Destruircontroles);
 
 }
 
@@ -239,6 +243,12 @@ void VentanaPrincipalUsuario::eliminarInterfazMostarRankingUsuarios()
 {
     InterfazMostarRanking->close();
     delete InterfazMostarRanking;
+}
+
+void VentanaPrincipalUsuario::Destruircontroles()
+{
+    this->show();
+    delete InterfazControles;
 }
 
 void VentanaPrincipalUsuario::RegistrarEnElArchivo()
