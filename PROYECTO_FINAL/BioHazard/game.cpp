@@ -1233,10 +1233,8 @@ void game::ActualizarZombies()
     CalcularAceleracionZombie();
     ActualizarPosicionZombies();
     if(modo==2){
-        if(player->x()-600 >=0){
-            score->setPos(player->x()-300,player->y()-300);
-        }
-        score->setY(player->y()-300);
+        QPointF sceneCenter = view->mapToScene( view->viewport()->rect().center() );
+          score->setPos(sceneCenter.x()-600,sceneCenter.y()-300);
     }
     hbar->setPos(player->x(),player->y()-20);
     hbar->setWidth(player->get_vida());

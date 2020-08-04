@@ -252,10 +252,10 @@ void player1::move()
 {
     float tempx=x();
     float tempy=y();
-    qDebug()<<tempx;
+    //qDebug()<<tempx;
     if((x()+Vx>0 && x()+Vx<1900 && y()+Vy>100 && y()+Vy<1100) and TecladoBloqueado==false){
         setPos(x()+Vx,y()+Vy);
-        qDebug()<<x();
+        //qDebug()<<x();
     }
     else {
         Vx=0;
