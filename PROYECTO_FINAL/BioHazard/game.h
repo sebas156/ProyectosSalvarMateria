@@ -85,6 +85,7 @@ private:
     QTimer * timer;
     QTimer * VerificarSiPasaNivel;
     QTimer *PosicionHealth;
+    QTimer *re_fill;
     int nivel;                      //Nivel actual del juador.
     int Orda;                       // Orda actual del jugador.
     int TiempoEntreOrdas=6000;           // Tiempo que hay entre en despliegue de zombies y otro.

@@ -143,7 +143,7 @@ game::game(int * puntosInput,int * NivelInput,int ModoInput,string InicioSesion,
     Ammo->setPos(1780,1050);
 
     //set ammo re-spawn time
-    QTimer *re_fill = new QTimer;
+    re_fill = new QTimer;
     connect(re_fill, &QTimer::timeout,this,&game::respawnAmmo);
     re_fill->start(15000);
 
@@ -164,6 +164,7 @@ game::game(int * puntosInput,int * NivelInput,int ModoInput,string InicioSesion,
 
 game::~game()
 {
+    delete re_fill;
     for(int i=0;i<Zombies.size();i++){
         QList<enemy *>::iterator h=Zombies.begin();
         delete Zombies.at(i);
@@ -713,7 +714,7 @@ void game::VerificarSiYaPasadeNivel()
 {
     // Verifica si ya pasó de nivel o en su defecto ganó el juego.
     qDebug()<<Zombies.size()<<" "<<nivel<<" "<<Orda;
-    if(Zombies.size()==0 and nivel==3 and Orda==2){
+    if(Zombies.size()==0 and nivel==3 and Orda==3 and ContadorNumeroMaximoZombies>=120){
         InterfazGanar->show();
         player->TecladoBloqueado=true;
         player->PonerTodoEnCero();
@@ -724,7 +725,7 @@ void game::VerificarSiYaPasadeNivel()
         player->PonerTodoEnCero();
         music->stop();
     }
-    else if((Zombies.size()==0 and Orda==2)){
+    else if((Zombies.size()==0 and Orda==3 and ContadorNumeroMaximoZombies>=120)){
         *NivelRetornar+=1;
         InterfazPasarNivel->show();
          player->TecladoBloqueado=true;
@@ -926,10 +927,6 @@ void game::LiberarOrdasZombies()
                 Orda++;
                 SetZombiesPorOrda();
                 ContadorNumeroMaximoZombies=0;
-                if(nivel==1)
-                    Healer->setPos(100,335);
-                else
-                    Healer->setPos(100,500);
                 maximoNumeroZombiesPorOrda+=4;
             }
             return;
