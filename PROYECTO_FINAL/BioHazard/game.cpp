@@ -15,6 +15,7 @@
 
 game::game(int * puntosInput,int * NivelInput,int ModoInput,string InicioSesion,QWidget *parent)
 {
+    // Almacena los puntos que tiene le jugador.
     puntosTotales=puntosInput;
     // Modo de juego.
     modo = ModoInput;
@@ -241,7 +242,7 @@ void game::SetZombiesPorOrda()
 
 void game::EstablecerMuros()
 {
-    // Busqueda exhaustiva y coloca un objeto obstaculo.
+    // Busqueda exhaustiva sobre la matriz de nodos y coloca un objeto obstaculo en la posicion de uno de los nodos..
     for(int fila=0;fila<24;fila++){
         for(int columna =0; columna<40; columna++){
             if(nivel==1){
@@ -690,11 +691,6 @@ void game::SetNumeroZombies(int Dificultad)
     NumeroZombies=Dificultad;
 }
 
-void game::follow_char()
-{
-    //view->centerOn(QPoint(player->x(),player->y()));
-}
-
 void game::PerdisteElJuego()
 {
     // Se detienen todos los timers y muestra la interfaz de perder.
@@ -714,7 +710,7 @@ void game::VerificarSiYaPasadeNivel()
 {
     // Verifica si ya pasó de nivel o en su defecto ganó el juego.
     qDebug()<<Zombies.size()<<" "<<nivel<<" "<<Orda;
-    if(Zombies.size()==0 and nivel==3 and Orda==3 and ContadorNumeroMaximoZombies>=120){
+    if(Zombies.size()==0 and nivel==3 and Orda==1 and ContadorNumeroMaximoZombies>=60){
         InterfazGanar->show();
         player->TecladoBloqueado=true;
         player->PonerTodoEnCero();
@@ -725,7 +721,7 @@ void game::VerificarSiYaPasadeNivel()
         player->PonerTodoEnCero();
         music->stop();
     }
-    else if((Zombies.size()==0 and Orda==3 and ContadorNumeroMaximoZombies>=120)){
+    else if((Zombies.size()==0 and Orda==1 and ContadorNumeroMaximoZombies>=60)){
         *NivelRetornar+=1;
         InterfazPasarNivel->show();
          player->TecladoBloqueado=true;

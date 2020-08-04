@@ -73,7 +73,6 @@ public slots:
     void LiberarOrdasZombies();  // Libera una cierta cantidad de zombies cada TiempoEntreOrdas segundos.
     void ActualizarCamporVectorial();  //
     void ActualizarZombies();         // Actualiza la posicion de los zombies.
-    void follow_char();              //Santiagoooooo.... Este se elimina?
     void PerdisteElJuego();          // Slot que detiene todos los timers y muestra la interfaz de perder.
     void VerificarSiYaPasadeNivel(); // Verifica si pasa de nivel o en su defecto gana el juego
     void ContinuarJugando();        // Inicia todos los timers.
@@ -98,10 +97,10 @@ private:
     queue <nodo *> frontera;              // Al amacena los nodos en los que el algoritmo de creacion del mapa de calor se va parando.
     int NIX,NIY;                          // Guarda la posision en la matriz de los nodos iniciales.
     float t=0.1;                          // Variable de tiempo para las ecuaciones de movimientos de los zombies.
-    int ContadorNumeroMaximoZombies=0;
-    int zombiesPorSpawn=6;
-    int maximoNumeroZombiesPorOrda=30;
-
+    int ContadorNumeroMaximoZombies=0;    // Cuanta el numero de zombies que se han deplegado en una orda de aliens.
+    int zombiesPorSpawn=6;               // Establece el numero de zombies que despliegan cada vez que el timer se reinicia.
+    int maximoNumeroZombiesPorOrda=30;   // Esto es para el modo cooperativo. Establece el numero maximo de zombies que se despliega or orda.
+                                         // Crece indefinidamente.
 };
 
 #endif // GAME_H
