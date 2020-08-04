@@ -181,7 +181,8 @@ game::~game()
     }
     delete PosicionHealth;
     delete hbar;
-    delete Healer;
+    if(modo==1)
+        delete Healer;
     delete Ammo;
     delete player;
     if(modo==2){

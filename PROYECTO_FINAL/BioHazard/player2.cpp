@@ -21,11 +21,11 @@ player2::player2():QGraphicsPixmapItem()
     connect(timer_anim,&QTimer::timeout,this,&player2::animate);
     timer_anim->start(60);
 
-    QTimer *movtimer = new QTimer();
+    movtimer = new QTimer();
     connect(movtimer,SIGNAL(timeout()),this,SLOT(move()));
     movtimer->start(5);
 
-    QTimer *acelerate = new QTimer();
+    acelerate = new QTimer();
     connect(acelerate,SIGNAL(timeout()),this,SLOT(change_speed()));
     acelerate->start(30);
 }
