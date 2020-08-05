@@ -717,8 +717,8 @@ void game::PerdisteElJuego()
 void game::VerificarSiYaPasadeNivel()
 {
     // Verifica si ya pasó de nivel o en su defecto ganó el juego.
-    qDebug()<<Zombies.size()<<" "<<nivel<<" "<<Orda;
-    if(Zombies.size()==0 and nivel==3 and Orda==1 and ContadorNumeroMaximoZombies>=40){
+    //qDebug()<<Zombies.size()<<" "<<nivel<<" "<<Orda;
+    if(Zombies.size()==0 and nivel==3 and Orda==3 and ContadorNumeroMaximoZombies>=80){
         InterfazGanar->show();
         player->TecladoBloqueado=true;
         player->PonerTodoEnCero();
@@ -727,7 +727,7 @@ void game::VerificarSiYaPasadeNivel()
         VerificarSiPasaNivel->stop();
         music->stop();
     }
-    else if((Zombies.size()==0 and Orda==1 and ContadorNumeroMaximoZombies>=40)){
+    else if((Zombies.size()==0 and Orda==3 and ContadorNumeroMaximoZombies>=80)){
         *NivelRetornar+=1;
         InterfazPasarNivel->show();
          player->TecladoBloqueado=true;
@@ -741,8 +741,6 @@ void game::VerificarSiYaPasadeNivel()
     hbar->setPos(player->x(),player->y()-20);
     hbar->setWidth(player->get_vida());
     scene->update();
-    //hbar2->setPos(player_2->x(),player_2->y()-20);
-    //hbar2->setWidth(player_2->get_vida());
     view->centerOn(player->x(),player->y());
 }
 
