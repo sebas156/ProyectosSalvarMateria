@@ -1,7 +1,8 @@
 dddddd,0
 zzzzzz,0
 qwert,0
+sebas,0
 hola,170
+gloria,360
 hellooo,440
 user,460
-sebas,0
