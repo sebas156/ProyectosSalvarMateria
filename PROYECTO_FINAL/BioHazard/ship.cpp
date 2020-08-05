@@ -72,45 +72,6 @@ void ship::move()
         //move enemy in a sinewave path (damped)
         setPos(x()-5,(y()+(0.002*((pi*(x()-10))/180)*((pi*(x()-10))/180)*30*sin((pi*(x()-10))/180)))  );
     }
-
-
-//      float DistanciaConProtagonista=pow(pow(Game2->ship->x()-this->x(),2)+pow(Game2->ship->y()-this->y(),2),0.5);
-//      if(DistanciaConProtagonista<=50){
-//          SeDebeEliminar=true;
-//          Game2->ship->reduce_health();
-//          Game2->score->reduce(50);
-//      }
-//       // Revisa cuales de los enemigos que se han generado se debe eliminar.
-//      for (int i=0;i<Game2->ship->EnemyClase0.size();i++) {
-//          auto IteradorQList=Game2->ship->EnemyClase0.begin();
-//          if(Game2->ship->EnemyClase0.at(i)->SeDebeEliminar==true){
-//             delete Game2->ship->EnemyClase0.at(i);
-//             IteradorQList+=i;
-//             Game2->ship->EnemyClase0.erase(IteradorQList);
-//             i=0;
-//         }
-//     }
-
-//    QList<QGraphicsItem *> colliding_items = collidingItems();
-//    for(int i = 0, n = colliding_items.size(); i < n; i++){
-//        if(typeid(*(colliding_items[i])) == typeid (spaceship)){
-//            collidingItems().clear();
-//            scene()->removeItem(this);
-//            SeDebeEliminar=true;
-//            Game2->ship->reduce_health();
-//            Game2->score->reduce(50);
-//            // Revisa cuales de los enemigos que se han generado se debe eliminar.
-//            for (int i=0;i<Game2->ship->EnemyClase0.size();i++) {
-//                auto IteradorQList=Game2->ship->EnemyClase0.begin();
-//                if(Game2->ship->EnemyClase0.at(i)->SeDebeEliminar==true){
-//                    delete Game2->ship->EnemyClase0.at(i);
-//                    IteradorQList+=i;
-//                    Game2->ship->EnemyClase0.erase(IteradorQList);
-
-//                }
-//            }
-//        }
-//    }
 }
 
 void ship::animate()

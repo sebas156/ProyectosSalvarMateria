@@ -12,7 +12,7 @@ class ganar : public QWidget
     Q_OBJECT
 
 public:
-    explicit ganar(QWidget *parent = nullptr);
+     ganar(QWidget *parent = nullptr);
     ~ganar();
 
 private slots:

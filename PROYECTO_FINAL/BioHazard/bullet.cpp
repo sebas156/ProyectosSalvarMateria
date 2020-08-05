@@ -12,6 +12,9 @@ extern game *Game;
 
 bullet::bullet(char dir)
 {
+    // Segun la direccion que lleva la bala.
+    // Establece la magnitud del vector velocidad de la bala.
+    // Para las colisiones.
     if(dir=='l'){
         L=1;
         this->velocidad.x=-1000;
@@ -38,10 +41,14 @@ bullet::bullet(char dir)
     setRect(0,0,5,5);
 
     //connect
-    QTimer *timer = new QTimer();
+    timer = new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(move()));
-
     timer->start(5);
+}
+
+bullet::~bullet()
+{
+    delete timer;
 }
 
 void bullet::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -56,16 +63,17 @@ void bullet::move()
     QList<QGraphicsItem *> colliding_items = collidingItems();
     for(int i=0, n = colliding_items.size(); i<n ; i++)
     {
+        // Si hubo una colision con un enemigo a ese enemigo se le reducirá la escala.
+        // Para marcarlo como que le han disparado.
+        // Además hay una bandera que indica que hubo una colisión.S
         if(typeid (*(colliding_items[i])) == typeid(enemy))
         {
-            //qDebug()<<colliding_items.size();
-            C=1;
+            C=1; // Bnadera que indica que hubo una colision.
             I=i;
-            //scene()->removeItem(colliding_items[i]);
-            //colliding_items[i]->setPos(7000,7000);
             colliding_items[i]->setScale(0.95);
             break;
         }
+        // Si la bala choca con un obstaculo, la bala se eliminará.S
         else if(typeid (*(colliding_items[i])) == typeid(obstaculo))
         {
             delete this;
@@ -74,6 +82,8 @@ void bullet::move()
 
         if(typeid (*(colliding_items[i])) == typeid(player1))
                 {
+                    //Si la bala choca con el player 1, es porque el player 2 le disparó.
+                    // Lo cual significa que al player 1 se le debe curar.
                     delete this;
                     Game->player->RestarVida(-25);
                     if(Game->player->get_vida()>100)
@@ -82,18 +92,7 @@ void bullet::move()
                 }
     }
 
-// ******************************   E R R O R    A Q U I   **********************************//
-//   Propuesta de solución: Recorrer toda la lista de Zombies y verificar, cada uno, si está o no en la escena.
-//   Eso puede implicar verificar si el objeto es visible, o si pertenece a los items() de la escena. En caso de que
-//   el objeto no sea visible o no esté en la escena, eliminarlo de la Qlist Zombies por su índice y a través de los
-//   métodos que ofrece este contenedor para borrar elementos.
-
-//    El código, hasta el momento, elimina las balas y remueve los enemigos de la escena de la forma correcta, y cuando
-//    hay enemigos superpuestos (es decir, uno encima de otro), no se eliminan todos los enemigos superpuesto de un solo disparo,
-//    sino que toda disparar tantas balas como enemigos haya (que es lo ideal). EL ÚNICO PROBLEMA ES ELIMINARLOS DE LA MEMORIA.
-//    ES DECIR, LA ELIMINACIÓN DE LOS ENEMIGOS ES LA ESPERADA, PERO SIGUEN OCUPANDO MEMORIA.
-
-
+    // Movimiento.
     if(L==1)
         setPos(x()-10,y());
     if(R==1)
@@ -103,31 +102,40 @@ void bullet::move()
     if(D==1)
         setPos(x(),y()+10);
 
+    //Aqui se verifica si la bala salió de la escena o si por el contrario colisionó con algo.
     if(pos().y()<0-rect().height() || pos().y()>1200 || pos().x()<0 || pos().x()>2000 || C==1)
     {
         scene()->removeItem(this);
         QList<enemy*>::iterator it=Game->Zombies.begin();
         for(int x=0; x<Game->Zombies.size();x++)
         {
+            // Se verifica cada uno de los zombies si su escala se ha reducido. Si es así, quiere decir que a ese zombie le dispararon.
             if(Game->Zombies[x]->scale()<1)
             {
+                // Considerando que la bala nunca se mueve en diagonal. Solo hay dosposibilidades. que la componente en x
+                // de la velocidad de la bala sea 0 o que lo sea la de y.
                 float vf;
                 if(this->velocidad.x==0){
+                    // Ecuacion de la colision entre dos objetos para el eje y.
                     vf=(velocidad.y*this->Masa + Game->Zombies[x]->Masa*Game->Zombies[x]->velocidad.y)/(this->Masa + Game->Zombies[x]->Masa);
                     Game->Zombies[x]->velocidad.y=vf;
                     Game->Zombies[x]->velocidad.x=0;
                 }
                 else {
+                    // Ecuacion de la colision entre dos objetos para el eje x.
                     vf=(velocidad.x*this->Masa + Game->Zombies[x]->Masa*Game->Zombies[x]->velocidad.x)/(this->Masa + Game->Zombies[x]->Masa);
                     Game->Zombies[x]->velocidad.x=vf;
                     Game->Zombies[x]->velocidad.y=0;
                 }
                 it+=x;
-                Game->Zombies[x]->setScale(1);
-                Game->Zombies[x]->reducir_salud();
+                Game->Zombies[x]->setScale(1); // Restablezco la escala del zombie.
+                Game->Zombies[x]->reducir_salud(); // Reduzco la salud del zombie.
+                // Se explica dentro de la funcion.
                 Game->Zombies[x]->ColisionRetroceder(Game->Zombies[x]->velocidad.x*(-1.5),Game->Zombies[x]->velocidad.y*(-1.5));
                 if(Game->Zombies[x]->salud<=0)
                 {
+                    // Se verifica si la salud del zombie es menor que 0. En ese caso se elimina el zombie.
+                    // Y si estamos en modo 2. Se aumenta el puntaje.
                     if(Game->getmodo()==2){
                         *(Game->puntosTotales)+=10;
                         Game->score->increase(10);

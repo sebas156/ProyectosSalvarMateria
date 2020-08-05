@@ -12,7 +12,7 @@ class perder : public QWidget
     Q_OBJECT
 
 public:
-    explicit perder(QWidget *parent = nullptr);
+    perder(QWidget *parent = nullptr);
     ~perder();
 
 private slots:

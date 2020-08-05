@@ -8,12 +8,14 @@ class bullet2:public QObject, public QGraphicsPixmapItem
     Q_OBJECT
 public:
     bullet2(QGraphicsItem *parent = 0);
+    ~bullet2();
 
 public slots:
     void move();
 
 private:
     bool SeElimina=false;
+    QTimer * timer;
 
 };
 

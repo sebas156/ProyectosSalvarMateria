@@ -13,11 +13,6 @@ extern game * Game;
 
 player1::player1():QGraphicsPixmapItem()
 {
-    //setPixmap(QPixmap(":/MOV/D.png"));
-    //QPixmap sprite(":/MOV/D.png");
-    //QPixmap cropped = sprite.copy(0,0,70,100);
-    //setPixmap(QPixmap(cropped));
-
     setPixmap(QPixmap(":/MOV/D.png").copy(0,0,70,100));
     this->setScale(0.95);
     setShapeMode(BoundingRectShape);
@@ -252,10 +247,9 @@ void player1::move()
 {
     float tempx=x();
     float tempy=y();
-    //qDebug()<<tempx;
+    //Verifica que se encientre dentro de los limites del mapa.
     if((x()+Vx>0 && x()+Vx<1900 && y()+Vy>100 && y()+Vy<1100) and TecladoBloqueado==false){
-        setPos(x()+Vx,y()+Vy);
-        //qDebug()<<x();
+        setPos(x()+Vx,y()+Vy); // Actualiza la posicion.
     }
     else {
         Vx=0;
@@ -278,9 +272,7 @@ void player1::move()
             if(typeid(*(colliding_items[i])) == typeid(healer))
             {
                 Game->Healer->setPos(-20,-20);
-                Vida+=50;
-                if(Vida>100)
-                    Vida=100;
+                Vida=100;
             }
         }
 

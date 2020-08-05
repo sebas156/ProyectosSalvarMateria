@@ -12,7 +12,7 @@ class pausar : public QWidget
     Q_OBJECT
 
 public:
-    explicit pausar(QString,QWidget *parent = nullptr);
+    pausar(QString,QWidget *parent = nullptr);
     ~pausar();
 
 private slots:

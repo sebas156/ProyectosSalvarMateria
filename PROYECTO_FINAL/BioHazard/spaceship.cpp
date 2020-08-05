@@ -165,6 +165,11 @@ void spaceship::spawn()
 void spaceship::move()
 {
     setPos(x(),y()+v);
+
+    // Los dos siguientes for verifican si la distancia de cada uno de los enemigos (sea clase 1 o clase 2) a la nave del heroe
+    // sea menor que 40 pixeles. Si es así, se asume que hubo una colision y se procede a restar vida la nave y
+    // marcar la nave enemiga.
+    //______________________________________________________________________________________________
     for (int i = 0;i<EnemyClase1.size();i++) {
         float DistanciaHeroEnemigo=pow(pow(EnemyClase1.at(i)->x()-(this->x()+30),2)+pow(EnemyClase1.at(i)->y()-(this->y()+30),2),0.5);
         if(DistanciaHeroEnemigo<=40){
@@ -180,6 +185,7 @@ void spaceship::move()
         }
     }
 
+    //___________________________________________________________________________________________________________
 
     for (int i = 0;i<EnemyClase1.size();i++) {
         auto iterador= EnemyClase1.begin();

@@ -12,7 +12,7 @@ class PasarNivel : public QWidget
     Q_OBJECT
 
 public:
-    explicit PasarNivel(QWidget *parent = nullptr);
+     PasarNivel(QWidget *parent = nullptr);
     ~PasarNivel();
 
 private slots:

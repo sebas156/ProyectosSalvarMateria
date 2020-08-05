@@ -10,6 +10,8 @@ VentanaPrincipalUsuario::VentanaPrincipalUsuario(int nivel, int puntos, string N
     QWidget(parent),
     ui(new Ui::VentanaPrincipalUsuario)
 {
+    /* Esta va a ser la interfaz principal del usuario.
+     */
     LeerRankingDeJugadores();
     PuntosActuales=puntos;
     NivelActual=nivel;
@@ -26,6 +28,7 @@ VentanaPrincipalUsuario::~VentanaPrincipalUsuario()
 
 void VentanaPrincipalUsuario::LeerRankingDeJugadores()
 {
+    // Del archivo de ranking lee los usuarios y los almacena en un vector de mapas.
    ifstream ArchivoRanking("RankingDeUsuarios.txt");
    if(ArchivoRanking.fail())
        QMessageBox::warning(this,"ERROR","No se pudo abrir el archivo. ");
@@ -44,6 +47,8 @@ void VentanaPrincipalUsuario::LeerRankingDeJugadores()
 
 void VentanaPrincipalUsuario::PonerEnElvector(string lineaActual)
 {
+    // En el archivo de ranking la informacion está puesta de cierta manera.
+    // Esta funcion descodifica esa configuracion para poder extraer la informacion y posteriormente ponerla en el vector.
     map<string,int> Auxiliar;
     int encontrar=lineaActual.find(",");
     int Puntaje=StringANumero(lineaActual.substr(encontrar+1,lineaActual.size()-encontrar));
@@ -53,7 +58,7 @@ void VentanaPrincipalUsuario::PonerEnElvector(string lineaActual)
 
 void VentanaPrincipalUsuario::on_Campana_clicked()
 {
-    ModoDeJuego=1;
+    ModoDeJuego=1; // Si el personaje selecciona campaña el modo de juego será 1.
     this->close();
     SeleccionarNivelUsuario = new SeleccionarNivel(NivelActual,NickName.toStdString());
     connect(SeleccionarNivelUsuario,&SeleccionarNivel::buttonClicked,this,&VentanaPrincipalUsuario::Aparecer);
@@ -64,7 +69,7 @@ void VentanaPrincipalUsuario::on_Campana_clicked()
 void VentanaPrincipalUsuario::on_Cooperativo_clicked()
 {
     this->close();
-    ModoDeJuego=2;
+    ModoDeJuego=2; // Si el personaje selecciona cooperativo el modo de juego será 2. (Supervivencia.)
     nivelSeleccionado=3;
     Game = new game(&contadorPuntos,&nivelSeleccionado,ModoDeJuego,"Jugadores");
     connect(Game->InterfazPausa,&pausar::buttonClicked2,this,&VentanaPrincipalUsuario::InterrumpidoRegresarMenuPrincipal);

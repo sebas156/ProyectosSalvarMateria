@@ -13,12 +13,21 @@
 #include <time.h>
 #include "player2.h"
 
+/* La clase game corresponde a nuestro juego principal.
+ * Esta clase tendrá dos modos de juego. El modo 1 corresponde al modo historia y el modo 2 al modo supervivencia.
+ * El contructor de esta clase recibe la direccion de memoria de dos variables que se encuentran en VentanaPrincipalUsuario.
+ * recibe el modo en que se va a jugar y el nombre del usuario que ha iniciado sesion.
+ */
+
 game::game(int * puntosInput,int * NivelInput,int ModoInput,string InicioSesion,QWidget *parent)
 {
+
     // Almacena los puntos que tiene le jugador.
     puntosTotales=puntosInput;
+
     // Modo de juego.
     modo = ModoInput;
+
     // Nombre del usuario que ha iniciado sesion.
     NickNameInicioSesion=QString::fromStdString(InicioSesion);
 
@@ -59,8 +68,7 @@ game::game(int * puntosInput,int * NivelInput,int ModoInput,string InicioSesion,
         view->setBackgroundBrush(QBrush(QImage(":/BGI/escenario.png")));
     else
         view->setBackgroundBrush(QBrush(QImage(":/BGI/escenario2.png")));
-    //view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    //view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
     scene->addItem(player);
     view->setFixedSize(800,600);
     if(modo==2)
@@ -165,7 +173,6 @@ game::game(int * puntosInput,int * NivelInput,int ModoInput,string InicioSesion,
 
 game::~game()
 {
-    delete re_fill;
     for(int i=0;i<Zombies.size();i++){
         QList<enemy *>::iterator h=Zombies.begin();
         delete Zombies.at(i);
@@ -181,6 +188,7 @@ game::~game()
         Paredes.erase(V);
         V.~iterator();
     }
+    delete re_fill;
     delete PosicionHealth;
     delete hbar;
     if(modo==1)
@@ -710,18 +718,16 @@ void game::VerificarSiYaPasadeNivel()
 {
     // Verifica si ya pasó de nivel o en su defecto ganó el juego.
     qDebug()<<Zombies.size()<<" "<<nivel<<" "<<Orda;
-    if(Zombies.size()==0 and nivel==3 and Orda==1 and ContadorNumeroMaximoZombies>=60){
+    if(Zombies.size()==0 and nivel==3 and Orda==1 and ContadorNumeroMaximoZombies>=40){
         InterfazGanar->show();
         player->TecladoBloqueado=true;
         player->PonerTodoEnCero();
         OrdasZombies->stop();
         timer->stop();
         VerificarSiPasaNivel->stop();
-        player->TecladoBloqueado=true;
-        player->PonerTodoEnCero();
         music->stop();
     }
-    else if((Zombies.size()==0 and Orda==1 and ContadorNumeroMaximoZombies>=60)){
+    else if((Zombies.size()==0 and Orda==1 and ContadorNumeroMaximoZombies>=40)){
         *NivelRetornar+=1;
         InterfazPasarNivel->show();
          player->TecladoBloqueado=true;
@@ -729,8 +735,6 @@ void game::VerificarSiYaPasadeNivel()
          OrdasZombies->stop();
          timer->stop();
          VerificarSiPasaNivel->stop();
-         player->TecladoBloqueado=true;
-         player->PonerTodoEnCero();
          music->stop();
     }
     //////////// aprovecha la siguiente función, llamada por un timer cada X milisegundos para actualizar la posición de la Healthbar
@@ -881,7 +885,7 @@ void game::LiberarOrdasZombies()
     if(modo==1)
     {
         if(Orda==1){
-            if(ContadorNumeroMaximoZombies>=60){
+            if(ContadorNumeroMaximoZombies>=40){
                 if(Zombies.size()==0){
                     Orda++;
                     SetZombiesPorOrda();
@@ -895,7 +899,7 @@ void game::LiberarOrdasZombies()
             }
         }
         else if(Orda==2){
-            if(ContadorNumeroMaximoZombies>=90){
+            if(ContadorNumeroMaximoZombies>=60){
                 if(Zombies.size()==0){
                     Orda++;
                     SetZombiesPorOrda();
@@ -909,7 +913,7 @@ void game::LiberarOrdasZombies()
             }
         }
         else if(Orda==3){
-            if(ContadorNumeroMaximoZombies>=120){
+            if(ContadorNumeroMaximoZombies>=80){
                 return;
             }
         }

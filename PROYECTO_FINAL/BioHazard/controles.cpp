@@ -5,6 +5,7 @@ controles::controles(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::controles)
 {
+    // Muestra la imagen que explica como jugar y cuales son los controles.
     ui->setupUi(this);
     scene= new QGraphicsScene(this);
     scene->setSceneRect(0,0,1280,700);

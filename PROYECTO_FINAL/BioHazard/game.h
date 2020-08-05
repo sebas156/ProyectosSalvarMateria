@@ -63,11 +63,12 @@ public:
     void BorrarZombie();
     void CaracteristicasZombiesPorNivelYOrda(enemy *);
     int getmodo();
+    int * puntosTotales;
+    // Las siguientes variables van a estar conectadas con slots de VentanaPrincipalUsuario
     pausar * InterfazPausa;
     perder * InterfazPerder;
     PasarNivel * InterfazPasarNivel;
     ganar * InterfazGanar;
-    int * puntosTotales;
 public slots:
     void PausarTodoJuego();      // Slot que al ejecutarse detiene todos los timers.
     void LiberarOrdasZombies();  // Libera una cierta cantidad de zombies cada TiempoEntreOrdas segundos.

@@ -86,6 +86,8 @@ game2::game2(int *ApuntadorNivelSeleccionado,string NombreUsuario,QWidget *paren
     timer->start(1000);
 
     //Pasar de nivel.
+    // Apenas se acabe este timer se considera que el jugador pasó de nivel.
+    // Muy importante recordar en que milisegundo iba cunado se ponga pausa.
     TiempoParaAguantar=new QTimer();
     connect(TiempoParaAguantar,&QTimer::timeout,this,&game2::PasarDeNivel);
     TiempoParaAguantar->start(90000);
@@ -124,8 +126,9 @@ game2::~game2()
 
 void game2::QuierenPausar()
 {
+    // Pausa todos los timers.
     ship->PausarTodosLosTimers();
-    TiempoRestantePasarNivel=TiempoParaAguantar->remainingTime();
+    TiempoRestantePasarNivel=TiempoParaAguantar->remainingTime(); // Retorna el tiempo que le falta al timer para terminar.
     TiempoParaAguantar->stop();
     TimerPerdiste->stop();
     movie->stop();
@@ -137,8 +140,8 @@ void game2::QuierenPausar()
 
 void game2::QuierenContinuar()
 {
-    ship->ReactivarTodosLosTimers();
-    TiempoParaAguantar->start(TiempoRestantePasarNivel);
+    // Reinicia todos los timers.
+    TiempoParaAguantar->start(TiempoRestantePasarNivel); // Retorna el timer desde donde había quedado.
     movie->start();
     music->play();
     timer->start(1000);

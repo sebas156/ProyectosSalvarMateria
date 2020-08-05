@@ -9,12 +9,14 @@ class bullet: public QObject, public QGraphicsRectItem
     Q_OBJECT
 public:
     bullet(char dir);
+    ~bullet();
     int Masa=30;
     vec3 velocidad;
 public slots:
     void move();
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
 private:
+    QTimer *timer;
     int L=0;
     int R=0;
     int U=0;

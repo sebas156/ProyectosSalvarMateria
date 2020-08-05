@@ -12,8 +12,6 @@ principal::principal(QWidget *parent) :
     LeerRegistroDeUsuarios();
     connect(InterfazRegistrar,SIGNAL(buttonPressed()),this,SLOT(VerificarNoEstaRegistar()));
     connect(InterfazIniciarSesion,SIGNAL(buttonPressed()),this,SLOT(VerificarSiEstaInicioSesion()));
-    //connect(InterFazParaUsuario,SIGNAL(buttonClicked()),this,SLOT(Aparecer()));
-    //connect(InterFazParaUsuario,&VentanaPrincipalUsuario::buttonClicked,this,&principal::Aparecer);
 }
 
 void principal::LeerRegistroDeUsuarios()

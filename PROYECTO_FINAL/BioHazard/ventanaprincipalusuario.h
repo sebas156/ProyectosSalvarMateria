@@ -55,14 +55,13 @@ private:
     void IniciarNivel();
     Ui::VentanaPrincipalUsuario *ui;
     QString NickName;
-    int NivelActual;
-    int ModoDeJuego;
-    int PuntosActuales;
-    int nivelSeleccionado;
-    bool reinicio=false;
-    SeleccionarNivel *SeleccionarNivelUsuario;
-    int contadorPuntos=0;
-    vector<map<string,int>> RankingDeUsuarios;
-};
+    int NivelActual; // Guarda el nivel maximo que ha desbloqueado el usuario.
+    int ModoDeJuego; // Solo puede tener dos estados. 1 o 2. Guarda el modo en el que se jugará en game.
+    int PuntosActuales; // Guarda los puntos maximos que el usuario ha podido ganar en el modo supervivencia de game.
+    int nivelSeleccionado;  // Guarda el nivel que se ha seleccionado.
+    SeleccionarNivel *SeleccionarNivelUsuario; // Interfaz de seleccionar nivel.
+    int contadorPuntos=0;    // Cuenta los puntos que el usuario gana cuando juegue el modo supervivencia de game.
+    vector<map<string,int>> RankingDeUsuarios; // Vector donde se van a guardar todos los usuarios con el maximo puntaje que han ganado
+};                                             // en el modo supervivencia de game.
 
 #endif // VENTANAPRINCIPALUSUARIO_H
