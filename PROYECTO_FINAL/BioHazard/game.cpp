@@ -169,6 +169,12 @@ game::game(int * puntosInput,int * NivelInput,int ModoInput,string InicioSesion,
     music->setMedia(QUrl("qrc:/AUD/00.mp3"));
     music->setVolume(25);
     music->play();
+
+    //add foreground images
+    if(nivel==1)
+        view->setForegroundBrush(QBrush(QImage(":/BGI/fore1.png")));
+    else
+        view->setForegroundBrush(QBrush(QImage(":/BGI/fore2.png")));
 }
 
 game::~game()

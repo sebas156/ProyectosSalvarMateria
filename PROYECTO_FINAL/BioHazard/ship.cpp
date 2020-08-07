@@ -35,7 +35,7 @@ ship::ship(int type, QGraphicsItem * parent): QObject(), QGraphicsPixmapItem()
     if(TYPE==0)
         timer->start(45);
     if(TYPE==1||TYPE==2)
-        timer->start(10);
+        timer->start(15);
 
     anim = new QTimer();
     connect(anim,SIGNAL(timeout()),this,SLOT(animate()));

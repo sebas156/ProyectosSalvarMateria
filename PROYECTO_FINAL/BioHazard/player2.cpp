@@ -13,7 +13,7 @@ extern game * Game;
 
 player2::player2():QGraphicsPixmapItem()
 {
-    setPixmap(QPixmap(":/MOV/D2.png").copy(0,0,70,100));
+    setPixmap(QPixmap(":/MOV/D2.png").copy(0,0,60,100));
     this->setScale(0.95);
     setShapeMode(BoundingRectShape);
     timer_anim = new QTimer();
@@ -125,7 +125,7 @@ void player2::animate()
     {
         QPixmap image(":/MOV/L2.png");
         anim_counter();
-        QPixmap cropped = image.copy(75*(i-1),0,75,100);
+        QPixmap cropped = image.copy(60*(i-1),0,60,100);
         setPixmap(QPixmap(cropped));
     }
 
@@ -133,7 +133,7 @@ void player2::animate()
     {
         QPixmap image(":/MOV/R2.png");
         anim_counter();
-        QPixmap cropped = image.copy(77*(i-1),0,77,100);
+        QPixmap cropped = image.copy(60*(i-1),0,60,100);
         setPixmap(QPixmap(cropped));
     }
 
@@ -141,7 +141,7 @@ void player2::animate()
     {
         QPixmap image(":/MOV/U2.png");
         anim_counter();
-        QPixmap cropped = image.copy(63*(i-1),0,63,100);
+        QPixmap cropped = image.copy(60*(i-1),0,60,100);
         setPixmap(QPixmap(cropped));
     }
 
@@ -159,7 +159,7 @@ void player2::animate()
     {
         QPixmap image(":/MOV/L2.png");
         anim_counter();
-        QPixmap cropped = image.copy(75*(i-1),0,70,100);
+        QPixmap cropped = image.copy(60*(i-1),0,60,100);
         setPixmap(QPixmap(cropped));
     }
 
@@ -167,7 +167,7 @@ void player2::animate()
     {
         QPixmap image(":/MOV/R2.png");
         anim_counter();
-        QPixmap cropped = image.copy(77*(i-1),0,70,100);
+        QPixmap cropped = image.copy(60*(i-1),0,60,100);
         setPixmap(QPixmap(cropped));
     }
 
@@ -175,7 +175,7 @@ void player2::animate()
     {
         QPixmap image(":/MOV/U2.png");
         anim_counter();
-        QPixmap cropped = image.copy(63*(i-1),0,70,100);
+        QPixmap cropped = image.copy(60*(i-1),0,60,100);
         setPixmap(QPixmap(cropped));
     }
 
@@ -183,7 +183,7 @@ void player2::animate()
     {
         QPixmap image(":/MOV/D2.png");
         anim_counter();
-        QPixmap cropped = image.copy(60*(i-1),0,70,100);
+        QPixmap cropped = image.copy(60*(i-1),0,60,100);
         setPixmap(QPixmap(cropped));
     }
 
@@ -191,7 +191,7 @@ void player2::animate()
     {
         QPixmap image(":/MOV/UL2.png");
         anim_counter();
-        QPixmap cropped = image.copy(70*(i-1),0,70,100);
+        QPixmap cropped = image.copy(60*(i-1),0,60,100);
         setPixmap(QPixmap(cropped));
     }
 
@@ -199,7 +199,7 @@ void player2::animate()
     {
         QPixmap image(":/MOV/DL2.png");
         anim_counter();
-        QPixmap cropped = image.copy(66*(i-1),0,70,100);
+        QPixmap cropped = image.copy(60*(i-1),0,60,100);
         setPixmap(QPixmap(cropped));
     }
 
@@ -207,7 +207,7 @@ void player2::animate()
     {
         QPixmap image(":/MOV/UR2.png");
         anim_counter();
-        QPixmap cropped = image.copy(70*(i-1),0,70,100);
+        QPixmap cropped = image.copy(60*(i-1),0,60,100);
         setPixmap(QPixmap(cropped));
     }
 
@@ -215,7 +215,7 @@ void player2::animate()
     {
         QPixmap image(":/MOV/DR2.png");
         anim_counter();
-        QPixmap cropped = image.copy(70*(i-1),0,70,100);
+        QPixmap cropped = image.copy(60*(i-1),0,60,100);
         setPixmap(QPixmap(cropped));
     }
 

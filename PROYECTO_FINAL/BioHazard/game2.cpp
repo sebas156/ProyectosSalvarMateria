@@ -103,6 +103,9 @@ game2::game2(int *ApuntadorNivelSeleccionado,string NombreUsuario,QWidget *paren
     music->setVolume(10);
     music->play();
 
+    //add foreground
+    view->setForegroundBrush(QBrush(QImage(":/BGI/fscreen.png")));
+
     view->show();
 }
 

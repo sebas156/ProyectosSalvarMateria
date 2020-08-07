@@ -31,5 +31,10 @@
         <file>MOV/UL2.png</file>
         <file>MOV/UR2.png</file>
         <file>BGI/controles.jpeg</file>
+        <file>BGI/main.png</file>
+        <file>BGI/b_tex.png</file>
+        <file>BGI/fore1.png</file>
+        <file>BGI/fore2.png</file>
+        <file>BGI/fscreen.png</file>
     </qresource>
 </RCC>
